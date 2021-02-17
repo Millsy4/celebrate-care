@@ -14,7 +14,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         Date: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
         },
         Wishlist: {
             type: DataTypes.BOOLEAN,
