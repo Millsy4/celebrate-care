@@ -1,12 +1,12 @@
 import React from 'react';
-import DateAndTimePickers from '../components/datetime';
+import HorizontalLinearStepper from '../components/signupstepper';
 
 
 
 export default function SignUpPage() {
     return (
 
-        <DateAndTimePickers />
+        <HorizontalLinearStepper />
 
     )
 };
