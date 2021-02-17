@@ -28,6 +28,7 @@ function getStepContent(step) {
     switch (step) {
         case 0:
             return (
+
                 < BasicTextFields label='First Name' id='First Name' />
             )
         case 1:
