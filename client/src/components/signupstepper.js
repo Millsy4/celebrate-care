@@ -33,10 +33,10 @@ function getStepContent(step) {
             return (
                 <Box>
                     <h2>Sign Up Form</h2>
-                    < BasicTextFields label='First Name' id='First Name' />
-                    < BasicTextFields label='Last Name' id='Last Name' />
-                    < BasicTextFields label='Email address' id='Email' />
-                    < BasicTextFields label='Password' id='Password' />
+                    < BasicTextFields label='First Name' id='firstname' />
+                    < BasicTextFields label='Last Name' id='lastname' />
+                    < BasicTextFields label='Email address' id='email' />
+                    < BasicTextFields label='Password' id='password' />
                 </Box>
             );
 
@@ -59,7 +59,12 @@ function getStepContent(step) {
                 </Box>
             );
         case 3:
-            return 'Enter your family code';
+            return (
+                <Box>
+                    <h2>Enter Your Family Code </h2>
+                    < BasicTextFields label='Family Code' id='familycode' />
+                </Box>
+            );
         default:
             return 'Unknown step';
     }
@@ -138,8 +143,8 @@ export default function HorizontalLinearStepper() {
                         <Typography className={classes.instructions}>
                             All steps completed - you&apos;re finished
             </Typography>
-                        <Button onClick={handleReset} className={classes.button}>
-                            Reset
+                        <Button variant='contained' color='primary' href='/' className={classes.button}>
+                            Go to Login Page
             </Button>
                     </div>
                 ) : (
