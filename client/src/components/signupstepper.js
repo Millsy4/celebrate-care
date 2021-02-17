@@ -6,6 +6,7 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import BasicTextFields from '../components/textfield';
+import TransitionsModal from '../components/codemodal';
 
 import Box from '@material-ui/core/Box';
 
@@ -53,7 +54,7 @@ function getStepContent(step) {
                 <Box>
                     <h2>Create a Family Code</h2>
                     <h3>If someone from your family has already created a family code, please skip this step.</h3>
-                    <Button variant='contained' color='primary' size='large' className='createcode'>Create a Code Now</Button>
+                    <TransitionsModal />
 
                 </Box>
             );

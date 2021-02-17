@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
-import { useSpring, animated } from 'react-spring/web.cjs'; // web.cjs is required for IE 11 support
+import Fade from '@material-ui/core/Fade';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -19,38 +19,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Fade = React.forwardRef(function Fade(props, ref) {
-    const { in: open, children, onEnter, onExited, ...other } = props;
-    const style = useSpring({
-        from: { opacity: 0 },
-        to: { opacity: open ? 1 : 0 },
-        onStart: () => {
-            if (open && onEnter) {
-                onEnter();
-            }
-        },
-        onRest: () => {
-            if (!open && onExited) {
-                onExited();
-            }
-        },
-    });
-
-    return (
-        <animated.div ref={ref} style={style} {...other}>
-            {children}
-        </animated.div>
-    );
-});
-
-Fade.propTypes = {
-    children: PropTypes.element,
-    in: PropTypes.bool.isRequired,
-    onEnter: PropTypes.func,
-    onExited: PropTypes.func,
-};
-
-export default function SpringModal() {
+export default function TransitionsModal() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
@@ -64,12 +33,12 @@ export default function SpringModal() {
 
     return (
         <div>
-            <button type="button" onClick={handleOpen}>
-                react-spring
-      </button>
+            <Button size='large' variant='contained' color='primary' type="button" onClick={handleOpen}>
+                Create a Family Code Now
+      </Button>
             <Modal
-                aria-labelledby="spring-modal-title"
-                aria-describedby="spring-modal-description"
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
                 className={classes.modal}
                 open={open}
                 onClose={handleClose}
@@ -81,8 +50,12 @@ export default function SpringModal() {
             >
                 <Fade in={open}>
                     <div className={classes.paper}>
-                        <h2 id="spring-modal-title">Spring modal</h2>
-                        <p id="spring-modal-description">react-spring animates me.</p>
+                        <h2 id="transition-modal-title">Family Code</h2>
+                        <p id="transition-modal-description">Copy this code and share it with your family members</p>
+                        <h2>Family Code here</h2>
+                        <Button size='small' variant='contained' color='primary' type="button" onClick={handleClose}>
+                            Copy your code
+      </Button>
                     </div>
                 </Fade>
             </Modal>
