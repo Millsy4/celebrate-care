@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import SignUpPage from "./pages/Signup";
 import LoginInPage from "./pages/Login";
