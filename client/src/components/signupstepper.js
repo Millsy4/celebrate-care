@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import BasicTextFields from '../components/textfield';
 
+import Box from '@material-ui/core/Box';
+
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
@@ -28,13 +30,33 @@ function getStepContent(step) {
     switch (step) {
         case 0:
             return (
+                <Box>
+                    <h2>Sign Up Form</h2>
+                    < BasicTextFields label='First Name' id='First Name' />
+                    < BasicTextFields label='Last Name' id='Last Name' />
+                    < BasicTextFields label='Email address' id='Email' />
+                    < BasicTextFields label='Password' id='Password' />
+                </Box>
+            );
 
-                < BasicTextFields label='First Name' id='First Name' />
-            )
         case 1:
-            return 'What is a family code?';
+            return (
+                <Box>
+                    <h2>What is a family code?</h2>
+                    <p>Celebrate Care groups your entire family together with a family code.
+                        The first person from your family to create an account will create a code and share it with the entire family.</p>
+                    <h3>Click next to either create a family code!</h3>
+                </Box>
+            );
         case 2:
-            return 'Skip this step if someone from your family already created a code';
+            return (
+                <Box>
+                    <h2>Create a Family Code</h2>
+                    <h3>If someone from your family has already created a family code, please skip this step.</h3>
+                    <Button variant='contained' color='primary' size='large' className='createcode'>Create a Code Now</Button>
+
+                </Box>
+            );
         case 3:
             return 'Enter your family code';
         default:
