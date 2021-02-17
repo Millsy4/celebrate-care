@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "dev",
+    "database": "celebrate_care",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "define": {
@@ -14,7 +14,7 @@
   "test": {
     "username": "root",
     "password": null,
-    "database": "test",
+    "database": "celebrate_care",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "define": {
