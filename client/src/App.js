@@ -4,14 +4,16 @@ import SignUpPage from "./pages/Signup";
 import LoginInPage from "./pages/Login";
 import EventPage from "./pages/Event";
 import DashboardPage from "./pages/Dashboard";
+import CalendarPage from './pages/Calendar';
 
 export default function App() {
   return (
     <Router>
-      <Route exact path="/" component={DashboardPage} />
+      <Route exact path="/dashboard" component={DashboardPage} />
       <Route exact path="/signup" component={SignUpPage} />
-      <Route exact path="/login" component={LoginInPage} />
+      <Route exact path="/" component={LoginInPage} />
       <Route exact path="/event" component={EventPage} />
+      <Route exact path="/calendar" component={CalendarPage} />
     </Router>
   )
 };
