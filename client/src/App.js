@@ -1,20 +1,22 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-import SignUpPage from "./pages/Signup";
-import LoginInPage from "./pages/Login";
-import EventPage from "./pages/Event";
-import DashboardPage from "./pages/Dashboard";
-import CalendarPage from './pages/Calendar';
+import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
+import Event from "./pages/Event";
+import Dashboard from "./pages/Dashboard";
+import Calendar from './pages/Calendar';
+import CodeModal from "./components/CodeModal";
 
 export default function App() {
   return (
     <Router>
-      <Route exact path="/dashboard" component={DashboardPage} />
-      <Route exact path="/signup" component={SignUpPage} />
-      <Route exact path="/" component={LoginInPage} />
-      <Route exact path="/event" component={EventPage} />
-      <Route exact path="/calendar" component={CalendarPage} />
+      <CodeModal />
+      <Route exact path="/dashboard" component={Dashboard} />
+      <Route exact path="/signup" component={SignUp} />
+      <Route exact path="/" component={Login} />
+      <Route exact path="/event" component={Event} />
+      <Route exact path="/calendar" component={Calendar} />
     </Router>
   )
 };

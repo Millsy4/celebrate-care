@@ -1,12 +1,12 @@
 import React from 'react';
-import HorizontalLinearStepper from '../components/signupstepper';
+import SignUpStepper from '../components/SignUpStepper';
 
 
 
-export default function SignUpPage() {
+export default function SignUp() {
     return (
 
-        <HorizontalLinearStepper />
+        <SignUpStepper />
 
     )
 };

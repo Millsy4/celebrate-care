@@ -1,9 +1,9 @@
 import React from 'react';
-import DateAndTimePickers from '../components/datetime';
+import DateAndTimePickers from '../components/DateAndTimePickers';
 
 
 
-export default function LoginInPage() {
+export default function Login() {
     return (
 
         <DateAndTimePickers />
