@@ -7,6 +7,8 @@ import Event from "./pages/Event";
 import Dashboard from "./pages/Dashboard";
 import Calendar from './pages/Calendar';
 import CodeModal from "./components/CodeModal";
+import SimpleContainer from "./components/SimpleContainer";
+import SignUpStepper from "./components/SignUpStepper";
 
 export default function App() {
   return (
