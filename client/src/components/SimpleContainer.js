@@ -3,8 +3,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 
-
-//Adding code to force this to send
 export default function SimpleContainer() {
     return (
         <React.Fragment>
