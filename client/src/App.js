@@ -11,7 +11,6 @@ import CodeModal from "./components/CodeModal";
 export default function App() {
   return (
     <Router>
-      <CodeModal />
       <Route exact path="/dashboard" component={Dashboard} />
       <Route exact path="/signup" component={SignUp} />
       <Route exact path="/" component={Login} />
