@@ -1,8 +1,8 @@
 import React from 'react';
-import DateAndTimePickers from '../components/datetime';
+import DateAndTimePickers from '../components/DateAndTimePickers';
 
 
-export default function DashboardPage() {
+export default function Dashboard() {
     return (
 
         <DateAndTimePickers />

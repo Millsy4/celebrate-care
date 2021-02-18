@@ -1,8 +1,8 @@
 import React from 'react';
-import DateAndTimePickers from '../components/datetime';
+import DateAndTimePickers from '../components/DateAndTimePickers';
 
 
-export default function CalendarPage() {
+export default function Calendar() {
     return (
 
         <DateAndTimePickers />

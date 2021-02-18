@@ -5,8 +5,8 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import BasicTextFields from '../components/textfield';
-import TransitionsModal from '../components/codemodal';
+import BasicTextFields from './BasicTextFields';
+import CodeModal from './CodeModal';
 
 import Box from '@material-ui/core/Box';
 
@@ -54,7 +54,7 @@ function getStepContent(step) {
                 <Box>
                     <h2>Create a Family Code</h2>
                     <h3>If someone from your family has already created a family code, please skip this step.</h3>
-                    <TransitionsModal />
+                    <CodeModal />
 
                 </Box>
             );
@@ -70,7 +70,7 @@ function getStepContent(step) {
     }
 }
 
-export default function HorizontalLinearStepper() {
+export default function SignUpStepper() {
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
     const [skipped, setSkipped] = React.useState(new Set());
