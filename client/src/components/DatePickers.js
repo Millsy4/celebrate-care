@@ -5,17 +5,16 @@ import { MuiPickersUtilsProvider, KeyboardDateTimePicker } from '@material-ui/pi
 import MomentUtils from '@date-io/moment';
 
 export default function DatePickers() {
-    const [selectedDate, handleDateChange] = useState(new Date("2018-01-01T00:00:00.000Z"));
+    const [selectedDate, handleDateChange] = useState(new Date("2021-02-20T00:00:00.000Z"));
     return (
-        <MuiPickersUtilsProvider> utils={MomentUtils}
+        <MuiPickersUtilsProvider utils={MomentUtils}>
             <KeyboardDateTimePicker
                 variant="inline"
                 ampm={false}
-                label="With keyboard"
                 value={selectedDate}
                 onChange={handleDateChange}
                 onError={console.log}
-                disablePast
+                // disablePast
                 format="yyyy/MM/dd HH:mm" />
         </MuiPickersUtilsProvider>
     );

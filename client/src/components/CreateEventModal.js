@@ -57,8 +57,13 @@ export default function CreateEventModal() {
                     <div className={classes.paper}>
                         <h2 id="transition-modal-title">Create a New Event</h2>
                         <BasicTextFields label="Event Name" id="Name" />
+                        <p></p>
                         <MultilineTextFields label="Enter event details here" id="Details" />
-                        <DatePickers />
+                        <p></p>
+                        <div>
+                            <DatePickers />
+                        </div>
+                        <p></p>
                         <Button size='small' variant='contained' color='primary' type="button" onClick={handleClose}>
                             Create It!
       </Button>
