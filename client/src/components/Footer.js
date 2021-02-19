@@ -58,9 +58,6 @@ export default function Footer() {
           >
             <Button>
               <CreateEventModal />
-              {/* <Button size="small" color="primary" >
-              <Icon>add_circle</Icon>
-            </Button> */}
             </Button>
           </Link>
           <Button size="small" color="primary">

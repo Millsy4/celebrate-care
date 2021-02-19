@@ -5,6 +5,9 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import Button from '@material-ui/core/Button';
 import Icon from "@material-ui/core/Icon";
+import BasicTextFields from "./BasicTextFields";
+import MultilineTextFields from "./MultilineTextFields";
+import DatePickers from "./DatePickers";
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -52,11 +55,12 @@ export default function CreateEventModal() {
             >
                 <Fade in={open}>
                     <div className={classes.paper}>
-                        <h2 id="transition-modal-title">Family Code</h2>
-                        <p id="transition-modal-description">Copy this code and share it with your family members</p>
-                        <h2>Family Code here</h2>
+                        <h2 id="transition-modal-title">Create a New Event</h2>
+                        <BasicTextFields label="Event Name" id="Name" />
+                        <MultilineTextFields label="Enter event details here" id="Details" />
+                        <DatePickers />
                         <Button size='small' variant='contained' color='primary' type="button" onClick={handleClose}>
-                            Copy your code
+                            Create It!
       </Button>
                     </div>
                 </Fade>
