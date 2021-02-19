@@ -1,11 +1,15 @@
-import React from 'react';
-import DateAndTimePickers from '../components/DateAndTimePickers';
-
+import React from "react";
+import DatePickers from "../components/DatePickers";
+import BasicGallery from "../components/BasicGallery";
+import EventCalendar from "../components/EventCalendar";
 
 export default function Calendar() {
-    return (
-
-        <DateAndTimePickers />
-
-    )
-};
+  return (
+    <div>
+      <EventCalendar />
+      <DatePickers />
+      <BasicGallery />
+      <BasicGallery />
+    </div>
+  );
+}

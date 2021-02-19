@@ -1,12 +1,10 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
 import SvgIcon from "@material-ui/core/SvgIcon";
 import Icon from "@material-ui/core/Icon";
-import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
+import { Link, useLocation } from "react-router-dom";
 
 const useStyles = makeStyles({
   media: {
@@ -29,16 +27,39 @@ export default function Footer() {
     <footer>
       <Grid container spacing={0} justify="center">
         <Grid item xs></Grid>
-        <Grid item xs={6} style={{textAlign: "center"}}>
-          <Button size="small" color="primary">
-            <HomeIcon />
-          </Button>
-          <Button size="small" color="primary">
-            <Icon>event</Icon>
-          </Button>
-          <Button size="small" color="primary">
-            <Icon>add_circle</Icon>
-          </Button>
+        <Grid item xs={6} style={{ textAlign: "center" }}>
+          <Link
+            to="/dashboard"
+            className={
+              location.pathname === "/dashboard"
+                ? "nav-link active"
+                : "nav-link"
+            }
+          >
+            <Button size="small" color="primary">
+              <HomeIcon />
+            </Button>
+          </Link>
+          <Link
+            to="/calendar"
+            className={
+              location.pathname === "/calendar" ? "nav-link active" : "nav-link"
+            }
+          >
+            <Button size="small" color="primary">
+              <Icon>event</Icon>
+            </Button>
+          </Link>
+          <Link
+            to="/event"
+            className={
+              location.pathname === "/event" ? "nav-link active" : "nav-link"
+            }
+          >
+            <Button size="small" color="primary">
+              <Icon>add_circle</Icon>
+            </Button>
+          </Link>
           <Button size="small" color="primary">
             <Icon>account_circle</Icon>
           </Button>

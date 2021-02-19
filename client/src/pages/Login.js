@@ -1,12 +1,12 @@
 import React from 'react';
-import DateAndTimePickers from '../components/DateAndTimePickers';
+import DatePickers from '../components/DatePickers';
 
 
 
 export default function Login() {
     return (
 
-        <DateAndTimePickers />
+        <DatePickers />
 
     )
 };
