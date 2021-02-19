@@ -1,11 +1,15 @@
-import React from 'react';
-import DateAndTimePickers from '../components/DateAndTimePickers';
-
+import React from "react";
+import BasicGallery from "../components/BasicGallery";
 
 export default function Dashboard() {
-    return (
-
-        <DateAndTimePickers />
-
-    )
-};
+  return (
+    <div>
+      <h1>Upcoming Events</h1>
+      <BasicGallery />
+      <h1>Event Wishlist</h1>
+      <BasicGallery />
+      <h1>Event Ideas</h1>
+      <BasicGallery />
+    </div>
+  );
+}
