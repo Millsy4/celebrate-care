@@ -9,6 +9,7 @@ import CalendarPage from './pages/Calendar';
 
 export default function App() {
   return (
+
     <Router>
       <Route exact path="/dashboard" component={DashboardPage} />
       <Route exact path="/signup" component={SignUpPage} />
