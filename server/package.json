@@ -25,6 +25,6 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "passport-session": "^1.0.2",
-    "sequelize": "^6.4.0"
+    "sequelize": "^6.5.0"
   }
 }
