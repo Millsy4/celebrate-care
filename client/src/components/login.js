@@ -1,5 +1,5 @@
 import React from 'react';
-import BasicTextFields from '../components/textfield';
+import BasicTextFields from '../components/BasicTextFields';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 
