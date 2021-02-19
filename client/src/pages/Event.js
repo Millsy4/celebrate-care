@@ -1,12 +1,12 @@
 import React from 'react';
-import DateAndTimePickers from '../components/datetime';
+import DateAndTimePickers from '../components/DatePickers';
 
 
 
-export default function EventPage() {
+export default function Event() {
     return (
 
-        <DateAndTimePickers />
+        <DatePickers />
 
     )
 };

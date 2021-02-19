@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function DateAndTimePickers() {
+export default function DatePickers() {
     const classes = useStyles();
 
     return (
@@ -23,7 +23,7 @@ export default function DateAndTimePickers() {
                 id="datetime-local"
                 label="Next appointment"
                 type="datetime-local"
-                defaultValue="2017-05-24T10:30"
+                defaultValue="2017-05-24"
                 className={classes.textField}
                 InputLabelProps={{
                     shrink: true,
