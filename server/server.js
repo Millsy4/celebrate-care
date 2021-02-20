@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const helmet = require("helmet");
+// const helmet = require("helmet");
 const cors = require("cors");
 const session = require("express-session");
 
@@ -9,7 +9,6 @@ const db = require("./models");
 const routes = require("./routes");
 const passport = require("./config/passport");
 const corsOptions = require("./config/cors.js");
-const router = require("./routes/api/api-routes");
 
 const PORT = process.env.PORT || 3001;
 
@@ -17,11 +16,11 @@ const PORT = process.env.PORT || 3001;
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(helmet());
+// app.use(helmet());
 app.use(session({ secret: "TBD", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -57,11 +56,5 @@ db.sequelize
     });
   })
   .catch(console.error); // eslint-disable-line no-console
-
-
-
-// router.route("/").get(function(req, res) {
-//   console.log("hello");
-// });
 
 module.exports = app;

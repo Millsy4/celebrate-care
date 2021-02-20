@@ -5,13 +5,29 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
         },
         startDate: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         endDate: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
+        details: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        eventStatus: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        image: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        familyCode: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        }
     });
     return Eventtable;
 };
