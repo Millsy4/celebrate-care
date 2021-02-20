@@ -3,6 +3,7 @@ import { useUserContext } from '../services/userContext';
 import Box from '@material-ui/core/Box';
 import BasicTextFields from '../components/BasicTextFields';
 import Button from '@material-ui/core/Button';
+import Header from "../components/Header"
 
 
 export default function LoginInPage() {
@@ -10,6 +11,7 @@ export default function LoginInPage() {
 
     return (
         <div className='login-wrapper'>
+            <Header />
             <Box>
                 <h1>Sign In</h1>
                 <form id='login' >
