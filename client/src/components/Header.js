@@ -22,7 +22,7 @@ export default function Header() {
     return (
         <Box
             className={classes.root}
-            bgcolor="linear-gradient(90deg, rgba(61,109,111,1) 0%, rgba(110,181,194,1) 47%, rgba(74,174,194,1) 100%)"
+            bgcolor='#74A3AC'
             width='100%'
             height={200}
         >
