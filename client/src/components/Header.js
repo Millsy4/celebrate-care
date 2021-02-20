@@ -2,7 +2,7 @@ import React from 'react';
 import Box from '@material-ui/core/Box';
 import Image1 from '../images/logoblack.png';
 import { makeStyles } from "@material-ui/core/styles";
-import { FormHelperText } from '@material-ui/core';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,7 +22,7 @@ export default function Header() {
     return (
         <Box
             className={classes.root}
-            bgcolor="#74A3AC"
+            bgcolor="linear-gradient(90deg, rgba(61,109,111,1) 0%, rgba(110,181,194,1) 47%, rgba(74,174,194,1) 100%)"
             width='100%'
             height={200}
         >

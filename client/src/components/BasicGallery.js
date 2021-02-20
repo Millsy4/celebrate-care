@@ -6,12 +6,11 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 import IconButton from '@material-ui/core/IconButton';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import Image1 from "../images/grandfather.jpg"
-import Image2 from "../images/baking.jpg"
+import Image2 from "../images/grandpacat.PNG"
 import Image3 from "../images/games.jpg"
 import Image4 from "../images/snow.jpg"
 import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
+
 
 const tileData = [
   {
@@ -21,7 +20,7 @@ const tileData = [
   },
   {
     img: Image2,
-    title: 'Bake Bread',
+    title: 'Take the Dogs for a Walk',
     author: 'author',
   },
   {
@@ -60,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   titleBar: {
     height: '200',
     background:
-      'linear-gradient(to top, rgba(61,109,111,0.7) 0%, rgba(61,109,111,0.3) 70%, rgba(61,109,111,0) 100%)',
+      'linear-gradient(to top, rgba(61,109,111,1) 0%, rgba(61,109,111,0.6) 70%, rgba(61,109,111,0) 100%)',
   },
 }));
 
