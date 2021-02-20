@@ -1,5 +1,6 @@
 import React from "react";
 import BasicGallery from "../components/BasicGallery";
+import Footer from "../components/Footer"
 
 export default function Dashboard() {
   return (
@@ -10,6 +11,8 @@ export default function Dashboard() {
       <BasicGallery />
       <h1>Event Ideas</h1>
       <BasicGallery />
+      <Footer />
     </div>
+
   );
 }

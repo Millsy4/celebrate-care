@@ -8,6 +8,8 @@ import Dashboard from "./pages/Dashboard";
 import Calendar from './pages/Calendar';
 import Footer from "./components/Footer";
 import { UserProvider } from './services/userContext';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import MomentUtils from '@date-io/moment';
 
 
 export default function App() {

@@ -5,6 +5,7 @@ import SvgIcon from "@material-ui/core/SvgIcon";
 import Icon from "@material-ui/core/Icon";
 import Grid from "@material-ui/core/Grid";
 import { Link, useLocation } from "react-router-dom";
+import CreateEventModal from "./CreateEventModal"
 
 const useStyles = makeStyles({
   media: {
@@ -21,8 +22,11 @@ function HomeIcon(props) {
   );
 }
 
+
 export default function Footer() {
   const classes = useStyles();
+
+
   return (
     <footer>
       <Grid container spacing={0} justify="center">
@@ -51,13 +55,9 @@ export default function Footer() {
             </Button>
           </Link>
           <Link
-            to="/event"
-            className={
-              location.pathname === "/event" ? "nav-link active" : "nav-link"
-            }
           >
-            <Button size="small" color="primary">
-              <Icon>add_circle</Icon>
+            <Button>
+              <CreateEventModal />
             </Button>
           </Link>
           <Button size="small" color="primary">
@@ -67,5 +67,6 @@ export default function Footer() {
         <Grid item xs></Grid>
       </Grid>
     </footer>
+
   );
 }
