@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import { UserProvider } from './services/userContext';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
 
     <Router>
       <UserProvider>
+        <CssBaseline />
         <Switch>
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/signup" component={SignUp} />

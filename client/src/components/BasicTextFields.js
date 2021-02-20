@@ -15,8 +15,8 @@ export default function BasicTextFields(stepProps) {
     const classes = useStyles();
 
     return (
-        <form className={classes.root} noValidate autoComplete="off">
-            <TextField id={stepProps.id} label={stepProps.label} variant="filled" />
-        </form>
+
+        <TextField id={stepProps.id} label={stepProps.label} variant="filled" />
+
     );
 }

@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import BasicTextFields from "./BasicTextFields";
 import CodeModal from "./CodeModal";
+import Grid from '@material-ui/core/Grid';
 
 import Box from "@material-ui/core/Box";
 
@@ -36,13 +37,20 @@ function getStepContent(step) {
     switch (step) {
         case 0:
             return (
-                <Box>
-                    <h2>Sign Up Form</h2>
-                    <BasicTextFields label="First Name" id="firstname" />
-                    <BasicTextFields label="Last Name" id="lastname" />
-                    <BasicTextFields label="Email address" id="email" />
-                    <BasicTextFields label="Password" id="password" />
-                </Box>
+                <Grid
+                    container
+                    direction="column"
+                    justify="center"
+                    alignItems="center"
+                >
+                    <Box>
+                        <h2>Sign Up Form</h2>
+                        <BasicTextFields label="First Name" id="firstname" />
+                        <BasicTextFields label="Last Name" id="lastname" />
+                        <BasicTextFields label="Email address" id="email" />
+                        <BasicTextFields label="Password" id="password" />
+                    </Box>
+                </Grid>
             );
 
         case 1:
