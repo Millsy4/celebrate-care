@@ -1,41 +1,33 @@
 module.exports = function (sequelize, DataTypes) {
     const Eventtable = sequelize.define('Eventtable', {
-        ID: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        Name: {
+        eventIdea: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        Details: {
+        startDate: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        Date: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        Wishlist: {
-            type: DataTypes.BOOLEAN,
-            allowNull: true,
-        },
-        Upcoming: {
-            type: DataTypes.BOOLEAN,
-            allowNull: true,
-        },
-        Image: {
+        endDate: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        CreatedEvent: {
-            type: DataTypes.BOOLEAN,
+        details: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        eventStatus: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        image: {
+            type: DataTypes.STRING,
             allowNull: true,
         },
-        FamilyCode: {
+        familyCode: {
             type: DataTypes.INTEGER,
-            allowNull: true,
-        },
+            allowNull: false
+        }
     });
     return Eventtable;
 };
