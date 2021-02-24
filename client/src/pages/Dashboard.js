@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Navbar from '../components/Navbar'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,6 +28,7 @@ export default function Dashboard() {
     <div>
       <Grid container className={classes.root} xs={12}>
         <Header />
+        <Navbar />
         <Grid container className={classes.heading} justify="flex-start 1">
           <h1> <font color="#EA7A57">Upcoming Events</font></h1>
         </Grid>
