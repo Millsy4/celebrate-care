@@ -26,7 +26,11 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
   },
 }));
-
+function getCode() {
+  var code = Math.floor(100000 + Math.random() * 900000);
+  console.log(code);
+  return code;
+}
 export default function CodeModal() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -46,8 +50,10 @@ export default function CodeModal() {
         size="large"
         variant="contained"
         type="button"
-        onClick={handleOpen}
-      >
+        onClick={() => {
+          getCode();
+          handleOpen();
+        }}>
         Create a Family Code Now
       </Button>
       <Modal
@@ -68,7 +74,7 @@ export default function CodeModal() {
             <p id="transition-modal-description">
               Copy this code and share it with your family members
             </p>
-            <h2>Family Code here</h2>
+            <h2>{code}</h2>
             <Button
               className={classes.button}
               size="small"

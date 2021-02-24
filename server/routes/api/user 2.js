@@ -7,3 +7,5 @@ router
   .post(userController.create);
 
 module.exports = router;
+
+//step 3

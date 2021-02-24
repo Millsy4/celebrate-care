@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Grid from '@material-ui/core/Stepper';
@@ -10,6 +10,7 @@ import BasicTextFields from './BasicTextFields';
 import CodeModal from './CodeModal';
 import Container from '@material-ui/core/Container';
 import Form from '@material-ui/core/TextField';
+import API from "../utils/API";
 
 import Box from '@material-ui/core/Box';
 
@@ -51,11 +52,29 @@ function getSteps() {
     'Enter a family code',
   ];
 }
-function CodeModal() {
+
+async function signUpUser(firstname, lastname, email, password, familycode) {
+  API.signUp({
+    Email: signUpData.email,
+    FirstName: signUpData.firstname,
+    LastName: signUpData.lastname,
+    Password: signUpData.password,
+    FamilyCode: signUpData.familycode
+  }).then((res) => console.log(res));
+}
+
+function SignUpModal() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const [signUpData, setSignUpData] = useState({ firstname: '', lastname: '', email: '', password: '', familycode: '', grandfirstname: '', grandlastname: '' });
-
+  const [signUpData, setSignUpData] = useState({
+    firstname: '',
+    lastname: '',
+    email: '',
+    password: '',
+    familycode: '',
+    grandfirstname: '',
+    grandlastname: ''
+  });
   const handleOpen = () => {
     setOpen(true);
   };
@@ -63,6 +82,7 @@ function CodeModal() {
   const handleClose = () => {
     setOpen(false);
   };
+
 
   return (
     <div>
@@ -98,6 +118,15 @@ function CodeModal() {
 
 function getStepContent(step) {
   const classes = useStyles();
+  const [signUpData, setSignUpData] = useState({
+    firstname: '',
+    lastname: '',
+    email: '',
+    password: '',
+    familycode: '',
+    grandfirstname: '',
+    grandlastname: ''
+  });
   switch (step) {
     case 0:
       return (
@@ -105,13 +134,13 @@ function getStepContent(step) {
           <Grid>
             <Box className={classes.signUp}>
               <h2>Sign Up Form</h2>
-              <Form label="First Name" id="firstname" />
+              <Form label="First Name" id="firstname" value={signUpData.firstname} onChange={(e) => setSignUpData({ ...signUpData, firstname: e.target.value })} />
               <br></br>
-              <Form label="Last Name" id="lastname" />
+              <Form label="Last Name" id="lastname" value={signUpData.lastname} onChange={(e) => setSignUpData({ ...signUpData, last: e.target.value })} />
               <br></br>
-              <Form label="Email address" id="email" />
+              <Form label="Email address" id="email" value={signUpData.email} onChange={(e) => setSignUpData({ ...signUpData, email: e.target.value })} />
               <br></br>
-              <Form label="Password" id="password" />
+              <Form label="Password" id="password" value={signUpData.password} onChange={(e) => setSignUpData({ ...signUpData, password: e.target.value })} />
             </Box>
           </Grid>
         </Container>
@@ -169,7 +198,7 @@ function getStepContent(step) {
           >
             <Box>
               <h2>Enter Your Family Code </h2>
-              <BasicTextFields label="Family Code" id="familycode" />
+              <BasicTextFields label="Family Code" id="familycode" value={signUpData.familycode} onChange={(e) => setSignUpData({ ...signUpData, familycode: e.target.value })} />
             </Box>
           </Grid>
         </Container>
@@ -184,6 +213,15 @@ export default function SignUpStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
   const steps = getSteps();
+  const [signUpData, setSignUpData] = useState({
+    firstname: '',
+    lastname: '',
+    email: '',
+    password: '',
+    familycode: '',
+    grandfirstname: '',
+    grandlastname: ''
+  });
 
   const isStepOptional = (step) => {
     return step === 2;
@@ -258,7 +296,7 @@ export default function SignUpStepper() {
                 <Typography className={classes.instructions}>
                   All steps completed - you&apos;re finished
                 </Typography>
-                <Button variant="contained" href="/" className={classes.button}>
+                <Button variant="contained" href="/" onClick={signUpUser()} className={classes.button}>
                   Go to Login Page
                 </Button>
               </Container>
