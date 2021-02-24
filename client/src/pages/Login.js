@@ -12,11 +12,7 @@ export default function LoginInPage() {
     const $ = window.$
     //Create a session storage to keep them logged in
     //Check for session storage as useEffect and put on every page
-    const handleSubmit = e => {
-        e.preventDefault();
-        console.log(user);
 
-    }
 
 
     async function loginUser(email, password) {

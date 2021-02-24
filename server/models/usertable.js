@@ -15,10 +15,6 @@ module.exports = function (sequelize, DataTypes) {
         Password: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
-        FamilyCode: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
         }
     });
     return Usertable;

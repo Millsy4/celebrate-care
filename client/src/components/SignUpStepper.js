@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
@@ -6,7 +6,7 @@ import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import BasicTextFields from "./BasicTextFields";
-import CodeModal from "./CodeModal";
+
 import Grid from '@material-ui/core/Grid';
 
 import Box from "@material-ui/core/Box";
@@ -22,6 +22,17 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(1),
         marginBottom: theme.spacing(1),
     },
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    paper: {
+        backgroundColor: theme.palette.background.paper,
+        border: '2px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+    },
 }));
 
 function getSteps() {
@@ -32,8 +43,53 @@ function getSteps() {
         "Enter a family code",
     ];
 }
+function CodeModal() {
+    const classes = useStyles();
+    const [open, setOpen] = React.useState(false);
+    const [signUpData, setSignUpData] = useState({ firstname: '', lastname: '', email: '', password: '', familycode: '', grandfirstname: '', grandlastname: '' });
+
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    return (
+        <div>
+            <Button size='large' variant='contained' color='primary' type="button" onClick={handleOpen}>
+                Create a Family Code Now
+      </Button>
+            <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                className={classes.modal}
+                open={open}
+                onClose={handleClose}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                    timeout: 500,
+                }}
+            >
+                <Fade in={open}>
+                    <div className={classes.paper}>
+                        <h2 id="transition-modal-title">Family Code</h2>
+                        <p id="transition-modal-description">Copy this code and share it with your family members</p>
+                        <h2>Family Code here</h2>
+                        <Button size='small' variant='contained' color='primary' type="button" onClick={handleClose}>
+                            Copy your code
+      </Button>
+                    </div>
+                </Fade>
+            </Modal>
+        </div>
+    );
+}
 
 function getStepContent(step) {
+    const [signUpData, setSignUpData] = useState({ firstname: '', lastname: '', email: '', password: '', familycode: '', grandfirstname: '', grandlastname: '' });
     switch (step) {
         case 0:
             return (
@@ -45,10 +101,10 @@ function getStepContent(step) {
                 >
                     <Box>
                         <h2>Sign Up Form</h2>
-                        <BasicTextFields label="First Name" id="firstname" />
-                        <BasicTextFields label="Last Name" id="lastname" />
-                        <BasicTextFields label="Email address" id="email" />
-                        <BasicTextFields label="Password" id="password" />
+                        <BasicTextFields label="First Name" id="firstname" value={signUpData.firstname} onChange={(e) => setSignUpData({ ...signUpdata, firstname: e.target.value })} />
+                        <BasicTextFields label="Last Name" id="lastname" value={signUpData.lastname} onChange={(e) => setSignUpData({ ...signUpdata, lastname: e.target.value })} />
+                        <BasicTextFields label="Email address" id="email" value={signUpData.email} onChange={(e) => setSignUpData({ ...signUpdata, email: e.target.value })} />
+                        <BasicTextFields label="Password" id="password" value={signUpData.password} onChange={(e) => setSignUpData({ ...signUpdata, password: e.target.value })} />
                     </Box>
                 </Grid>
             );
@@ -80,7 +136,7 @@ function getStepContent(step) {
             return (
                 <Box>
                     <h2>Enter Your Family Code </h2>
-                    <BasicTextFields label="Family Code" id="familycode" />
+                    <BasicTextFields label="Family Code" id="familycode" value={signUpData.familycode} onChange={(e) => setSignUpData({ ...signUpdata, familycode: e.target.value })} />
                 </Box>
             );
         default:
@@ -93,6 +149,18 @@ export default function SignUpStepper() {
     const [activeStep, setActiveStep] = React.useState(0);
     const [skipped, setSkipped] = React.useState(new Set());
     const steps = getSteps();
+
+
+    async function signUpUser(firstname, lastname, email, password, familycode, grandfirstname, grandlastname) {
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: signUpData
+        }
+        const response = await fetch('/api/signup', requestOptions);
+    };
 
     const isStepOptional = (step) => {
         return step === 2;
