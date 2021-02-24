@@ -4,9 +4,10 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import Drawer from './Drawer'
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import Swipedrawer from './SwipeDrawer';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,13 +28,16 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Drawer />
+          <Swipedrawer />
           {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton> */}
           <Typography variant="h6" className={classes.title}>
             Care Worth Celebrating
           </Typography>
+          <IconButton>
+                <AddCircleIcon />
+          </IconButton>
           <IconButton>
                 <AccountCircle />
               </IconButton>
