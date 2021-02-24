@@ -4,7 +4,10 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import Button from '@material-ui/core/Button';
-import Box from '@material-ui/core/Box';
+import Icon from '@material-ui/core/Icon';
+import BasicTextFields from './BasicTextFields';
+import MultilineTextFields from './MultilineTextFields';
+import DatePickers from './DatePickers';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -27,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CodeModal() {
+export default function WishlistEventModal() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -41,15 +44,10 @@ export default function CodeModal() {
 
   return (
     <div>
-      <Button
-        className={classes.button}
-        size="large"
-        variant="contained"
-        type="button"
-        onClick={handleOpen}
-      >
-        Create a Family Code Now
+      <Button size="small" color="primary" onClick={handleOpen}>
+        <Icon>add_circle</Icon>
       </Button>
+
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -64,11 +62,14 @@ export default function CodeModal() {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2 id="transition-modal-title">Family Code</h2>
-            <p id="transition-modal-description">
-              Copy this code and share it with your family members
-            </p>
-            <h2>Family Code here</h2>
+            <h2 id="transition-modal-title">Create a Wishlist Event</h2>
+            <BasicTextFields label="Event Name" id="Name" />
+            <p></p>
+            <MultilineTextFields
+              label="Enter event details here"
+              id="Details"
+            />
+            <p></p>
             <Button
               className={classes.button}
               size="small"
@@ -76,7 +77,7 @@ export default function CodeModal() {
               type="button"
               onClick={handleClose}
             >
-              Copy your code
+              Create It!
             </Button>
           </div>
         </Fade>

@@ -3,22 +3,18 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        '& > *': {
-            margin: theme.spacing(1),
-            width: '25ch',
-        },
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
     },
+  },
 }));
 
-export default function BasicTextFields(stepProps) {
-    const classes = useStyles();
+export default function TextFields(stepProps) {
+  const classes = useStyles();
 
-    return (
-        <div>
-            <p></p>
-            <TextField id={stepProps.id} label={stepProps.label} variant="filled" />
-            <p></p>
-        </div>
-    );
+  return (
+    <TextField id={stepProps.id} label={stepProps.label} variant="filled" />
+  );
 }
