@@ -8,7 +8,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import Swipedrawer from './SwipeDrawer';
 import AddEvent from '../components/AddEvent'
-
+import AddEventDrawer from "../components/DrawerBottom"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,14 +29,11 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <AddEvent />
+          <AddEventDrawer />
           <Swipedrawer />
             <Typography variant="h6" className={classes.title}>
               Care Worth Celebrating
             </Typography>
-                  <IconButton>
-                    <AddCircleIcon fontSize="large" />
-                  </IconButton>
                   <IconButton>
                     <AccountCircle fontSize="large" />
                   </IconButton>
