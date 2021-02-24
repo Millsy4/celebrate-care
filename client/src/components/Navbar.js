@@ -29,18 +29,15 @@ export default function ButtonAppBar() {
       <AppBar position="static">
         <Toolbar>
           <Swipedrawer />
-          {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton> */}
-          <Typography variant="h6" className={classes.title}>
-            Care Worth Celebrating
-          </Typography>
-          <IconButton>
-                <AddCircleIcon />
-          </IconButton>
-          <IconButton>
-                <AccountCircle />
-              </IconButton>
+            <Typography variant="h6" className={classes.title}>
+              Care Worth Celebrating
+            </Typography>
+                  <IconButton>
+                    <AddCircleIcon fontSize="large" />
+                  </IconButton>
+                  <IconButton>
+                    <AccountCircle fontSize="large" />
+                  </IconButton>
         </Toolbar>
       </AppBar>
     </div>
