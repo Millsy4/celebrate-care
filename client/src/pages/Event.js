@@ -36,7 +36,7 @@ export default function Event() {
     setFormObject({ ...formObject, [name]: value });
   }
 
-  
+
 
   function handleFormSubmit(event) {
     formObject.startDate = selectedStartDate;

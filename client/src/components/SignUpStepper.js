@@ -8,6 +8,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import BasicTextFields from './BasicTextFields';
 import CodeModal from './CodeModal';
+import Container from '@material-ui/core/Container';
+import Form from '@material-ui/core/TextField';
 
 import Box from '@material-ui/core/Box';
 
@@ -15,16 +17,28 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
   },
+  signUp: {
+    justify: 'center',
+    alignItems: 'center',
+  },
+  stepper: {
+    background: '',
+  },
   button: {
     marginRight: theme.spacing(1),
     justify: 'center',
     alignItems: 'center',
+    background: '#3D6D6F',
+    color: 'white',
+  },
+  backbutton: {
+    marginRight: theme.spacing(1),
+    justify: 'center',
+    alignItems: 'center',
+    background: '#e0e0e0',
+    color: 'black',
   },
   instructions: {
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(1),
-    marginLeft: theme.spacing(18),
-    marginRight: theme.spacing(18),
     textAlign: 'center',
   },
 }));
@@ -39,55 +53,82 @@ function getSteps() {
 }
 
 function getStepContent(step) {
+  const classes = useStyles();
   switch (step) {
     case 0:
       return (
-        <Grid container direction="column" justify="center" alignItems="center">
-          <Box>
-            <h2>Sign Up Form</h2>
-            <BasicTextFields label="First Name" id="firstname" />
-            <BasicTextFields label="Last Name" id="lastname" />
-            <BasicTextFields label="Email address" id="email" />
-            <BasicTextFields label="Password" id="password" />
-          </Box>
-        </Grid>
+        <Container maxWidth="lg" style={{ width: '30%' }}>
+          <Grid>
+            <Box className={classes.signUp}>
+              <h2>Sign Up Form</h2>
+              <Form label="First Name" id="firstname" />
+              <br></br>
+              <Form label="Last Name" id="lastname" />
+              <br></br>
+              <Form label="Email address" id="email" />
+              <br></br>
+              <Form label="Password" id="password" />
+            </Box>
+          </Grid>
+        </Container>
       );
 
     case 1:
       return (
-        <Grid container direction="column" justify="center" alignItems="center">
-          <Box>
-            <h2>What is a family code?</h2>
-            <p>
-              Celebrate Care groups your entire family together with a family
-              code. The first person from your family to create an account will
-              create a code and share it with the entire family.
-            </p>
-            <h3>Click next to either create a family code!</h3>
-          </Box>
-        </Grid>
+        <Container maxWidth="lg" style={{ width: '70%' }}>
+          <Grid
+            container
+            direction="column"
+            justify="center"
+            alignItems="center"
+          >
+            <Box>
+              <h2>What is a family code?</h2>
+              <p>
+                Celebrate Care groups your entire family together with a family
+                code. The first person from your family to create an account
+                will create a code and share it with the entire family.
+              </p>
+              <h3>Click next to either create a family code!</h3>
+            </Box>
+          </Grid>
+        </Container>
       );
     case 2:
       return (
-        <Grid container direction="column" justify="center" alignItems="center">
-          <Box>
-            <h2>Create a Family Code</h2>
-            <h3>
-              If someone from your family has already created a family code,
-              please skip this step.
-            </h3>
-            <CodeModal />
-          </Box>
-        </Grid>
+        <Container maxWidth="lg" style={{ width: '70%' }}>
+          <Grid
+            container
+            direction="column"
+            justify="center"
+            alignItems="center"
+          >
+            <Box>
+              <h2>Create a Family Code</h2>
+              <h3>
+                If someone from your family has already created a family code,
+                please skip this step.
+              </h3>
+              <CodeModal />
+            </Box>
+          </Grid>
+        </Container>
       );
     case 3:
       return (
-        <Grid container direction="column" justify="center" alignItems="center">
-          <Box>
-            <h2>Enter Your Family Code </h2>
-            <BasicTextFields label="Family Code" id="familycode" />
-          </Box>
-        </Grid>
+        <Container maxWidth="lg" style={{ width: '30%' }}>
+          <Grid
+            container
+            direction="column"
+            justify="center"
+            alignItems="center"
+          >
+            <Box>
+              <h2>Enter Your Family Code </h2>
+              <BasicTextFields label="Family Code" id="familycode" />
+            </Box>
+          </Grid>
+        </Container>
       );
     default:
       return 'Unknown step';
@@ -143,77 +184,78 @@ export default function SignUpStepper() {
   };
 
   return (
-    <div className={classes.root}>
-      <Stepper activeStep={activeStep}>
-        {steps.map((label, index) => {
-          const stepProps = {};
-          const labelProps = {};
-          if (isStepOptional(index)) {
-            labelProps.optional = (
-              <Typography variant="caption">Optional</Typography>
+    <Container>
+      <div className={classes.root}>
+        <Stepper activeStep={activeStep}>
+          {steps.map((label, index) => {
+            const stepProps = {};
+            const labelProps = {};
+            if (isStepOptional(index)) {
+              labelProps.optional = (
+                <Typography variant="caption">Optional</Typography>
+              );
+            }
+            if (isStepSkipped(index)) {
+              stepProps.completed = false;
+            }
+            return (
+              <Step key={label} {...stepProps}>
+                <StepLabel className={classes.stepper} {...labelProps}>
+                  {label}
+                </StepLabel>
+              </Step>
             );
-          }
-          if (isStepSkipped(index)) {
-            stepProps.completed = false;
-          }
-          return (
-            <Step key={label} {...stepProps}>
-              <StepLabel {...labelProps}>{label}</StepLabel>
-            </Step>
-          );
-        })}
-      </Stepper>
-      <div>
-        {activeStep === steps.length ? (
-          <div>
-            <Typography className={classes.instructions}>
-              All steps completed - you&apos;re finished
-            </Typography>
-            <Button
-              variant="contained"
-              color="primary"
-              href="/"
-              className={classes.button}
-            >
-              Go to Login Page
-            </Button>
-          </div>
-        ) : (
-          <div>
-            <Typography className={classes.instructions}>
-              {getStepContent(activeStep)}
-            </Typography>
+          })}
+        </Stepper>
+        <div>
+          {activeStep === steps.length ? (
             <div>
-              <Button
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                className={classes.button}
-              >
-                Back
-              </Button>
-              {isStepOptional(activeStep) && (
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleSkip}
-                  className={classes.button}
-                >
-                  I already have a family code!
+              <Container maxWidth="lg" style={{ width: '40.5%' }}>
+                <Typography className={classes.instructions}>
+                  All steps completed - you&apos;re finished
+                </Typography>
+                <Button variant="contained" href="/" className={classes.button}>
+                  Go to Login Page
                 </Button>
-              )}
-
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleNext}
-                className={classes.button}
-              >
-                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-              </Button>
+              </Container>
             </div>
-          </div>
-        )}
+          ) : (
+            <div>
+              <Typography className={classes.instructions}>
+                {getStepContent(activeStep)}
+              </Typography>
+              <div>
+                <Container maxWidth="lg" style={{ width: '40.5%' }}>
+                  <Button
+                    disabled={activeStep === 0}
+                    onClick={handleBack}
+                    className={classes.backbutton}
+                  >
+                    Back
+                  </Button>
+                  {isStepOptional(activeStep) && (
+                    <Button
+                      variant="contained"
+                      onClick={handleSkip}
+                      className={classes.button}
+                    >
+                      I already have a family code!
+                    </Button>
+                  )}
+
+                  <Button
+                    variant="contained"
+                    onClick={handleNext}
+                    className={classes.button}
+                  >
+                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                  </Button>
+                </Container>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </Container>
   );
 }
