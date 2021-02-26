@@ -27,7 +27,7 @@ export default function LoginInPage() {
 
 
 
-    async function loginUser(email, password) {
+    async function loginUser(user) {
         const requestOptions = {
             method: 'POST',
             headers: {

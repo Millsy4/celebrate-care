@@ -46,35 +46,18 @@ const useStyles = makeStyles((theme) => ({
 
 function getSteps() {
   return [
-    'Create your account',
+    'Random',
     'What is a family code?',
     'Create a new family code',
     'Enter a family code',
   ];
 }
 
-async function signUpUser(firstname, lastname, email, password, familycode) {
-  API.signUp({
-    Email: signUpData.email,
-    FirstName: signUpData.firstname,
-    LastName: signUpData.lastname,
-    Password: signUpData.password,
-    FamilyCode: signUpData.familycode
-  }).then((res) => console.log(res));
-}
+
 
 function SignUpModal() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const [signUpData, setSignUpData] = useState({
-    firstname: '',
-    lastname: '',
-    email: '',
-    password: '',
-    familycode: '',
-    grandfirstname: '',
-    grandlastname: ''
-  });
   const handleOpen = () => {
     setOpen(true);
   };
@@ -116,97 +99,7 @@ function SignUpModal() {
   );
 }
 
-function getStepContent(step) {
-  const classes = useStyles();
-  const [signUpData, setSignUpData] = useState({
-    firstname: '',
-    lastname: '',
-    email: '',
-    password: '',
-    familycode: '',
-    grandfirstname: '',
-    grandlastname: ''
-  });
-  switch (step) {
-    case 0:
-      return (
-        <Container maxWidth="lg" style={{ width: '30%' }}>
-          <Grid>
-            <Box className={classes.signUp}>
-              <h2>Sign Up Form</h2>
-              <Form label="First Name" id="firstname" value={signUpData.firstname} onChange={(e) => setSignUpData({ ...signUpData, firstname: e.target.value })} />
-              <br></br>
-              <Form label="Last Name" id="lastname" value={signUpData.lastname} onChange={(e) => setSignUpData({ ...signUpData, last: e.target.value })} />
-              <br></br>
-              <Form label="Email address" id="email" value={signUpData.email} onChange={(e) => setSignUpData({ ...signUpData, email: e.target.value })} />
-              <br></br>
-              <Form label="Password" id="password" value={signUpData.password} onChange={(e) => setSignUpData({ ...signUpData, password: e.target.value })} />
-            </Box>
-          </Grid>
-        </Container>
-      );
 
-    case 1:
-      return (
-        <Container maxWidth="lg" style={{ width: '70%' }}>
-          <Grid
-            container
-            direction="column"
-            justify="center"
-            alignItems="center"
-          >
-            <Box>
-              <h2>What is a family code?</h2>
-              <p>
-                Celebrate Care groups your entire family together with a family
-                code. The first person from your family to create an account
-                will create a code and share it with the entire family.
-              </p>
-              <h3>Click next to either create a family code!</h3>
-            </Box>
-          </Grid>
-        </Container>
-      );
-    case 2:
-      return (
-        <Container maxWidth="lg" style={{ width: '70%' }}>
-          <Grid
-            container
-            direction="column"
-            justify="center"
-            alignItems="center"
-          >
-            <Box>
-              <h2>Create a Family Code</h2>
-              <h3>
-                If someone from your family has already created a family code,
-                please skip this step.
-              </h3>
-              <CodeModal />
-            </Box>
-          </Grid>
-        </Container>
-      );
-    case 3:
-      return (
-        <Container maxWidth="lg" style={{ width: '30%' }}>
-          <Grid
-            container
-            direction="column"
-            justify="center"
-            alignItems="center"
-          >
-            <Box>
-              <h2>Enter Your Family Code </h2>
-              <BasicTextFields label="Family Code" id="familycode" value={signUpData.familycode} onChange={(e) => setSignUpData({ ...signUpData, familycode: e.target.value })} />
-            </Box>
-          </Grid>
-        </Container>
-      );
-    default:
-      return 'Unknown step';
-  }
-}
 
 export default function SignUpStepper() {
   const classes = useStyles();
@@ -222,7 +115,107 @@ export default function SignUpStepper() {
     grandfirstname: '',
     grandlastname: ''
   });
+  async function signUpUser() {
+    API.signUp({
+      Email: signUpData.email,
+      FirstName: signUpData.firstname,
+      LastName: signUpData.lastname,
+      Password: signUpData.password,
+      FamilyCode: signUpData.familycode
+    }).then((res) => (res)).then(() => {
+      window.location.replace('/')
+    })
+      .catch((err) => {
+        console.log(err);
+      });
+    //redirect here to sign in page
+  }
+  function getStepContent(step) {
+    const classes = useStyles();
 
+
+    switch (step) {
+      case 0:
+        return (
+          <Container maxWidth="lg" style={{ width: '30%' }}>
+            <Grid>
+              <Box className={classes.signUp}>
+                <h2>Sign Up Form</h2>
+                <Form label="First Name" id="firstname" value={signUpData.firstname} onChange={(e) => setSignUpData({ ...signUpData, firstname: e.target.value })} />
+                <br></br>
+                <Form label="Last Name" id="lastname" value={signUpData.lastname} onChange={(e) => setSignUpData({ ...signUpData, last: e.target.value })} />
+                <br></br>
+                <Form label="Email address" id="email" value={signUpData.email} onChange={(e) => setSignUpData({ ...signUpData, email: e.target.value })} />
+                <br></br>
+                <Form label="Password" id="password" value={signUpData.password} onChange={(e) => setSignUpData({ ...signUpData, password: e.target.value })} />
+              </Box>
+            </Grid>
+          </Container>
+        );
+
+      case 1:
+        return (
+          <Container maxWidth="lg" style={{ width: '70%' }}>
+            <Grid
+              container
+              direction="column"
+              justify="center"
+              alignItems="center"
+            >
+              <Box>
+                <h2>What is a family code?</h2>
+                <p>
+                  Celebrate Care groups your entire family together with a family
+                  code. The first person from your family to create an account
+                  will create a code and share it with the entire family.
+                </p>
+                <h3>Click next to either create a family code!</h3>
+              </Box>
+            </Grid>
+          </Container>
+        );
+      case 2:
+        return (
+          <Container maxWidth="lg" style={{ width: '70%' }}>
+            <Grid
+              container
+              direction="column"
+              justify="center"
+              alignItems="center"
+            >
+              <Box>
+                <h2>Create a Family Code</h2>
+                <h3>
+                  If someone from your family has already created a family code,
+                  please skip this step.
+                </h3>
+                <CodeModal />
+              </Box>
+            </Grid>
+          </Container>
+        );
+      case 3:
+        return (
+          <Container maxWidth="lg" style={{ width: '30%' }}>
+            <Grid
+              container
+              direction="column"
+              justify="center"
+              alignItems="center"
+            >
+              <Box>
+                <h2>Enter Your Family Code </h2>
+                <Form Form label="Family Code" id="familycode" value={signUpData.familycode} onChange={(e) => setSignUpData({ ...signUpData, familycode: e.target.value })}>
+                  {/* <BasicTextFields label="Family Code" id="familycode" value={signUpData.familycode} onChange={(e) => setSignUpData({ ...signUpData, familycode: e.target.value })} /> */}
+                </Form>
+              </Box>
+            </Grid>
+          </Container>
+        );
+      default:
+        return 'Unknown step';
+    }
+  }
   const isStepOptional = (step) => {
     return step === 2;
   };
@@ -292,14 +285,14 @@ export default function SignUpStepper() {
         <div>
           {activeStep === steps.length ? (
             <div>
-              <Container maxWidth="lg" style={{ width: '40.5%' }}>
+              {/* <Container maxWidth="lg" style={{ width: '40.5%' }}>
                 <Typography className={classes.instructions}>
-                  All steps completed - you&apos;re finished
+                  All steps completed - you're finished
                 </Typography>
-                <Button variant="contained" href="/" onClick={signUpUser()} className={classes.button}>
+                <Button variant="contained" href="/" onClick={signUpUser} className={classes.button}>
                   Go to Login Page
                 </Button>
-              </Container>
+              </Container> */}
             </div>
           ) : (
               <div>
@@ -327,10 +320,10 @@ export default function SignUpStepper() {
 
                     <Button
                       variant="contained"
-                      onClick={handleNext}
+                      onClick={activeStep === steps.length - 1 ? signUpUser : handleNext}
                       className={classes.button}
                     >
-                      {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                      {activeStep === steps.length - 1 ? 'Go to Login Page' : 'Next'}
                     </Button>
                   </Container>
                 </div>

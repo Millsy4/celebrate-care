@@ -26,14 +26,14 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
   },
 }));
-function getCode() {
-  var code = Math.floor(100000 + Math.random() * 900000);
-  console.log(code);
-  return code;
-}
+
 export default function CodeModal() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [code, setCode] = React.useState({
+    code: ''
+  });
+
 
   const handleOpen = () => {
     setOpen(true);
@@ -41,6 +41,15 @@ export default function CodeModal() {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  function getCode() {
+    var randomcode = Math.floor(100000 + Math.random() * 900000)
+    console.log(randomcode);
+
+    setCode({ code: randomcode });
+
+    console.log({ code });
   };
 
   return (
@@ -74,7 +83,7 @@ export default function CodeModal() {
             <p id="transition-modal-description">
               Copy this code and share it with your family members
             </p>
-            <h2>{code}</h2>
+            <h2>{code.code}</h2>
             <Button
               className={classes.button}
               size="small"
