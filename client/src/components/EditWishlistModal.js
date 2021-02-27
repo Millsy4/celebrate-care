@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function UpcomingEventModal() {
+export default function EditWishlistModal() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -63,7 +63,7 @@ export default function UpcomingEventModal() {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2 id="transition-modal-title">Create an Upcoming Event</h2>
+            <h2 id="transition-modal-title">Schedule Wishlist Event</h2>
             <BasicTextFields label="Event Name" id="Name" />
             <p></p>
             <MultilineTextFields
