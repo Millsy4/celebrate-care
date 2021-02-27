@@ -8,6 +8,8 @@ import Icon from '@material-ui/core/Icon';
 import BasicTextFields from './BasicTextFields';
 import MultilineTextFields from './MultilineTextFields';
 import DatePickers from './DatePickers';
+import PropTypes from 'prop-types';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -45,8 +47,18 @@ export default function UpcomingEventModal() {
 
   return (
     <div>
-      <Button size="small" color="primary" onClick={handleOpen}>
+      {/* <Button size="small" color="primary" onClick={handleOpen}>
         <Icon>add_circle</Icon>
+      </Button> */}
+      <Button
+        variant="contained"
+        color="primary"
+        size="large"
+        className={classes.button}
+        startIcon={<AddCircleIcon />}
+        onClick={handleOpen}
+      >
+        Upcoming Event
       </Button>
 
       <Modal
@@ -77,7 +89,7 @@ export default function UpcomingEventModal() {
             <p></p>
             <Button
               className={classes.button}
-              size="small"
+              size="large"
               variant="contained"
               type="button"
               onClick={handleClose}

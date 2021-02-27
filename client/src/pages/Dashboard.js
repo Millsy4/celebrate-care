@@ -14,7 +14,7 @@ import Image2 from "../images/grandpacat.PNG";
 import Image3 from "../images/games.jpg";
 import Image4 from "../images/snow.jpg";
 import Container from "@material-ui/core/Container";
-import UpcomingModal from "../components/CreateEventModal";
+import CreateEventModal from "../components/CreateEventModal";
 
 const images = [Image1, Image2, Image3, Image4]
 
@@ -153,10 +153,8 @@ export default function Dashboard() {
             <font color="#EA7A57">Event Ideas</font>
           </h1>
         </Grid>
-        <footer>
-          <UpcomingModal />
-          </footer>
       </Grid>
+      <CreateEventModal />
     </div>
   );
 }

@@ -1,9 +1,9 @@
+
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import UpcomingEventModal from './UpcomingEventModal';
 import WishEventModal from './WishlistEventModal';
-import AddIcon from '@material-ui/icons/Add';
 import AddEventIcon from './AddEvent'
 
 function rand() {
@@ -26,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     width: 400,
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
@@ -52,25 +51,10 @@ export default function SimpleModal() {
       <p id="simple-modal-description">
         Select event you wish to create
       </p>
-      <button>
         <UpcomingEventModal />
-        <p>Upcoming Event</p>
-      </button>
-
-      <button
-        variant="contained"
-        color="primary"
-        size="large"
-        className={classes.button}
-        startIcon={<AddIcon />}
-      >
-        Save
-      </button>
-
-      <button>
+        <li></li>
         <WishEventModal />
-        <p>Wish Event</p>
-      </button>
+      
     </div>
   );
 

@@ -8,6 +8,7 @@ import Icon from '@material-ui/core/Icon';
 import BasicTextFields from './BasicTextFields';
 import MultilineTextFields from './MultilineTextFields';
 import DatePickers from './DatePickers';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -44,9 +45,17 @@ export default function WishlistEventModal() {
 
   return (
     <div>
-      <Button size="small" color="primary" onClick={handleOpen}>
+      {/* <Button size="small" color="primary" onClick={handleOpen}>
         <Icon>add_circle</Icon>
-      </Button>
+      </Button> */}
+      <Button
+        variant="contained"
+        color="primary"
+        size="large"
+        className={classes.button}
+        startIcon={<AddCircleIcon />}
+        onClick={handleOpen}
+      >Wishlist Event</Button>
 
       <Modal
         aria-labelledby="transition-modal-title"
