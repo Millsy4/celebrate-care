@@ -5,9 +5,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
 import Swipedrawer from './SwipeDrawer';
-
+import UpcomingModal from "../components/UpcomingModal";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,13 +27,11 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
+          <UpcomingModal />
           <Swipedrawer />
             <Typography variant="h6" className={classes.title}>
               Care Worth Celebrating
             </Typography>
-                  <IconButton>
-                    <AddCircleIcon fontSize="large" />
-                  </IconButton>
                   <IconButton>
                     <AccountCircle fontSize="large" />
                   </IconButton>
