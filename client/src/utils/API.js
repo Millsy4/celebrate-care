@@ -10,7 +10,7 @@ export default {
     signUp: function (signUpData) {
         return axios.post('/api/usertables', signUpData)
     },
-    signIn: function (loginData) {
+    logIn: function (loginData) {
         return axios.post('/api/login', loginData)
     }
 }

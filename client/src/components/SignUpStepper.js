@@ -11,6 +11,8 @@ import CodeModal from './CodeModal';
 import Container from '@material-ui/core/Container';
 import Form from '@material-ui/core/TextField';
 import API from "../utils/API";
+import InputMask from 'react-input-mask';
+
 
 import Box from '@material-ui/core/Box';
 
@@ -113,7 +115,8 @@ export default function SignUpStepper() {
     password: '',
     familycode: '',
     grandfirstname: '',
-    grandlastname: ''
+    grandlastname: '',
+    havecode: false,
   });
   async function signUpUser() {
     API.signUp({
@@ -121,7 +124,8 @@ export default function SignUpStepper() {
       FirstName: signUpData.firstname,
       LastName: signUpData.lastname,
       Password: signUpData.password,
-      FamilyCode: signUpData.familycode
+      FamilyCode: signUpData.familycode,
+      HaveCode: signUpData.havecode,
     }).then((res) => (res)).then(() => {
       window.location.replace('/')
     })
@@ -143,7 +147,7 @@ export default function SignUpStepper() {
                 <h2>Sign Up Form</h2>
                 <Form label="First Name" id="firstname" value={signUpData.firstname} onChange={(e) => setSignUpData({ ...signUpData, firstname: e.target.value })} />
                 <br></br>
-                <Form label="Last Name" id="lastname" value={signUpData.lastname} onChange={(e) => setSignUpData({ ...signUpData, last: e.target.value })} />
+                <Form label="Last Name" id="lastname" value={signUpData.lastname} onChange={(e) => setSignUpData({ ...signUpData, lastname: e.target.value })} />
                 <br></br>
                 <Form label="Email address" id="email" value={signUpData.email} onChange={(e) => setSignUpData({ ...signUpData, email: e.target.value })} />
                 <br></br>
@@ -245,6 +249,7 @@ export default function SignUpStepper() {
       // it should never occur unless someone's actively trying to break something.
       throw new Error("You can't skip a step that isn't optional.");
     }
+    setSignUpData({ ...signUpData, havecode: true })
 
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setSkipped((prevSkipped) => {
@@ -314,7 +319,7 @@ export default function SignUpStepper() {
                         onClick={handleSkip}
                         className={classes.button}
                       >
-                        I already have a family code!
+                        I already have a family code
                       </Button>
                     )}
 

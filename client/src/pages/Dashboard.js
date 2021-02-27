@@ -4,7 +4,8 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Navbar from '../components/Navbar'
+import Navbar from '../components/Navbar';
+import { useUserContext } from '../services/userContext';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 export default function Dashboard() {
+  const { user, setUser } = useUserContext();
   const classes = useStyles();
   return (
 

@@ -1,20 +1,30 @@
+
+
 module.exports = function (sequelize, DataTypes) {
     const Eventtable = sequelize.define('Eventtable', {
         eventIdea: {
             type: DataTypes.STRING,
             allowNull: false,
+            validator: {
+                min: 4,
+                max: 25,
+            }
         },
         startDate: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         endDate: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         details: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            validator: {
+                min: 4,
+                max: 255,
+            }
         },
         eventStatus: {
             type: DataTypes.STRING,
@@ -23,11 +33,13 @@ module.exports = function (sequelize, DataTypes) {
         image: {
             type: DataTypes.STRING,
             allowNull: true,
-        },
-        familyCode: {
-            type: DataTypes.INTEGER,
-            allowNull: false
         }
     });
+    Eventtable.associate = function (models) {
+        Eventtable.belongsTo(models.Familycode, {
+            foreignKey: { allowNull: true }
+        });
+    }
+
     return Eventtable;
 };

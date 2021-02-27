@@ -3,17 +3,28 @@ module.exports = function (sequelize, DataTypes) {
         FamilyCode: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
         },
         GrandFirstName: {
             type: DataTypes.STRING,
             allowNull: true,
-            defaultValue: 'Frodo',
         },
         GrandLastName: {
             type: DataTypes.STRING,
             allowNull: true,
-            defaultValue: 'Baggins',
         }
     });
+    Familycode.associate = function (models) {
+        Familycode.hasMany(models.Familyties, {
+            foreignKey: { allowNull: true },
+            onDelete: 'cascade'
+        });
+        Familycode.hasMany(models.Eventtable, {
+            foreignKey: { allowNull: true },
+            onDelete: 'cascade'
+        });
+    }
+
     return Familycode;
+
 };
