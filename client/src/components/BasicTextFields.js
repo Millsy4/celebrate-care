@@ -15,6 +15,8 @@ export default function TextFields(stepProps) {
   const classes = useStyles();
 
   return (
+
     <TextField id={stepProps.id} label={stepProps.label} variant="filled" />
+
   );
 }

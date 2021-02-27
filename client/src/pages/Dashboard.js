@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Footer from "../components/Footer";
 import Header from "../components/Header";
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Navbar from "../components/Navbar";
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Navbar from '../components/Navbar';
+import { useUserContext } from '../services/userContext';
 import AddEvent from "../components/AddEvent";
 import API from "../utils/API";
 import GridList from "@material-ui/core/GridList";
@@ -77,6 +77,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 export default function Dashboard() {
+  const { user, setUser } = useUserContext();
   const [events, setEvents] = useState([])
 
   useEffect(() => {
@@ -93,7 +94,7 @@ export default function Dashboard() {
           const validEvent = {
             title: event.eventIdea,
             author: event.familyCode,
-            img: images[Math.floor(Math.random()*images.length)]
+            img: images[Math.floor(Math.random() * images.length)]
           }
           validatedEvents.push(validEvent);
         })

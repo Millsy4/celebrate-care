@@ -4,9 +4,8 @@ const UserContext = createContext();
 
 function UserProvider({ ...props }) {
     const [user, setUser] = useState({
-        email: '',
-        password: '',
-        familycode: ''
+        userId: '',
+        familycodeId: []
     }
     );
     return (
