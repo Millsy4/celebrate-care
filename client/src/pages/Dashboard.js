@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Navbar from "../components/Navbar";
-import AddEvent from "../components/AddEvent";
 import API from "../utils/API";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
@@ -16,6 +14,7 @@ import Image2 from "../images/grandpacat.PNG";
 import Image3 from "../images/games.jpg";
 import Image4 from "../images/snow.jpg";
 import Container from "@material-ui/core/Container";
+import UpcomingModal from "../components/CreateEventModal";
 
 const images = [Image1, Image2, Image3, Image4]
 
@@ -154,8 +153,9 @@ export default function Dashboard() {
             <font color="#EA7A57">Event Ideas</font>
           </h1>
         </Grid>
-        <BasicGallery />
-        <Footer />
+        <footer>
+          <UpcomingModal />
+          </footer>
       </Grid>
     </div>
   );

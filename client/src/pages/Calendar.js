@@ -14,8 +14,7 @@ export default function Calendar() {
       <Container maxWidth="md">
         <EventCalendar />
       </Container>
-      <BasicGallery />
-      <BasicGallery />
+      
     </div>
   );
 }

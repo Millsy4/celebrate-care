@@ -6,7 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Swipedrawer from './SwipeDrawer';
-import UpcomingModal from "../components/UpcomingModal";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,7 +26,6 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <UpcomingModal />
           <Swipedrawer />
             <Typography variant="h6" className={classes.title}>
               Care Worth Celebrating

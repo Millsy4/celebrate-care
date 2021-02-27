@@ -7,7 +7,7 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import AddEventIcon from './AddEvent'
-import UpcomingModal from './UpcomingModal'
+import UpcomingModal from './CreateEventModal'
 
 const useStyles = makeStyles({
   list: {
