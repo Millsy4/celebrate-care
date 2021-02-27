@@ -15,6 +15,7 @@ import Image3 from "../images/games.jpg";
 import Image4 from "../images/snow.jpg";
 import Container from "@material-ui/core/Container";
 import CreateEventModal from "../components/CreateEventModal";
+import Footer from '../components/Footer'
 
 const images = [Image1, Image2, Image3, Image4]
 
@@ -154,6 +155,7 @@ export default function Dashboard() {
           </h1>
         </Grid>
       </Grid>
+      <Footer />
       <CreateEventModal />
     </div>
   );

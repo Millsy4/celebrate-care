@@ -5,11 +5,9 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
+import HomeIcon from '@material-ui/icons/Home';
+import EventIcon from '@material-ui/icons/Event';
 
 const useStyles = makeStyles({
   list: {
@@ -47,19 +45,30 @@ export default function SwipeableTemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
 
-        <ListItem button >
-            <a href="/"><button>Home</button></a>
-            <a href="/signup"><button>Sign Up</button></a>
+        
+            
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              className={classes.button}
+              startIcon={<HomeIcon />}
+              
+            >
+            Home
+            </Button>
+          <li></li>
+            <Button
+              href="/dashboard"
+              variant="contained"
+              color="primary"
+              size="large"
+              className={classes.button}
+              startIcon={<EventIcon />}
+            >
+            Calendar
+            </Button>
 
-          </ListItem>
-      {/* <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon fontSize="large"/>}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List> */}
     </div>
   );
 
