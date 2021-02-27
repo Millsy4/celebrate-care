@@ -8,38 +8,33 @@ import API from "../utils/API";
 const localizer = momentLocalizer(moment);
 
 export default function EventCalendar() {
-  // state = {
-  //   events: [
-  //     {
-  //       start: moment().toDate(),
-  //       end: moment()
-  //         .add(1, "days")
-  //         .toDate(),
-  //       title: "Some title"
-  //     },
-  //     {
-  //       start: "2/11/2021",
-  //       end: "2/12/2021",
-  //       title: "Some title again :D"
-  //     }
-  //   ]
-  // };
-  // const [events, setEvents] = useState([]);
-  const [events, setEvents] = useState([{
-    start: moment().toDate(),
-          end: moment()
-            .add(1, "days")
-            .toDate(),
-          title: "Some title"
-        },
-        {
-          start: "2021-02-15",
-          end: "2021-02-20",
-          title: "Some title again"
-  }]);
+  const [events, setEvents] = useState([
+  ]);
+
   function loadEvents() {
-    API.getEvents().then((res) => console.log(res));
+  
+      API.getEvents().then((res) => {
+        console.log(res.data)
+        let unvalidatedEvents = res.data;
+        const validatedEvents = [];
+        unvalidatedEvents.forEach(event => {
+          const validEvent = {
+            start: event.startDate,
+            end: event.endDate,
+            title: event.eventIdea,
+          }
+          validatedEvents.push(validEvent);
+        })
+        setEvents(...events, validatedEvents)
+      }
+    );
+
   }
+
+  function editEvents(events) {
+
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
     loadEvents();
