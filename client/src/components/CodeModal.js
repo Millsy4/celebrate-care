@@ -30,6 +30,10 @@ const useStyles = makeStyles((theme) => ({
 export default function CodeModal() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [code, setCode] = React.useState({
+    code: ''
+  });
+
 
   const handleOpen = () => {
     setOpen(true);
@@ -39,6 +43,15 @@ export default function CodeModal() {
     setOpen(false);
   };
 
+  function getCode() {
+    var randomcode = Math.floor(100000 + Math.random() * 900000)
+    console.log(randomcode);
+
+    setCode({ code: randomcode });
+
+    console.log({ code });
+  };
+
   return (
     <div>
       <Button
@@ -46,8 +59,10 @@ export default function CodeModal() {
         size="large"
         variant="contained"
         type="button"
-        onClick={handleOpen}
-      >
+        onClick={() => {
+          getCode();
+          handleOpen();
+        }}>
         Create a Family Code Now
       </Button>
       <Modal
@@ -68,7 +83,7 @@ export default function CodeModal() {
             <p id="transition-modal-description">
               Copy this code and share it with your family members
             </p>
-            <h2>Family Code here</h2>
+            <h2>{code.code}</h2>
             <Button
               className={classes.button}
               size="small"
