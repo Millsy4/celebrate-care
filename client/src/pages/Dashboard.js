@@ -154,7 +154,6 @@ export default function Dashboard() {
             <font color="#EA7A57">Event Ideas</font>
           </h1>
         </Grid>
-        <BasicGallery />
         {/* <Footer /> */}
       </Grid>
     </div>
