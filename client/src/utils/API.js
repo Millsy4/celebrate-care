@@ -12,6 +12,9 @@ export default {
     },
     logIn: function (loginData) {
         return axios.post('/api/login', loginData)
+    },
+    getFamilyCodes: function () {
+        return axios.get("/api/familycodes");
     }
 }
 
