@@ -130,6 +130,8 @@ export default function SignUpStepper() {
       Password: signUpData.password,
       FamilyCode: signUpData.familycode,
       HaveCode: signUpData.havecode,
+      GrandFirstName: signUpData.grandfirstname,
+      GrandLastName: signUpData.grandlastname,
     }).then((res) => (res)).then(() => {
       window.location.replace('/')
     })
@@ -216,6 +218,8 @@ export default function SignUpStepper() {
                 <Form Form label="Family Code" id="familycode" value={signUpData.familycode} onChange={(e) => setSignUpData({ ...signUpData, familycode: e.target.value })}>
                   {/* <BasicTextFields label="Family Code" id="familycode" value={signUpData.familycode} onChange={(e) => setSignUpData({ ...signUpData, familycode: e.target.value })} /> */}
                 </Form>
+                <Form label="Grandparent First name" id="grandFirstName" value={signUpData.grandfirstname} onChange={(e) => setSignUpData({ ...signUpData, grandfirstname: e.target.value })} />
+                <Form label="Grandparent Last name" id="grandLastName" value={signUpData.grandlastname} onChange={(e) => setSignUpData({ ...signUpData, grandlastname: e.target.value })} />
               </Box>
             </Grid>
           </Container>
