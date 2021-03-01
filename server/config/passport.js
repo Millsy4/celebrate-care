@@ -1,5 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const db = require('../models');
 
 // Telling passport we want to use a Local Strategy.
 // In other words, we want login with a username/email and password
@@ -10,21 +11,40 @@ passport.use(
       usernameField: 'email',
     },
     async (email, password, done) => {
+      console.log(email)
+      console.log(password)
       // When a user tries to sign in this code runs
+      db.Usertable.findOne({
+        where: {
+          Email: email,
+        },
+        include: [
+          {
+            model: db.Familyties, include: [
+              db.Familycode
+            ]
+          }
+        ]
 
-      const isloginSuccessful = false;
 
-      if (!isloginSuccessful) {
+      }).then((dbUser) => {
+        //call other tables 
+
+        //
+
+
+        if (!dbUser || !dbUser.validPassword(password)) {
+          return done(null, false, {
+            message: 'Incorrect email or password',
+          });
+        }
         // Login failed
-        return done(null, false, {
-          message: 'Invalid user details',
-        });
+        // Login success
+        return done(null, dbUser);
       }
+      )
+    })
 
-      // Login success
-      return done(null, user);
-    }
-  )
 );
 
 // In order to help keep authentication state across HTTP requests,

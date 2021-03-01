@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function EditWishlistModal() {
+export default function EditWishlistModal(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -64,12 +64,14 @@ export default function EditWishlistModal() {
         <Fade in={open}>
           <div className={classes.paper}>
             <h2 id="transition-modal-title">Schedule Wishlist Event</h2>
-            <BasicTextFields label="Event Name" id="Name" />
+            <BasicTextFields label="Event Name" id="Name">
+              {props.name}
+            </BasicTextFields>
             <p></p>
-            <MultilineTextFields
-              label="Enter event details here"
-              id="Details"
-            />
+            <MultilineTextFields label="Enter event details here" id="Details">
+              {props.bio}
+            </MultilineTextFields>
+
             <p></p>
             <div>
               <DatePickers />

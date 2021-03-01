@@ -56,4 +56,16 @@ router
 //   });
 // });
 
+// Sign Up Post Route
+// router.route("/api/signup").post(function (req, res) {
+//   db.Usertable.create().then(function (dbUserTable) {
+//     db.Familycode.findAll({}).then(function (dbFamilycode) {
+//       if 
+//      })
+//     //find by familycode, if exists, continue, if not then create family code....add to familyties table
+//     db.FamilyCode.create()
+//   })
+//   //return json with user email and family code 
+// })
+
 module.exports = router;
