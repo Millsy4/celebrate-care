@@ -10,7 +10,6 @@ import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
 import IconButton from "@material-ui/core/IconButton";
-import StarBorderIcon from "@material-ui/icons/StarBorder";
 import Image1 from "../images/grandfather.jpg";
 import Image2 from "../images/grandpacat.PNG";
 import Image3 from "../images/games.jpg";
