@@ -65,9 +65,12 @@ function SignUpModal() {
   };
 
   const handleClose = () => {
+    var copyText = document.getElementById('')
     setOpen(false);
   };
+  function copyText() {
 
+  }
 
   return (
     <div>
@@ -89,6 +92,7 @@ function SignUpModal() {
         <Fade in={open}>
           <div className={classes.paper}>
             <h2 id="transition-modal-title">Family Code</h2>
+
             <p id="transition-modal-description">Copy this code and share it with your family members</p>
             <h2>Family Code here</h2>
             <Button size='small' variant='contained' color='primary' type="button" onClick={handleClose}>
