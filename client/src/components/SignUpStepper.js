@@ -68,9 +68,7 @@ function SignUpModal() {
     var copyText = document.getElementById('')
     setOpen(false);
   };
-  function copyText() {
 
-  }
 
   return (
     <div>
