@@ -1,10 +1,9 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
-import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Navbar from '../components/Navbar';
+import { useUserContext } from '../services/userContext';
 import AddEvent from '../components/AddEvent';
 import API from '../utils/API';
 import GridList from '@material-ui/core/GridList';
@@ -17,26 +16,7 @@ import Image2 from '../images/grandpacat.PNG';
 import Image3 from '../images/games.jpg';
 import Image4 from '../images/snow.jpg';
 import Container from '@material-ui/core/Container';
-=======
-import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Navbar from '../components/Navbar';
-import { useUserContext } from '../services/userContext';
-import AddEvent from "../components/AddEvent";
-import API from "../utils/API";
-import GridList from "@material-ui/core/GridList";
-import GridListTile from "@material-ui/core/GridListTile";
-import GridListTileBar from "@material-ui/core/GridListTileBar";
-import IconButton from "@material-ui/core/IconButton";
-import StarBorderIcon from "@material-ui/icons/StarBorder";
-import Image1 from "../images/grandfather.jpg";
-import Image2 from "../images/grandpacat.PNG";
-import Image3 from "../images/games.jpg";
-import Image4 from "../images/snow.jpg";
-import Container from "@material-ui/core/Container";
->>>>>>> development
+import EditUpcomingModal from '../components/EditUpcomingModal';
 
 const images = [Image1, Image2, Image3, Image4];
 
@@ -98,12 +78,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 export default function Dashboard() {
-<<<<<<< HEAD
-  const [events, setEvents] = useState([]);
-=======
   const { user, setUser } = useUserContext();
-  const [events, setEvents] = useState([])
->>>>>>> development
+  const [events, setEvents] = useState([]);
 
   useEffect(() => {
     loadEvents();
@@ -119,13 +95,8 @@ export default function Dashboard() {
           const validEvent = {
             title: event.eventIdea,
             author: event.familyCode,
-<<<<<<< HEAD
             img: images[Math.floor(Math.random() * images.length)],
           };
-=======
-            img: images[Math.floor(Math.random() * images.length)]
-          }
->>>>>>> development
           validatedEvents.push(validEvent);
         });
         setEvents(...events, validatedEvents);
@@ -179,7 +150,6 @@ export default function Dashboard() {
             <font color="#EA7A57">Event Wishlist</font>
           </h1>
         </Grid>
-
         <Grid container className={classes.heading}>
           <h1>
             <font color="#EA7A57">Event Ideas</font>

@@ -64,17 +64,18 @@ export default function EditWishlistModal(props) {
         <Fade in={open}>
           <div className={classes.paper}>
             <h2 id="transition-modal-title">Schedule Wishlist Event</h2>
-            <BasicTextFields label="Event Name" id="Name">
-              {props.name}
-            </BasicTextFields>
+            <BasicTextFields label="Event Name" id="Name"></BasicTextFields>
             <p></p>
-            <MultilineTextFields label="Enter event details here" id="Details">
-              {props.bio}
-            </MultilineTextFields>
+            <MultilineTextFields
+              label="Enter event details here"
+              id="Details"
+            ></MultilineTextFields>
 
             <p></p>
             <div>
-              <DatePickers />
+              <DatePickers className="startDate" />
+              <p></p>
+              <DatePickers className="endDate" />
             </div>
             <p></p>
             <Button
