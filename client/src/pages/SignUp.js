@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -32,21 +33,25 @@ export default function SignUp() {
         <div>
             <Header />
             <SignUpStepper />
-            <Container>
-                <h3>Still need to register?</h3>
-                <Button
-                    className={classes.button}
-                    size="large"
-                    variant="contained"
-                    type="button"
-                    onClick={() => {
-                        window.location.replace('/signup')
+            <Grid>
+                <Grid container direction="column" justify="space-between" alignItems="center">
+                    <h3>Already have an account?</h3>
+                </Grid>
+                <Grid container direction="column" justify="space-between" alignItems="center">
+                    <Button
+                        className={classes.button}
+                        size="large"
+                        variant="contained"
+                        type="button"
+                        onClick={() => {
+                            window.location.replace('/')
 
-                    }}
-                >
-                    Register a New Account
+                        }}
+                    >
+                        Log In
                 </Button>
-            </Container>
+                </Grid>
+            </Grid>
         </div>
 
     )

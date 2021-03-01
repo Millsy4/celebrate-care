@@ -11,12 +11,15 @@ import UpcomingModal from "../components/UpcomingModal";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    backgroundColor: '#CA9575',
   },
   menuButton: {
     marginRight: theme.spacing(2),
   },
   title: {
+
     flexGrow: 1,
+    color: "white",
   },
 }));
 
@@ -26,15 +29,15 @@ export default function ButtonAppBar() {
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar className={classes.root}>
           <UpcomingModal />
           <Swipedrawer />
-            <Typography variant="h6" className={classes.title}>
-              Care Worth Celebrating
+          <Typography variant="h5" className={classes.title}>
+            Care Worth Celebrating
             </Typography>
-                  <IconButton>
-                    <AccountCircle fontSize="large" />
-                  </IconButton>
+          <IconButton>
+            <AccountCircle fontSize="large" />
+          </IconButton>
         </Toolbar>
       </AppBar>
     </div>
