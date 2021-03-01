@@ -72,7 +72,12 @@ export default function UpcomingEventModal() {
             />
             <p></p>
             <div>
-              <DatePickers />
+              <h4>Start Date</h4>
+              <DatePickers className="startDate" />
+            </div>
+            <div>
+              <h4>End Date</h4>
+              <DatePickers className="endDate" />
             </div>
             <p></p>
             <Button
