@@ -7,11 +7,11 @@ module.exports = function (sequelize, DataTypes) {
         },
         GrandFirstName: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
         },
         GrandLastName: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
         }
     });
     Familycode.associate = function (models) {
