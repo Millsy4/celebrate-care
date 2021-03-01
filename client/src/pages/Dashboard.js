@@ -135,7 +135,7 @@ export default function Dashboard() {
                     }}
                     actionIcon={
                       <IconButton aria-label={`star ${event.title}`}>
-                        <StarBorderIcon className={classes.title} />
+                        <CalendarTodayIcon className={classes.title} />
                       </IconButton>
                     }
                   />
@@ -149,12 +149,69 @@ export default function Dashboard() {
             <font color="#EA7A57">Event Wishlist</font>
           </h1>
         </Grid>
-
+        <Container maxWidth="lg" style={{ width: "95%" }}>
+          <div className={classes.root}>
+            <GridList
+              className={classes.gridList}
+              spacing={5}
+              cellHeight={400}
+              cols={2.5}
+            >
+              {events.map((event) => (
+                <GridListTile key={event.img} fontSize={50}>
+                  <img src={event.img} alt={event.title} />
+                  <GridListTileBar
+                    cellHeight={150}
+                    title={event.title}
+                    classes={{
+                      root: classes.titleBar,
+                      title: classes.title,
+                    }}
+                    actionIcon={
+                      <IconButton aria-label={`star ${event.title}`}>
+                        <CalendarTodayIcon className={classes.title} />
+                      </IconButton>
+                    }
+                  />
+                </GridListTile>
+              ))}
+            </GridList>
+          </div>
+        </Container>
         <Grid container className={classes.heading}>
           <h1>
             <font color="#EA7A57">Event Ideas</font>
           </h1>
         </Grid>
+        <Container maxWidth="lg" style={{ width: "95%" }}>
+          <div className={classes.root}>
+            <GridList
+              className={classes.gridList}
+              spacing={5}
+              cellHeight={400}
+              cols={2.5}
+            >
+              {events.map((event) => (
+                <GridListTile key={event.img} fontSize={50}>
+                  <img src={event.img} alt={event.title} />
+                  <GridListTileBar
+                    cellHeight={150}
+                    title={event.title}
+                    classes={{
+                      root: classes.titleBar,
+                      title: classes.title,
+                    }}
+                    actionIcon={
+                      <IconButton aria-label={`star ${event.title}`}>
+                        <FavoriteIcon className={classes.title} />
+                      </IconButton>
+                    }
+                  />
+                </GridListTile>
+              ))}
+            </GridList>
+          </div>
+        </Container>
         {/* <Footer /> */}
       </Grid>
     </div>
