@@ -10,9 +10,8 @@ import BasicTextFields from './BasicTextFields';
 import CodeModal from './CodeModal';
 import Container from '@material-ui/core/Container';
 import Form from '@material-ui/core/TextField';
-import API from "../utils/API";
+import API from '../utils/API';
 // import InputMask from 'react-input-mask';
-
 
 import Box from '@material-ui/core/Box';
 
@@ -21,23 +20,29 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
   signUp: {
-    justify: 'center',
-    alignItems: 'center',
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'stretch',
   },
   stepper: {
     background: '',
   },
   button: {
     marginRight: theme.spacing(1),
-    justify: 'center',
-    alignItems: 'center',
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'stretch',
     background: '#3D6D6F',
     color: 'white',
   },
   backbutton: {
     marginRight: theme.spacing(1),
-    justify: 'center',
-    alignItems: 'center',
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'stretch',
     background: '#e0e0e0',
     color: 'black',
   },
@@ -48,14 +53,12 @@ const useStyles = makeStyles((theme) => ({
 
 function getSteps() {
   return [
-    'Random',
+    'Sign Up',
     'What is a family code?',
     'Create a new family code',
     'Enter a family code',
   ];
 }
-
-
 
 function SignUpModal() {
   const classes = useStyles();
@@ -69,10 +72,15 @@ function SignUpModal() {
     setOpen(false);
   };
 
-
   return (
     <div>
-      <Button size='large' variant='contained' color='primary' type="button" onClick={handleOpen}>
+      <Button
+        size="large"
+        variant="contained"
+        color="primary"
+        type="button"
+        onClick={handleOpen}
+      >
         Create a Family Code Now
       </Button>
       <Modal
@@ -90,20 +98,30 @@ function SignUpModal() {
         <Fade in={open}>
           <div className={classes.paper}>
             <h2 id="transition-modal-title">Family Code</h2>
+<<<<<<< HEAD
+            <p id="transition-modal-description">
+              Copy this code and share it with your family members
+            </p>
+=======
 
             <p id="transition-modal-description">Copy this code and share it with your family members</p>
+>>>>>>> development
             <h2>Family Code here</h2>
-            <Button size='small' variant='contained' color='primary' type="button" onClick={handleClose}>
+            <Button
+              size="small"
+              variant="contained"
+              color="primary"
+              type="button"
+              onClick={handleClose}
+            >
               Copy your code
-      </Button>
+            </Button>
           </div>
         </Fade>
       </Modal>
     </div>
   );
 }
-
-
 
 export default function SignUpStepper() {
   const classes = useStyles();
@@ -128,11 +146,18 @@ export default function SignUpStepper() {
       Password: signUpData.password,
       FamilyCode: signUpData.familycode,
       HaveCode: signUpData.havecode,
+<<<<<<< HEAD
+=======
       GrandFirstName: signUpData.grandfirstname,
       GrandLastName: signUpData.grandlastname,
     }).then((res) => (res)).then(() => {
       window.location.replace('/')
+>>>>>>> development
     })
+      .then((res) => res)
+      .then(() => {
+        window.location.replace('/');
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -141,21 +166,48 @@ export default function SignUpStepper() {
   function getStepContent(step) {
     const classes = useStyles();
 
-
     switch (step) {
       case 0:
         return (
-          <Container maxWidth="lg" style={{ width: '30%' }}>
+          <Container maxWidth="lg" style={{ width: '100%' }}>
             <Grid>
               <Box className={classes.signUp}>
                 <h2>Sign Up Form</h2>
-                <Form label="First Name" id="firstname" value={signUpData.firstname} onChange={(e) => setSignUpData({ ...signUpData, firstname: e.target.value })} />
+                <Form
+                  label="First Name"
+                  id="firstname"
+                  value={signUpData.firstname}
+                  onChange={(e) =>
+                    setSignUpData({ ...signUpData, firstname: e.target.value })
+                  }
+                />
                 <br></br>
-                <Form label="Last Name" id="lastname" value={signUpData.lastname} onChange={(e) => setSignUpData({ ...signUpData, lastname: e.target.value })} />
+                <Form
+                  label="Last Name"
+                  id="lastname"
+                  value={signUpData.lastname}
+                  onChange={(e) =>
+                    setSignUpData({ ...signUpData, lastname: e.target.value })
+                  }
+                />
                 <br></br>
-                <Form label="Email address" id="email" value={signUpData.email} onChange={(e) => setSignUpData({ ...signUpData, email: e.target.value })} />
+                <Form
+                  label="Email address"
+                  id="email"
+                  value={signUpData.email}
+                  onChange={(e) =>
+                    setSignUpData({ ...signUpData, email: e.target.value })
+                  }
+                />
                 <br></br>
-                <Form label="Password" id="password" value={signUpData.password} onChange={(e) => setSignUpData({ ...signUpData, password: e.target.value })} />
+                <Form
+                  label="Password"
+                  id="password"
+                  value={signUpData.password}
+                  onChange={(e) =>
+                    setSignUpData({ ...signUpData, password: e.target.value })
+                  }
+                />
               </Box>
             </Grid>
           </Container>
@@ -173,9 +225,10 @@ export default function SignUpStepper() {
               <Box>
                 <h2>What is a family code?</h2>
                 <p>
-                  Celebrate Care groups your entire family together with a family
-                  code. The first person from your family to create an account
-                  will create a code and share it with the entire family.
+                  Celebrate Care groups your entire family together with a
+                  family code. The first person from your family to create an
+                  account will create a code and share it with the entire
+                  family.
                 </p>
                 <h3>Click next to either create a family code!</h3>
               </Box>
@@ -213,7 +266,15 @@ export default function SignUpStepper() {
             >
               <Box>
                 <h2>Enter Your Family Code </h2>
-                <Form Form label="Family Code" id="familycode" value={signUpData.familycode} onChange={(e) => setSignUpData({ ...signUpData, familycode: e.target.value })}>
+                <Form
+                  Form
+                  label="Family Code"
+                  id="familycode"
+                  value={signUpData.familycode}
+                  onChange={(e) =>
+                    setSignUpData({ ...signUpData, familycode: e.target.value })
+                  }
+                >
                   {/* <BasicTextFields label="Family Code" id="familycode" value={signUpData.familycode} onChange={(e) => setSignUpData({ ...signUpData, familycode: e.target.value })} /> */}
                 </Form>
                 <Form label="Grandparent First name" id="grandFirstName" value={signUpData.grandfirstname} onChange={(e) => setSignUpData({ ...signUpData, grandfirstname: e.target.value })} />
@@ -255,7 +316,7 @@ export default function SignUpStepper() {
       // it should never occur unless someone's actively trying to break something.
       throw new Error("You can't skip a step that isn't optional.");
     }
-    setSignUpData({ ...signUpData, havecode: true })
+    setSignUpData({ ...signUpData, havecode: true });
 
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setSkipped((prevSkipped) => {
@@ -306,40 +367,44 @@ export default function SignUpStepper() {
               </Container> */}
             </div>
           ) : (
+            <div>
+              <Typography className={classes.instructions}>
+                {getStepContent(activeStep)}
+              </Typography>
               <div>
-                <Typography className={classes.instructions}>
-                  {getStepContent(activeStep)}
-                </Typography>
-                <div>
-                  <Container maxWidth="lg" style={{ width: '40.5%' }}>
-                    <Button
-                      disabled={activeStep === 0}
-                      onClick={handleBack}
-                      className={classes.backbutton}
-                    >
-                      Back
+                <Container maxWidth="lg" style={{ width: '100%' }}>
+                  <Button
+                    disabled={activeStep === 0}
+                    onClick={handleBack}
+                    className={classes.backbutton}
+                  >
+                    Back
                   </Button>
-                    {isStepOptional(activeStep) && (
-                      <Button
-                        variant="contained"
-                        onClick={handleSkip}
-                        className={classes.button}
-                      >
-                        I already have a family code
-                      </Button>
-                    )}
-
+                  {isStepOptional(activeStep) && (
                     <Button
                       variant="contained"
-                      onClick={activeStep === steps.length - 1 ? signUpUser : handleNext}
+                      onClick={handleSkip}
                       className={classes.button}
                     >
-                      {activeStep === steps.length - 1 ? 'Go to Login Page' : 'Next'}
+                      I already have a family code
                     </Button>
-                  </Container>
-                </div>
+                  )}
+
+                  <Button
+                    variant="contained"
+                    onClick={
+                      activeStep === steps.length - 1 ? signUpUser : handleNext
+                    }
+                    className={classes.button}
+                  >
+                    {activeStep === steps.length - 1
+                      ? 'Go to Login Page'
+                      : 'Next'}
+                  </Button>
+                </Container>
               </div>
-            )}
+            </div>
+          )}
         </div>
       </div>
     </Container>
