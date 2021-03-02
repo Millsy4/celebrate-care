@@ -12,7 +12,8 @@ router
   .put(eventsController.editUpcomingEvents)
 
 router.route("/:id").put(eventsController.editWishlistEvents)
-  .post(eventsController.saveEvent);
+  .post(eventsController.saveEvent)
+  .post(eventsController.saveWishEvent);
 
 router.route("/:eventStatus").get(eventsController.findAllEventIdeas);
 

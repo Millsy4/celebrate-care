@@ -80,4 +80,18 @@ module.exports = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
+  saveWishEvent: function (req, res) {
+    console.log(req.body);
+    console.log(req.params);
+    db.Eventtable.create(
+      {
+        eventIdea: req.body.eventIdea,
+        details: req.body.details,
+        eventStatus: req.body.eventStatus,
+        FamilycodeId: req.params.id
+      }
+    )
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
 };

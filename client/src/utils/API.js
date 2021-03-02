@@ -27,7 +27,10 @@ export default {
     },
     getFamilyCodes: function () {
         return axios.get("/api/familycodes");
-    }
+    },
+    saveWishEvent: function (familycodeId, formObject) {
+        return axios.post("/api/eventtables/" + familycodeId, formObject)
+    },
 }
 
 //step 4
