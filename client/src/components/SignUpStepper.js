@@ -98,14 +98,8 @@ function SignUpModal() {
         <Fade in={open}>
           <div className={classes.paper}>
             <h2 id="transition-modal-title">Family Code</h2>
-<<<<<<< HEAD
-            <p id="transition-modal-description">
-              Copy this code and share it with your family members
-            </p>
-=======
 
             <p id="transition-modal-description">Copy this code and share it with your family members</p>
->>>>>>> development
             <h2>Family Code here</h2>
             <Button
               size="small"
@@ -146,13 +140,10 @@ export default function SignUpStepper() {
       Password: signUpData.password,
       FamilyCode: signUpData.familycode,
       HaveCode: signUpData.havecode,
-<<<<<<< HEAD
-=======
       GrandFirstName: signUpData.grandfirstname,
       GrandLastName: signUpData.grandlastname,
     }).then((res) => (res)).then(() => {
       window.location.replace('/')
->>>>>>> development
     })
       .then((res) => res)
       .then(() => {
