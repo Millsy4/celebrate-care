@@ -11,6 +11,11 @@ import DatePickers from './DatePickers';
 import { useUserContext } from '../services/userContext';
 import Form from '@material-ui/core/TextField';
 import API from "../utils/API";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -58,7 +63,6 @@ export default function UpcomingEventModal() {
     setSelectedEndDate(date);
   }
   const [formObject, setFormObject] = useState({
-    familycodeId: '',
     startDate: "",
     endDate: '',
     details: '',
@@ -67,9 +71,6 @@ export default function UpcomingEventModal() {
 
   });
 
-  function loadEvents() {
-    API.getEvents().then((res) => console.log(res));
-  }
 
   // function handleInputChange(event) {
   //   const { name, value } = event.target;
@@ -80,15 +81,14 @@ export default function UpcomingEventModal() {
     handleFormSubmit(event);
     handleClose();
   }
-  function familycode() {
-    setFormObject({ ...formObject, familycodeId: user.familycodeId[0] })
-  }
+
+
   function handleFormSubmit(event) {
     formObject.startDate = selectedStartDate;
     formObject.endDate = selectedEndDate;
     let familycodeId = user.familycodeId[0];
+    console.log(familycodeId)
     event.preventDefault();
-    familycode();
     console.log(formObject);
 
     if (
@@ -98,18 +98,9 @@ export default function UpcomingEventModal() {
       formObject.details &&
       formObject.eventStatus
     ) {
-      API.saveEvent({
-        familycodeId,
-        eventIdea: formObject.eventIdea,
-        startDate: formObject.startDate,
-        endDate: formObject.endDate,
-        details: formObject.details,
-        eventStatus: formObject.eventStatus,
+      API.saveEvent(familycodeId, formObject)
+        .catch((err) => console.log(err))
 
-      })
-      console.log(formObject)
-        .then(() => loadEvents())
-        .catch((err) => console.log(err));
     }
   };
 
@@ -158,16 +149,37 @@ export default function UpcomingEventModal() {
                 /> */}
               </Form>
               <p></p>
-              <div>
-                <h4>Start Date</h4>
-                <DatePickers className="startDate" value={selectedStartDate}
-                  onChange={handleStartDateChange} />
-              </div>
-              <div>
+
+              <h4>Start Date</h4>
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <KeyboardDatePicker
+                  disableToolbar
+                  variant="inline"
+                  format="MM/dd/yyyy"
+                  margin="normal"
+                  id="date-picker-inline"
+                  label="Date picker inline"
+                  value={selectedStartDate}
+                  onChange={handleStartDateChange}
+                  KeyboardButtonProps={{
+                    "aria-label": "change date",
+                  }}
+                />
                 <h4>End Date</h4>
-                <DatePickers className="endDate" value={selectedEndDate}
-                  onChange={handleEndDateChange} />
-              </div>
+                <KeyboardDatePicker
+                  disableToolbar
+                  variant="inline"
+                  format="MM/dd/yyyy"
+                  margin="normal"
+                  id="date-picker-inline"
+                  label="Date picker inline"
+                  value={selectedEndDate}
+                  onChange={handleEndDateChange}
+                  KeyboardButtonProps={{
+                    "aria-label": "change date",
+                  }}
+                />
+              </MuiPickersUtilsProvider>
               <p></p>
               <Button
                 className={classes.button}
@@ -177,7 +189,7 @@ export default function UpcomingEventModal() {
                 onClick={click}
               >
                 Schedule It!
-            </Button>
+              </Button>
             </div>
           </Fade>
         </form>
