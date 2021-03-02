@@ -86,6 +86,15 @@ export default function EditUpcomingModal() {
             >
               Save It!
             </Button>
+            <Button
+              className={classes.button}
+              size="small"
+              variant="contained"
+              type="button"
+              onClick={handleClose}
+            >
+              X
+            </Button>
           </div>
         </Fade>
       </Modal>
