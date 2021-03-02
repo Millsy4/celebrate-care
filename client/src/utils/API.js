@@ -4,6 +4,18 @@ export default {
     getEvents: function () {
         return axios.get("/api/eventtables");
     },
+    getFamilyUpcomingEvents: function (familyCode, eventStatus) {
+        return axios.get("/api/eventtables/" + familyCode + "/" + eventStatus) 
+    },
+    getEventIdeas: function (eventStatus) {
+        return axios.get("/api/eventtables/" + eventStatus)
+    },
+    editUpcomingEvents: function (familyCode, eventStatus, eventData) {
+        return axios.put("/api/eventtables/" + familyCode + "/" + eventStatus, eventData)
+    },
+    editWishlistEvents: function (familyCode, eventData) {
+        return axios.put("/api/eventtables/" + familyCode, eventData)
+    },
     saveEvent: function (eventData) {
         return axios.post("/api/eventtables", eventData)
     },
