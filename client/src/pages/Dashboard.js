@@ -30,7 +30,7 @@ import Image17 from "../images/smiling.jpg";
 import Image18 from "../images/snow.jpg";
 import Image19 from "../images/soccer.jpg";
 import Image20 from "../images/walking.jpg";
-
+import StarBorderIcon from '@material-ui/icons/StarBorder';
 import Container from "@material-ui/core/Container";
 import EditUpcomingModal from "../components/EditUpcomingModal"
 import EditWishlistModal from "../components/EditWishlistModal"
