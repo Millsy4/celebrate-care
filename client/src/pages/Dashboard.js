@@ -167,7 +167,6 @@ export default function Dashboard() {
       <Grid container className={classes.root} xs={12}>
         <Header />
         <Navbar />
-        <EditWishlistModal />
         <Grid container className={classes.heading} justify="flex-start 1">
           <h1>
             {' '}
