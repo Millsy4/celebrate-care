@@ -4,24 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Navbar from '../components/Navbar';
 import { useUserContext } from '../services/userContext';
-<<<<<<< HEAD
-import AddEvent from '../components/AddEvent';
-import API from '../utils/API';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
-import IconButton from '@material-ui/core/IconButton';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
-import Image1 from '../images/grandfather.jpg';
-import Image2 from '../images/grandpacat.PNG';
-import Image3 from '../images/games.jpg';
-import Image4 from '../images/snow.jpg';
-import Container from '@material-ui/core/Container';
-import EditUpcomingModal from '../components/EditUpcomingModal';
-import EditWishlistModal from '../components/EditWishlistModal';
-
-const images = [Image1, Image2, Image3, Image4];
-=======
 import AddEvent from "../components/AddEvent";
 import API from "../utils/API";
 import GridList from "@material-ui/core/GridList";
@@ -54,30 +36,7 @@ import EditUpcomingModal from "../components/EditUpcomingModal"
 import EditWishlistModal from "../components/EditWishlistModal"
 
 const images = [Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8, Image9, Image10, Image11, Image12, Image13, Image14, Image15, Image16, Image17, Image18, Image19, Image20]
->>>>>>> development
 
-const tileData = [
-  {
-    img: Image1,
-    title: 'Photo Session with Grandkids',
-    author: 'author',
-  },
-  {
-    img: Image2,
-    title: 'Take the Dogs for a Walk',
-    author: 'author',
-  },
-  {
-    img: Image3,
-    title: 'Play Angry Birds with Lana',
-    author: 'author',
-  },
-  {
-    img: Image4,
-    title: 'Make a Snowman with Grandkids',
-    author: 'author',
-  },
-];
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,

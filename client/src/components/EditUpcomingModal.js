@@ -68,6 +68,10 @@ export default function EditUpcomingModal(props) {
   };
 
   const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleSubmit = () => {
     console.log(formObject);
     let eventStatus = 'upcoming';
     let familycodeId = user.familycodeId[0];
@@ -78,8 +82,7 @@ export default function EditUpcomingModal(props) {
         console.log(formObject);
       }
     );
-    setOpen(false);
-  };
+  }
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -203,7 +206,7 @@ export default function EditUpcomingModal(props) {
               size="small"
               variant="contained"
               type="button"
-              onClick={handleClose}
+              onClick={handleSubmit}
             >
               Save It!
             </Button>
