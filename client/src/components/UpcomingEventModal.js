@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -8,6 +8,9 @@ import Icon from '@material-ui/core/Icon';
 import BasicTextFields from './BasicTextFields';
 import MultilineTextFields from './MultilineTextFields';
 import DatePickers from './DatePickers';
+import { useUserContext } from '../services/userContext';
+import Form from '@material-ui/core/TextField';
+import API from "../utils/API";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -35,6 +38,7 @@ export default function UpcomingEventModal() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
+
   const handleOpen = () => {
     setOpen(true);
   };
@@ -42,6 +46,73 @@ export default function UpcomingEventModal() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const { user, setUser } = useUserContext();
+  const [events, setEvents] = useState([]);
+  const [selectedStartDate, setSelectedStartDate] = React.useState(new Date('2021-02-20'))
+  const [selectedEndDate, setSelectedEndDate] = React.useState(new Date('2021-02-20'));
+  const handleStartDateChange = (date) => {
+    setSelectedStartDate(date);
+  };
+  const handleEndDateChange = (date) => {
+    setSelectedEndDate(date);
+  }
+  const [formObject, setFormObject] = useState({
+    familycodeId: '',
+    startDate: "",
+    endDate: '',
+    details: '',
+    eventStatus: 'upcoming',
+    eventIdea: '',
+
+  });
+
+  function loadEvents() {
+    API.getEvents().then((res) => console.log(res));
+  }
+
+  // function handleInputChange(event) {
+  //   const { name, value } = event.target;
+  //   setFormObject({ ...formObject, [name]: value });
+  // }
+
+  function click(event) {
+    handleFormSubmit(event);
+    handleClose();
+  }
+  function familycode() {
+    setFormObject({ ...formObject, familycodeId: user.familycodeId[0] })
+  }
+  function handleFormSubmit(event) {
+    formObject.startDate = selectedStartDate;
+    formObject.endDate = selectedEndDate;
+    let familycodeId = user.familycodeId[0];
+    event.preventDefault();
+    familycode();
+    console.log(formObject);
+
+    if (
+      formObject.eventIdea &&
+      formObject.startDate &&
+      formObject.endDate &&
+      formObject.details &&
+      formObject.eventStatus
+    ) {
+      API.saveEvent({
+        familycodeId,
+        eventIdea: formObject.eventIdea,
+        startDate: formObject.startDate,
+        endDate: formObject.endDate,
+        details: formObject.details,
+        eventStatus: formObject.eventStatus,
+
+      })
+      console.log(formObject)
+        .then(() => loadEvents())
+        .catch((err) => console.log(err));
+    }
+  };
+
 
   return (
     <div>
@@ -61,37 +132,57 @@ export default function UpcomingEventModal() {
           timeout: 500,
         }}
       >
-        <Fade in={open}>
-          <div className={classes.paper}>
-            <h2 id="transition-modal-title">Create an Upcoming Event</h2>
-            <BasicTextFields label="Event Name" id="Name" />
-            <p></p>
-            <MultilineTextFields
-              label="Enter event details here"
-              id="Details"
-            />
-            <p></p>
-            <div>
-              <h4>Start Date</h4>
-              <DatePickers className="startDate" />
-            </div>
-            <div>
-              <h4>End Date</h4>
-              <DatePickers className="endDate" />
-            </div>
-            <p></p>
-            <Button
-              className={classes.button}
-              size="small"
-              variant="contained"
-              type="button"
-              onClick={handleClose}
-            >
-              Schedule It!
+        <form>
+          <Fade in={open}>
+            <div className={classes.paper}>
+              <h2 id="transition-modal-title">Create an Upcoming Event</h2>
+              <Form label="Event Name" id="Name" name="eventIdea"
+                value={formObject.eventIdea}
+                onChange={(e) => setFormObject({ ...formObject, eventIdea: e.target.value })}>
+                {/* <BasicTextFields label="Event Name" id="Name" name="eventIdea"
+                  value={formObject.eventIdea}
+                  onChange={(e) => setFormObject({ ...setFormObject, eventIdea: e.target.value })} /> */}
+              </Form>
+              <p></p>
+              <Form label="Enter event details here"
+                id="Details"
+                name="details"
+                value={formObject.details}
+                onChange={(e) => setFormObject({ ...formObject, details: e.target.value })}>
+                {/* <MultilineTextFields
+                  label="Enter event details here"
+                  id="Details"
+                  name="details"
+                  value={formObject.details}
+                  onChange={(e) => setFormObject({ ...setFormObject, details: e.target.value })}
+                /> */}
+              </Form>
+              <p></p>
+              <div>
+                <h4>Start Date</h4>
+                <DatePickers className="startDate" value={selectedStartDate}
+                  onChange={handleStartDateChange} />
+              </div>
+              <div>
+                <h4>End Date</h4>
+                <DatePickers className="endDate" value={selectedEndDate}
+                  onChange={handleEndDateChange} />
+              </div>
+              <p></p>
+              <Button
+                className={classes.button}
+                size="small"
+                variant="contained"
+                type="button"
+                onClick={click}
+              >
+                Schedule It!
             </Button>
-          </div>
-        </Fade>
+            </div>
+          </Fade>
+        </form>
       </Modal>
     </div>
   );
 }
+
