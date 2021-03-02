@@ -10,16 +10,32 @@ import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
 import IconButton from "@material-ui/core/IconButton";
-import StarBorderIcon from "@material-ui/icons/StarBorder";
 import Image1 from "../images/grandfather.jpg";
 import Image2 from "../images/grandpacat.PNG";
 import Image3 from "../images/games.jpg";
-import Image4 from "../images/snow.jpg";
+import Image4 from "../images/baby.jpg";
+import Image5 from "../images/baking.jpg";
+import Image6 from "../images/baseball.jpg";
+import Image7 from "../images/birthday.jpg";
+import Image8 from "../images/cute child.jpg";
+import Image9 from "../images/dinner.jpg";
+import Image10 from "../images/dog.jpg";
+import Image11 from "../images/fall walk.jpg";
+import Image12 from "../images/guitar.jpg";
+import Image13 from "../images/happy.jpg";
+import Image14 from "../images/hiking.jpg";
+import Image15 from "../images/holiday.jpg";
+import Image16 from "../images/presents.jpg";
+import Image17 from "../images/smiling.jpg";
+import Image18 from "../images/snow.jpg";
+import Image19 from "../images/soccer.jpg";
+import Image20 from "../images/walking.jpg";
+
 import Container from "@material-ui/core/Container";
 import EditUpcomingModal from "../components/EditUpcomingModal"
 import EditWishlistModal from "../components/EditWishlistModal"
 
-const images = [Image1, Image2, Image3, Image4]
+const images = [Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8, Image9, Image10, Image11, Image12, Image13, Image14, Image15, Image16, Image17, Image18, Image19, Image20]
 
 const tileData = [
   {

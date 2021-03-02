@@ -41,6 +41,7 @@ export default function CodeModal() {
     setOpen(false);
   };
 
+
   function getCode() {
     var randomcode = Math.floor(100000 + Math.random() * 900000);
     // console.log(randomcode);
@@ -91,7 +92,16 @@ export default function CodeModal() {
             <p id="transition-modal-description">
               Copy this code and share it with your family members
             </p>
-            <h2>{code}</h2>
+            <h2 id="code">{code}</h2>
+            <Button
+              className={classes.button}
+              size="small"
+              variant="contained"
+              type="button"
+              onClick={() => { navigator.clipboard.writeText(code) }}
+            >
+              Copy your code
+            </Button>
             <Button
               className={classes.button}
               size="small"
@@ -99,7 +109,7 @@ export default function CodeModal() {
               type="button"
               onClick={handleClose}
             >
-              Copy your code
+              Next
             </Button>
           </div>
         </Fade>
