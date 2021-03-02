@@ -1,40 +1,45 @@
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { useUserContext } from "../services/userContext";
-import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
-import Fade from "@material-ui/core/Fade";
-import Button from "@material-ui/core/Button";
-import Icon from "@material-ui/core/Icon";
-import Input from "@material-ui/core/Input";
-import { FormControl, InputLabel } from "@material-ui/core";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import DateFnsUtils from "@date-io/date-fns";
+import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { useUserContext } from '../services/userContext';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
+import Input from '@material-ui/core/Input';
+import { FormControl, InputLabel } from '@material-ui/core';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
-} from "@material-ui/pickers";
-import API from "../utils/API";
+} from '@material-ui/pickers';
+import API from '../utils/API';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     zIndex: 100,
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
   button: {
     marginRight: theme.spacing(1),
-    justify: "center",
-    alignItems: "center",
-    background: "#3D6D6F",
-    color: "white",
+    justify: 'center',
+    alignItems: 'center',
+    background: '#3D6D6F',
+    color: 'white',
+  },
+  closebutton: {
+    position: 'relative',
+    right: -170,
+    background: '#9e9e9e',
+    color: 'white',
   },
 }));
 
@@ -47,25 +52,24 @@ export default function EditUpcomingModal(props) {
     eventId: 0,
   });
   const [selectedStartDate, setSelectedStartDate] = React.useState(
-    new Date("2021-03-01")
+    new Date('2021-03-01')
   );
   const [selectedEndDate, setSelectedEndDate] = React.useState(
-    new Date("2021-03-05")
+    new Date('2021-03-05')
   );
 
   const handleOpen = (event) => {
-    
-    let target =
-      event.target.parentElement.parentElement.parentElement.parentElement
-        .parentElement.getAttribute('eventid');
+    let target = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute(
+      'eventid'
+    );
     console.log(target);
-    setFormObject({...formObject, eventId: target})
+    setFormObject({ ...formObject, eventId: target });
     setOpen(true);
   };
 
   const handleClose = () => {
     console.log(formObject);
-    let eventStatus = "upcoming";
+    let eventStatus = 'upcoming';
     let familycodeId = user.familycodeId[0];
     formObject.startDate = selectedStartDate;
     formObject.endDate = selectedEndDate;
@@ -100,7 +104,7 @@ export default function EditUpcomingModal(props) {
 
   return (
     <div>
-      <Button size="small" color="primary" onClick={(handleOpen)}>
+      <Button size="small" color="primary" onClick={handleOpen}>
         <Icon>add_circle</Icon>
       </Button>
 
@@ -132,6 +136,17 @@ export default function EditUpcomingModal(props) {
               name="eventDetails"
               onChange={handleInputChange}
             ></MultilineTextFields> */}
+            <Button
+              className={classes.closebutton}
+              size="small"
+              variant="contained"
+              type="button"
+              onClick={handleClose}
+            >
+              X
+            </Button>
+            <p></p>
+            <h2 id="transition-modal-title">Edit an Upcoming Event</h2>
             <FormControl>
               <InputLabel htmlFor="eventIdeaInput">Event Idea</InputLabel>
               <Input
@@ -140,10 +155,9 @@ export default function EditUpcomingModal(props) {
                 name="eventIdea"
                 onChange={handleInputChange}
               />
-              <FormHelperText id="eventIdeaInputHelper">
-                Event Idea
-              </FormHelperText>
+              <FormHelperText id="eventIdeaInputHelper"></FormHelperText>
             </FormControl>
+            <p></p>
             <FormControl>
               <InputLabel htmlFor="detailsInput">Event Details</InputLabel>
               <Input
@@ -161,24 +175,25 @@ export default function EditUpcomingModal(props) {
                 format="MM/dd/yyyy"
                 margin="normal"
                 id="date-picker-inline"
-                label="Date picker inline"
+                label="Start Date:"
                 value={selectedStartDate}
                 onChange={handleStartDateChange}
                 KeyboardButtonProps={{
-                  "aria-label": "change date",
+                  'aria-label': 'change date',
                 }}
               />
+              <p></p>
               <KeyboardDatePicker
                 disableToolbar
                 variant="inline"
                 format="MM/dd/yyyy"
                 margin="normal"
                 id="date-picker-inline"
-                label="Date picker inline"
+                label="End Date:"
                 value={selectedEndDate}
                 onChange={handleEndDateChange}
                 KeyboardButtonProps={{
-                  "aria-label": "change date",
+                  'aria-label': 'change date',
                 }}
               />
             </MuiPickersUtilsProvider>

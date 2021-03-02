@@ -89,6 +89,7 @@ import Modal from '@material-ui/core/Modal';
 import UpcomingEventModal from './UpcomingEventModal';
 import WishEventModal from './WishlistEventModal';
 import AddIcon from '@material-ui/icons/Add';
+import Container from '@material-ui/core/Container';
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -108,11 +109,22 @@ function getModalStyle() {
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: 'absolute',
-    width: 400,
+    width: 300,
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    textAlign: 'center',
+  },
+  button: {
+    marginRight: theme.spacing(0),
+    backgroundColor: theme.palette.background.paper,
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'stretch',
+    width: 150,
+    borderColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[3],
   },
 }));
 
@@ -134,12 +146,12 @@ export default function SimpleModal() {
     <div style={modalStyle} className={classes.paper}>
       <h2 id="simple-modal-title">Create an Event</h2>
       <p id="simple-modal-description">Select event you wish to create</p>
-      <button>
+      <button className={classes.button}>
         <UpcomingEventModal />
         <p>Upcoming Event</p>
       </button>
-
-      <button>
+      <p></p>
+      <button className={classes.button}>
         <WishEventModal />
         <p>Wish Event</p>
       </button>
