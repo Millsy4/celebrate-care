@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -8,6 +8,9 @@ import Icon from '@material-ui/core/Icon';
 import BasicTextFields from './BasicTextFields';
 import MultilineTextFields from './MultilineTextFields';
 import DatePickers from './DatePickers';
+import Form from '@material-ui/core/TextField';
+import { useUserContext } from '../services/userContext';
+import API from "../utils/API";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -40,7 +43,37 @@ export default function WishlistEventModal() {
   const handleClose = () => {
     setOpen(false);
   };
+  const { user, setUser } = useUserContext();
+  const [events, setEvents] = useState([]);
 
+  const [formObject, setFormObject] = useState({
+    details: '',
+    eventStatus: 'wishlist',
+    eventIdea: '',
+
+  });
+
+  function click(event) {
+    handleFormSubmit(event);
+    handleClose();
+  }
+
+  function handleFormSubmit(event) {
+    let familycodeId = user.familycodeId[0];
+    console.log(familycodeId)
+    event.preventDefault();
+    console.log(formObject);
+
+    if (
+      formObject.eventIdea &&
+      formObject.details &&
+      formObject.eventStatus
+    ) {
+      API.saveWishEvent(familycodeId, formObject)
+        .catch((err) => console.log(err))
+
+    }
+  };
   return (
     <div>
       <Button size="small" color="primary" onClick={handleOpen}>
@@ -62,19 +95,26 @@ export default function WishlistEventModal() {
         <Fade in={open}>
           <div className={classes.paper}>
             <h2 id="transition-modal-title">Create a Wishlist Event</h2>
-            <BasicTextFields label="Event Name" id="Name" />
+            <Form label="Event Name" id="Name" name="eventIdea"
+              value={formObject.eventIdea}
+              onChange={(e) => setFormObject({ ...formObject, eventIdea: e.target.value })}>
+
+            </Form>
             <p></p>
-            <MultilineTextFields
-              label="Enter event details here"
+            <Form label="Enter event details here"
               id="Details"
-            />
+              name="details"
+              value={formObject.details}
+              onChange={(e) => setFormObject({ ...formObject, details: e.target.value })}>
+
+            </Form>
             <p></p>
             <Button
               className={classes.button}
               size="small"
               variant="contained"
               type="button"
-              onClick={handleClose}
+              onClick={click}
             >
               Create It!
             </Button>

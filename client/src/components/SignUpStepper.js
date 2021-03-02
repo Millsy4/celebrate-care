@@ -68,6 +68,7 @@ function SignUpModal() {
   };
 
   const handleClose = () => {
+    var copyText = document.getElementById('')
     setOpen(false);
   };
 
@@ -97,9 +98,14 @@ function SignUpModal() {
         <Fade in={open}>
           <div className={classes.paper}>
             <h2 id="transition-modal-title">Family Code</h2>
+<<<<<<< HEAD
             <p id="transition-modal-description">
               Copy this code and share it with your family members
             </p>
+=======
+
+            <p id="transition-modal-description">Copy this code and share it with your family members</p>
+>>>>>>> development
             <h2>Family Code here</h2>
             <Button
               size="small"
@@ -140,6 +146,13 @@ export default function SignUpStepper() {
       Password: signUpData.password,
       FamilyCode: signUpData.familycode,
       HaveCode: signUpData.havecode,
+<<<<<<< HEAD
+=======
+      GrandFirstName: signUpData.grandfirstname,
+      GrandLastName: signUpData.grandlastname,
+    }).then((res) => (res)).then(() => {
+      window.location.replace('/')
+>>>>>>> development
     })
       .then((res) => res)
       .then(() => {
@@ -264,6 +277,8 @@ export default function SignUpStepper() {
                 >
                   {/* <BasicTextFields label="Family Code" id="familycode" value={signUpData.familycode} onChange={(e) => setSignUpData({ ...signUpData, familycode: e.target.value })} /> */}
                 </Form>
+                <Form label="Grandparent First name" id="grandFirstName" value={signUpData.grandfirstname} onChange={(e) => setSignUpData({ ...signUpData, grandfirstname: e.target.value })} />
+                <Form label="Grandparent Last name" id="grandLastName" value={signUpData.grandlastname} onChange={(e) => setSignUpData({ ...signUpData, grandlastname: e.target.value })} />
               </Box>
             </Grid>
           </Container>

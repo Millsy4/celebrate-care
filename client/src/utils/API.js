@@ -5,7 +5,7 @@ export default {
         return axios.get("/api/eventtables");
     },
     getFamilyUpcomingEvents: function (familyCode, eventStatus) {
-        return axios.get("/api/eventtables/" + familyCode + "/" + eventStatus) 
+        return axios.get("/api/eventtables/" + familyCode + "/" + eventStatus)
     },
     getEventIdeas: function (eventStatus) {
         return axios.get("/api/eventtables/" + eventStatus)
@@ -16,8 +16,8 @@ export default {
     editWishlistEvents: function (familyCode, eventData) {
         return axios.put("/api/eventtables/" + familyCode, eventData)
     },
-    saveEvent: function (eventData) {
-        return axios.post("/api/eventtables", eventData)
+    saveEvent: function (familycodeId, formObject) {
+        return axios.post("/api/eventtables/" + familycodeId, formObject)
     },
     signUp: function (signUpData) {
         return axios.post('/api/usertables', signUpData)
@@ -27,7 +27,10 @@ export default {
     },
     getFamilyCodes: function () {
         return axios.get("/api/familycodes");
-    }
+    },
+    saveWishEvent: function (familycodeId, formObject) {
+        return axios.post("/api/eventtables/" + familycodeId, formObject)
+    },
 }
 
 //step 4

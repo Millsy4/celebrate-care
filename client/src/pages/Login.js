@@ -20,6 +20,14 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
         color: theme.palette.text.secondary,
     },
+    button: {
+        marginRight: theme.spacing(1),
+        justify: "center",
+        alignItems: "center",
+        background: "#3D6D6F",
+        color: "white",
+
+    },
 }));
 export default function LoginInPage() {
     const { user, setUser } = useUserContext();
@@ -65,12 +73,32 @@ export default function LoginInPage() {
 
                         </Grid>
                         <Grid className={classes.div}>
-                            <Button size='large' variant='contained' color='primary' type="button" onClick={() => loginUser()}>
+                            <Button className={classes.button} size='large' variant='contained' color='primary' type="button" onClick={() => loginUser()}>
                                 Sign In
-                </Button>
+                     </Button>
                         </Grid>
                     </Grid>
+
                 </form>
+                <Grid>
+                    <Grid container direction="column" justify="space-between" alignItems="center">
+                        <h3>Need to make a new account?</h3>
+                    </Grid>
+                    <Grid container direction="column" justify="space-between" alignItems="center">
+                        <Button
+                            className={classes.button}
+                            size="large"
+                            variant="contained"
+                            type="button"
+                            onClick={() => {
+                                window.location.replace('/signup')
+
+                            }}
+                        >
+                            Register Now
+                     </Button>
+                    </Grid>
+                </Grid>
 
             </Box>
         </div >
