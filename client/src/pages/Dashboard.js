@@ -32,6 +32,8 @@ import Image19 from "../images/soccer.jpg";
 import Image20 from "../images/walking.jpg";
 
 import Container from "@material-ui/core/Container";
+import EditUpcomingModal from "../components/EditUpcomingModal"
+import EditWishlistModal from "../components/EditWishlistModal"
 
 const images = [Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8, Image9, Image10, Image11, Image12, Image13, Image14, Image15, Image16, Image17, Image18, Image19, Image20]
 
@@ -94,14 +96,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function Dashboard() {
   const { user, setUser } = useUserContext();
-  const [events, setEvents] = useState([])
+  const [upcomingEvents, setUpcomingEvents] = useState([]);
+  const [wishlistEvents, setWishlistEvents] = useState([]);
+  const [eventIdeas, setEventIdeas] = useState([]);
 
   useEffect(() => {
-    loadEvents();
+    loadUpcomingEvents();
+    loadWishlistEvents();
+    loadEventIdeas();
   }, []);
 
-  function loadEvents() {
-    API.getEvents()
+  function loadUpcomingEvents() {
+    console.group(user);
+    // let userId = user.userId;
+    let eventStatus = "upcoming";
+    let familycodeId = user.familycodeId[0];
+    API.getFamilyUpcomingEvents(familycodeId, eventStatus)
       .then((res) => {
         console.log(res.data);
         let unvalidatedEvents = res.data;
@@ -110,14 +120,63 @@ export default function Dashboard() {
           const validEvent = {
             title: event.eventIdea,
             author: event.familyCode,
-            img: images[Math.floor(Math.random() * images.length)]
+            img: images[Math.floor(Math.random() * images.length)],
+            id: event.id
           }
           validatedEvents.push(validEvent);
         })
-        setEvents(...events, validatedEvents);
+        setUpcomingEvents(...upcomingEvents, validatedEvents);
       })
       .catch((err) => console.log(err));
   }
+  function loadWishlistEvents() {
+    console.group(user);
+    // let userId = user.userId;
+    let eventStatus = "wishlist";
+    let familycodeId = user.familycodeId[0];
+    API.getFamilyUpcomingEvents(familycodeId, eventStatus)
+      .then((res) => {
+        console.log(res.data);
+        let unvalidatedEvents = res.data;
+        const validatedEvents = [];
+        unvalidatedEvents.forEach(event => {
+          const validEvent = {
+            title: event.eventIdea,
+            author: event.familyCode,
+            img: images[Math.floor(Math.random() * images.length)],
+            id: event.id
+          }
+          validatedEvents.push(validEvent);
+        })
+        setWishlistEvents(...wishlistEvents, validatedEvents);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  function loadEventIdeas() {
+    console.group(user);
+    // let userId = user.userId;
+    let eventStatus = "idea";
+    // let familycodeId = user.familycodeId[0];
+    API.getEventIdeas(eventStatus)
+      .then((res) => {
+        console.log(res.data);
+        let unvalidatedEvents = res.data;
+        const validatedEvents = [];
+        unvalidatedEvents.forEach(event => {
+          const validEvent = {
+            title: event.eventIdea,
+            author: "celebrate_care",
+            img: images[Math.floor(Math.random() * images.length)],
+            id: event.id
+          }
+          validatedEvents.push(validEvent);
+        })
+        setEventIdeas(...eventIdeas, validatedEvents);
+      })
+      .catch((err) => console.log(err));
+  }
+
 
   const classes = useStyles();
   return (
@@ -139,8 +198,8 @@ export default function Dashboard() {
               cellHeight={400}
               cols={2.5}
             >
-              {events.map((event) => (
-                <GridListTile key={event.img} fontSize={50}>
+              {upcomingEvents.map((event) => (
+                <GridListTile key={event.img} eventId={event.id} fontSize={50}>
                   <img src={event.img} alt={event.title} />
                   <GridListTileBar
                     cellHeight={150}
@@ -150,10 +209,12 @@ export default function Dashboard() {
                       title: classes.title,
                     }}
                     actionIcon={
-                      <IconButton aria-label={`star ${event.title}`}>
-                        <CalendarTodayIcon className={classes.title} />
-                      </IconButton>
+                      // <IconButton aria-label={`star ${event.title}`}>
+                      //   <StarBorderIcon className={classes.title} />
+                      // </IconButton>
+                      <EditUpcomingModal />
                     }
+                    eventId={event.id}
                   />
                 </GridListTile>
               ))}
@@ -173,8 +234,8 @@ export default function Dashboard() {
               cellHeight={400}
               cols={2.5}
             >
-              {events.map((event) => (
-                <GridListTile key={event.img} fontSize={50}>
+              {wishlistEvents.map((event) => (
+                <GridListTile key={event.img} eventId={event.id} fontSize={50}>
                   <img src={event.img} alt={event.title} />
                   <GridListTileBar
                     cellHeight={150}
@@ -184,10 +245,12 @@ export default function Dashboard() {
                       title: classes.title,
                     }}
                     actionIcon={
-                      <IconButton aria-label={`star ${event.title}`}>
-                        <CalendarTodayIcon className={classes.title} />
-                      </IconButton>
+                      // <IconButton aria-label={`star ${event.title}`}>
+                      //   <StarBorderIcon className={classes.title} />
+                      // </IconButton>
+                      <EditWishlistModal />
                     }
+                    eventId={event.id}
                   />
                 </GridListTile>
               ))}
@@ -207,8 +270,8 @@ export default function Dashboard() {
               cellHeight={400}
               cols={2.5}
             >
-              {events.map((event) => (
-                <GridListTile key={event.img} fontSize={50}>
+              {eventIdeas.map((event) => (
+                <GridListTile key={event.img} eventId={event.id} fontSize={50}>
                   <img src={event.img} alt={event.title} />
                   <GridListTileBar
                     cellHeight={150}
@@ -219,9 +282,10 @@ export default function Dashboard() {
                     }}
                     actionIcon={
                       <IconButton aria-label={`star ${event.title}`}>
-                        <FavoriteIcon className={classes.title} />
+                        <StarBorderIcon className={classes.title} />
                       </IconButton>
                     }
+                    eventId={event.id}
                   />
                 </GridListTile>
               ))}

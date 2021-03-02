@@ -12,7 +12,7 @@
 // import AddIcon from '@material-ui/icons/Add';
 // import Typography from '@material-ui/core/Typography';
 // import { blue } from '@material-ui/core/colors';
-import AddEventIcon from './AddEvent'
+import AddEventIcon from './AddEvent';
 
 // const emails = ['Upcoming Event', 'Wish Event'];
 // const useStyles = makeStyles({
@@ -133,22 +133,10 @@ export default function SimpleModal() {
   const body = (
     <div style={modalStyle} className={classes.paper}>
       <h2 id="simple-modal-title">Create an Event</h2>
-      <p id="simple-modal-description">
-        Select event you wish to create
-      </p>
+      <p id="simple-modal-description">Select event you wish to create</p>
       <button>
         <UpcomingEventModal />
         <p>Upcoming Event</p>
-      </button>
-
-      <button
-        variant="contained"
-        color="primary"
-        size="large"
-        className={classes.button}
-        startIcon={<AddIcon />}
-      >
-        Save
       </button>
 
       <button>
