@@ -1,60 +1,60 @@
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Stepper from "@material-ui/core/Stepper";
-import Grid from "@material-ui/core/Stepper";
-import Step from "@material-ui/core/Step";
-import StepLabel from "@material-ui/core/StepLabel";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import CodeModal from "./CodeModal";
-import Container from "@material-ui/core/Container";
-import Form from "@material-ui/core/TextField";
-import API from "../utils/API";
+import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Stepper from '@material-ui/core/Stepper';
+import Grid from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import CodeModal from './CodeModal';
+import Container from '@material-ui/core/Container';
+import Form from '@material-ui/core/TextField';
+import API from '../utils/API';
 
-import Box from "@material-ui/core/Box";
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "100%",
+    width: '100%',
   },
   signUp: {
     flex: 1,
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "stretch",
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'stretch',
   },
   stepper: {
-    background: "",
+    background: '',
   },
   button: {
     marginRight: theme.spacing(1),
     flex: 1,
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "stretch",
-    background: "#3D6D6F",
-    color: "white",
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'stretch',
+    background: '#3D6D6F',
+    color: 'white',
   },
   backbutton: {
     marginRight: theme.spacing(1),
     flex: 1,
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "stretch",
-    background: "#e0e0e0",
-    color: "black",
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'stretch',
+    background: '#e0e0e0',
+    color: 'black',
   },
   instructions: {
-    textAlign: "center",
+    textAlign: 'center',
   },
 }));
 
 function getSteps() {
   return [
-    "Sign Up",
-    "What is a family code?",
-    "Create a new family code",
-    "Enter a family code",
+    'Sign Up',
+    'What is a family code?',
+    'Create a new family code',
+    'Enter a family code',
   ];
 }
 
@@ -66,7 +66,7 @@ function SignUpModal() {
   };
 
   const handleClose = () => {
-    var copyText = document.getElementById("");
+    var copyText = document.getElementById('');
     setOpen(false);
   };
 
@@ -123,13 +123,13 @@ export default function SignUpStepper() {
   const [skipped, setSkipped] = React.useState(new Set());
   const steps = getSteps();
   const [signUpData, setSignUpData] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
-    password: "",
-    familycode: "",
-    grandfirstname: "",
-    grandlastname: "",
+    firstname: '',
+    lastname: '',
+    email: '',
+    password: '',
+    familycode: '',
+    grandfirstname: '',
+    grandlastname: '',
     havecode: false,
   });
   async function signUpUser() {
@@ -145,11 +145,19 @@ export default function SignUpStepper() {
     })
       .then((res) => res)
       .then(() => {
-        window.location.replace("/");
+        window.location.replace('/');
       })
       .then((res) => res)
       .then(() => {
-        window.location.replace("/");
+        window.location.replace('/');
+      })
+      .then((res) => res)
+      .then(() => {
+        window.location.replace('/');
+      })
+      .then((res) => res)
+      .then(() => {
+        window.location.replace('/');
       })
       .catch((err) => {
         console.log(err);
@@ -161,7 +169,7 @@ export default function SignUpStepper() {
     switch (step) {
       case 0:
         return (
-          <Container maxWidth="lg" style={{ width: "100%" }}>
+          <Container maxWidth="lg" style={{ width: '100%' }}>
             <Grid>
               <Box className={classes.signUp}>
                 <h2>Sign Up Form</h2>
@@ -207,7 +215,7 @@ export default function SignUpStepper() {
 
       case 1:
         return (
-          <Container maxWidth="lg" style={{ width: "70%" }}>
+          <Container maxWidth="lg" style={{ width: '70%' }}>
             <Grid
               container
               direction="column"
@@ -229,7 +237,7 @@ export default function SignUpStepper() {
         );
       case 2:
         return (
-          <Container maxWidth="lg" style={{ width: "70%" }}>
+          <Container maxWidth="lg" style={{ width: '70%' }}>
             <Grid
               container
               direction="column"
@@ -249,7 +257,7 @@ export default function SignUpStepper() {
         );
       case 3:
         return (
-          <Container maxWidth="lg" style={{ width: "30%" }}>
+          <Container maxWidth="lg" style={{ width: '30%' }}>
             <Grid
               container
               direction="column"
@@ -294,7 +302,7 @@ export default function SignUpStepper() {
           </Container>
         );
       default:
-        return "Unknown step";
+        return 'Unknown step';
     }
   }
   const isStepOptional = (step) => {
@@ -373,7 +381,7 @@ export default function SignUpStepper() {
                 {getStepContent(activeStep)}
               </Typography>
               <div>
-                <Container maxWidth="lg" style={{ width: "100%" }}>
+                <Container maxWidth="lg" style={{ width: '100%' }}>
                   <Button
                     disabled={activeStep === 0}
                     onClick={handleBack}
@@ -399,8 +407,8 @@ export default function SignUpStepper() {
                     className={classes.button}
                   >
                     {activeStep === steps.length - 1
-                      ? "Go to Login Page"
-                      : "Next"}
+                      ? 'Go to Login Page'
+                      : 'Next'}
                   </Button>
                 </Container>
               </div>
