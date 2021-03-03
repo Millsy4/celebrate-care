@@ -61,9 +61,7 @@ export default function WishlistEventModal() {
     console.log(formObject);
 
     if (formObject.eventIdea && formObject.details && formObject.eventStatus) {
-      API.saveWishEvent(familycodeId, formObject).catch((err) =>
-        console.log(err)
-      );
+      API.saveEvent(familycodeId, formObject).catch((err) => console.log(err));
     }
   }
   return (
