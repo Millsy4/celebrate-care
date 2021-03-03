@@ -10,7 +10,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     backgroundImage: `url(${HeaderImg})`,
-    height: '200',
+    position: 'relative',
+    height: 'auto',
     display: 'flex',
     justifyContent: 'flex-start',
     flexGrow: 1,
@@ -36,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Header() {
   const classes = useStyles();
   return (
-    <Box className={classes.root}>
+    <Box className={classes.root} style={{ height: 'auto', width: '100%' }}>
       <div className={classes.div}>
         <Box className={classes.containerbox}>
           <Box className={classes.image} margin={1} width="37%" height={175}>
