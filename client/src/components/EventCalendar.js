@@ -39,11 +39,6 @@ export default function EventCalendar() {
       .catch((err) => console.log(err));
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    loadUpcomingEvents();
-  }
-
   return (
     <div>
       <Calendar
