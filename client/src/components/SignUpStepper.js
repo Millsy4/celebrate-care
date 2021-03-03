@@ -153,6 +153,10 @@ export default function SignUpStepper() {
       .then(() => {
         window.location.replace('/');
       })
+      .then((res) => res)
+      .then(() => {
+        window.location.replace('/');
+      })
       .catch((err) => {
         console.log(err);
       });

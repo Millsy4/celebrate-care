@@ -67,6 +67,10 @@ export default function EditWishlistModal(props) {
   };
 
   const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleSubmit = () => {
     console.log(formObject);
     let familycodeId = user.familycodeId[0];
     formObject.eventStatus = 'upcoming';
@@ -75,8 +79,7 @@ export default function EditWishlistModal(props) {
     API.editWishlistEvents(familycodeId, formObject).then((res) => {
       console.log(formObject);
     });
-    setOpen(false);
-  };
+  }
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -192,7 +195,7 @@ export default function EditWishlistModal(props) {
               size="small"
               variant="contained"
               type="button"
-              onClick={handleClose}
+              onClick={handleSubmit}
             >
               Schedule It!
             </Button>
