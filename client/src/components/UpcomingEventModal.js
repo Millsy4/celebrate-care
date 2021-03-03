@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
-import BasicTextFields from './BasicTextFields';
-import MultilineTextFields from './MultilineTextFields';
-import DatePickers from './DatePickers';
-import { useUserContext } from '../services/userContext';
-import Form from '@material-ui/core/TextField';
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
+import Button from "@material-ui/core/Button";
+import Icon from "@material-ui/core/Icon";
+import BasicTextFields from "./BasicTextFields";
+import MultilineTextFields from "./MultilineTextFields";
+import DatePickers from "./DatePickers";
+import { useUserContext } from "../services/userContext";
+import Form from "@material-ui/core/TextField";
 import API from "../utils/API";
 import {
   MuiPickersUtilsProvider,
@@ -19,9 +19,9 @@ import DateFnsUtils from "@date-io/date-fns";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     zIndex: 100,
   },
   paper: {
@@ -31,10 +31,10 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     marginRight: theme.spacing(1),
-    justify: 'center',
-    alignItems: 'center',
-    background: '#3D6D6F',
-    color: 'white',
+    justify: "center",
+    alignItems: "center",
+    background: "#3D6D6F",
+    color: "white",
   },
   icon: {
     color: '#BF4031',
@@ -44,7 +44,6 @@ const useStyles = makeStyles((theme) => ({
 export default function UpcomingEventModal() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-
 
   const handleOpen = () => {
     setOpen(true);
@@ -56,40 +55,36 @@ export default function UpcomingEventModal() {
 
   const { user, setUser } = useUserContext();
   const [events, setEvents] = useState([]);
-  const [selectedStartDate, setSelectedStartDate] = React.useState(new Date('2021-02-20'))
-  const [selectedEndDate, setSelectedEndDate] = React.useState(new Date('2021-02-20'));
+  const [selectedStartDate, setSelectedStartDate] = React.useState(
+    new Date("2021-02-20")
+  );
+  const [selectedEndDate, setSelectedEndDate] = React.useState(
+    new Date("2021-02-20")
+  );
   const handleStartDateChange = (date) => {
     setSelectedStartDate(date);
   };
   const handleEndDateChange = (date) => {
     setSelectedEndDate(date);
-  }
+  };
   const [formObject, setFormObject] = useState({
     startDate: "",
-    endDate: '',
-    details: '',
-    eventStatus: 'upcoming',
-    eventIdea: '',
-
+    endDate: "",
+    details: "",
+    eventStatus: "upcoming",
+    eventIdea: "",
   });
-
-
-  // function handleInputChange(event) {
-  //   const { name, value } = event.target;
-  //   setFormObject({ ...formObject, [name]: value });
-  // }
 
   function click(event) {
     handleFormSubmit(event);
     handleClose();
   }
 
-
   function handleFormSubmit(event) {
     formObject.startDate = selectedStartDate;
     formObject.endDate = selectedEndDate;
     let familycodeId = user.familycodeId[0];
-    console.log(familycodeId)
+    console.log(familycodeId);
     event.preventDefault();
     console.log(formObject);
 
@@ -100,12 +95,9 @@ export default function UpcomingEventModal() {
       formObject.details &&
       formObject.eventStatus
     ) {
-      API.saveEvent(familycodeId, formObject)
-        .catch((err) => console.log(err))
-
+      API.saveEvent(familycodeId, formObject).catch((err) => console.log(err));
     }
-  };
-
+  }
 
   return (
     <div>
@@ -129,27 +121,25 @@ export default function UpcomingEventModal() {
           <Fade in={open}>
             <div className={classes.paper}>
               <h2 id="transition-modal-title">Create an Upcoming Event</h2>
-              <Form label="Event Name" id="Name" name="eventIdea"
+              <Form
+                label="Event Name"
+                id="Name"
+                name="eventIdea"
                 value={formObject.eventIdea}
-                onChange={(e) => setFormObject({ ...formObject, eventIdea: e.target.value })}>
-                {/* <BasicTextFields label="Event Name" id="Name" name="eventIdea"
-                  value={formObject.eventIdea}
-                  onChange={(e) => setFormObject({ ...setFormObject, eventIdea: e.target.value })} /> */}
-              </Form>
+                onChange={(e) =>
+                  setFormObject({ ...formObject, eventIdea: e.target.value })
+                }
+              ></Form>
               <p></p>
-              <Form label="Enter event details here"
+              <Form
+                label="Enter event details here"
                 id="Details"
                 name="details"
                 value={formObject.details}
-                onChange={(e) => setFormObject({ ...formObject, details: e.target.value })}>
-                {/* <MultilineTextFields
-                  label="Enter event details here"
-                  id="Details"
-                  name="details"
-                  value={formObject.details}
-                  onChange={(e) => setFormObject({ ...setFormObject, details: e.target.value })}
-                /> */}
-              </Form>
+                onChange={(e) =>
+                  setFormObject({ ...formObject, details: e.target.value })
+                }
+              ></Form>
               <p></p>
 
               <h4>Start Date</h4>
@@ -199,4 +189,3 @@ export default function UpcomingEventModal() {
     </div>
   );
 }
-

@@ -5,13 +5,11 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import Swipedrawer from './SwipeDrawer';
 import UpcomingModal from "../components/UpcomingModal";
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import { useUserContext } from '../services/userContext';
 import { useHistory } from 'react-router-dom';
 import { Link } from '@material-ui/core';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,9 +20,8 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
-
     flexGrow: 1,
-    color: "white",
+    color: 'white',
   },
   link: {
     color: 'white',
@@ -64,6 +61,6 @@ export default function ButtonAppBar() {
           </IconButton>
         </Toolbar>
       </AppBar>
-    </div>
+    </div >
   );
 }
