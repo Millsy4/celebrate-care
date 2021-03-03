@@ -16,6 +16,7 @@
     "start:dev": "concurrently \"nodemon ./server/server.js\" \"cd client && npm start\"",
     "install": "concurrently \"cd client && npm install\" \"cd server && npm install\"",
     "build": "cd client && npm run build",
+    "install": "concurrently \"cd client && npm install\" \"cd server && npm install\"",
     "heroku-postbuild": "npm run build"
   },
   "nodemonConfig": {
