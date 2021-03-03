@@ -46,7 +46,7 @@ export default function LoginInPage() {
         userId: data.id,
         familycodeId: familycodes,
       });
-      history.push("/calendar", user);
+      history.push("/dashboard", user);
     });
   }
 
