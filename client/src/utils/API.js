@@ -32,5 +32,3 @@ export default {
         return axios.post("/api/eventtables/" + familycodeId, formObject)
     },
 }
-
-//step 4

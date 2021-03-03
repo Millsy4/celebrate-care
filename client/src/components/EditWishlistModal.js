@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { useUserContext } from '../services/userContext';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
-import Input from '@material-ui/core/Input';
-import { FormControl, InputLabel } from '@material-ui/core';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import DateFnsUtils from '@date-io/date-fns';
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { useUserContext } from "../services/userContext";
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
+import Button from "@material-ui/core/Button";
+import Icon from "@material-ui/core/Icon";
+import Input from "@material-ui/core/Input";
+import { FormControl, InputLabel } from "@material-ui/core";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
-} from '@material-ui/pickers';
-import API from '../utils/API';
+} from "@material-ui/pickers";
+import API from "../utils/API";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     zIndex: 100,
   },
   paper: {
@@ -30,16 +30,16 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     marginRight: theme.spacing(1),
-    justify: 'center',
-    alignItems: 'center',
-    background: '#3D6D6F',
-    color: 'white',
+    justify: "center",
+    alignItems: "center",
+    background: "#3D6D6F",
+    color: "white",
   },
   closebutton: {
-    position: 'relative',
+    position: "relative",
     right: -180,
-    background: '#9e9e9e',
-    color: 'white',
+    background: "#9e9e9e",
+    color: "white",
   },
 }));
 
@@ -51,15 +51,15 @@ export default function EditWishlistModal(props) {
     eventId: 0,
   });
   const [selectedStartDate, setSelectedStartDate] = React.useState(
-    new Date('2021-03-01')
+    new Date("2021-03-01")
   );
   const [selectedEndDate, setSelectedEndDate] = React.useState(
-    new Date('2021-03-05')
+    new Date("2021-03-05")
   );
 
   const handleOpen = (event) => {
     let target = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute(
-      'eventid'
+      "eventid"
     );
     console.log(target);
     setFormObject({ ...formObject, eventId: target });
@@ -73,13 +73,13 @@ export default function EditWishlistModal(props) {
   const handleSubmit = () => {
     console.log(formObject);
     let familycodeId = user.familycodeId[0];
-    formObject.eventStatus = 'upcoming';
+    formObject.eventStatus = "upcoming";
     formObject.startDate = selectedStartDate;
     formObject.endDate = selectedEndDate;
     API.editWishlistEvents(familycodeId, formObject).then((res) => {
       console.log(formObject);
     });
-  }
+  };
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -114,20 +114,6 @@ export default function EditWishlistModal(props) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            {/* <h2 id="transition-modal-title">Schedule Wishlist Event</h2>
-            <BasicTextFields label="Event Name" id="Name"></BasicTextFields>
-            <p></p>
-            <MultilineTextFields
-              label="Enter event details here"
-              id="Details"
-            ></MultilineTextFields>
-
-            <p></p>
-            <div>
-              <DatePickers className="startDate" />
-              <p></p>
-              <DatePickers className="endDate" />
-            </div> */}
             <Button
               className={classes.closebutton}
               size="small"
@@ -171,7 +157,7 @@ export default function EditWishlistModal(props) {
                 value={selectedStartDate}
                 onChange={handleStartDateChange}
                 KeyboardButtonProps={{
-                  'aria-label': 'change date',
+                  "aria-label": "change date",
                 }}
               />
               <p></p>
@@ -185,7 +171,7 @@ export default function EditWishlistModal(props) {
                 value={selectedEndDate}
                 onChange={handleEndDateChange}
                 KeyboardButtonProps={{
-                  'aria-label': 'change date',
+                  "aria-label": "change date",
                 }}
               />
             </MuiPickersUtilsProvider>
