@@ -15,6 +15,7 @@
     "start:prod": "node ./server/server.js",
     "start:dev": "concurrently \"nodemon ./server/server.js\" \"cd client && npm start\"",
     "build": "cd client && npm run build",
+    "install": "concurrently \"cd client && npm install\" \"cd server && npm install\"",
     "heroku-postbuild": "npm run build"
   },
   "nodemonConfig": {
