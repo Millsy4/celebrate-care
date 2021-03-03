@@ -75,6 +75,7 @@ const useStyles = makeStyles((theme) => ({
       "linear-gradient(to top, rgba(61,109,111,1) 0%, rgba(61,109,111,0.6) 70%, rgba(61,109,111,0) 100%)",
   },
 }));
+
 export default function Dashboard() {
   const { user, setUser } = useUserContext();
   const [upcomingEvents, setUpcomingEvents] = useState([]);
@@ -82,10 +83,23 @@ export default function Dashboard() {
   const [eventIdeas, setEventIdeas] = useState([]);
 
   useEffect(() => {
+    const userId = JSON.parse(localStorage.getItem("userId"));
+    if (user.userId === "" && userId) {
+      API.getUserInfo(userId).then(({ data }) => {
+        console.log(data);
+        const familycodes = data.Familyties.map(
+          (relationship) => relationship.FamilycodeId
+        );
+        setUser({
+          userId: data.id,
+          familycodeId: familycodes,
+        });
+      });
+    }
     loadUpcomingEvents();
     loadWishlistEvents();
     loadEventIdeas();
-  }, []);
+  }, [user]);
 
   function loadUpcomingEvents() {
     console.group(user);
@@ -174,7 +188,7 @@ export default function Dashboard() {
               cellHeight={400}
               cols={2.5}
             >
-              {upcomingEvents.map((event) => (
+              {upcomingEvents?.map((event) => (
                 <GridListTile key={event.img} eventId={event.id} fontSize={50}>
                   <img src={event.img} alt={event.title} />
                   <GridListTileBar
@@ -205,7 +219,7 @@ export default function Dashboard() {
               cellHeight={400}
               cols={2.5}
             >
-              {wishlistEvents.map((event) => (
+              {wishlistEvents?.map((event) => (
                 <GridListTile key={event.img} eventId={event.id} fontSize={50}>
                   <img src={event.img} alt={event.title} />
                   <GridListTileBar
@@ -236,7 +250,7 @@ export default function Dashboard() {
               cellHeight={400}
               cols={2.5}
             >
-              {eventIdeas.map((event) => (
+              {eventIdeas?.map((event) => (
                 <GridListTile key={event.img} eventId={event.id} fontSize={50}>
                   <img src={event.img} alt={event.title} />
                   <GridListTileBar
