@@ -1,8 +1,8 @@
 {
-  "name": "TBD",
+  "name": "celebrate-care",
   "version": "1.0.0",
-  "description": "TBD",
-  "author": "TBD",
+  "description": "An app to celebrate the care for your grandparents.",
+  "author": "Christian Mills, Kelsey Eckelberry, Megan Gerwick, Biaka Zaidarhzauva",
   "license": "MIT",
   "main": "server/server.js",
   "repository": {
