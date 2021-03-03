@@ -27,6 +27,7 @@ import Image8 from "../images/fall walk.jpg";
 import Image9 from "../images/happy.jpg";
 import Image10 from "../images/hiking.jpg";
 import Image11 from "../images/holiday.jpg";
+import Box from "@material-ui/core/Box";
 
 const images = [
   Image1,
@@ -182,104 +183,106 @@ export default function Dashboard() {
       <Grid container className={classes.root} xs={12}>
         <Header />
         <Navbar />
-        <Grid container className={classes.heading} justify="flex-start 1">
-          <h1>
-            {" "}
-            <font color="#EA7A57">Upcoming Events</font>
-          </h1>
-        </Grid>
-        <Container maxWidth="lg" style={{ width: "95%" }}>
-          <div className={classes.root}>
-            <GridList
-              className={classes.gridList}
-              spacing={5}
-              cellHeight={400}
-              cols={2.5}
-            >
-              {upcomingEvents.map((event) => (
-                <GridListTile key={event.img} eventId={event.id} fontSize={50}>
-                  <img src={event.img} alt={event.title} />
-                  <GridListTileBar
-                    cellHeight={150}
-                    title={event.title}
-                    classes={{
-                      root: classes.titleBar,
-                      title: classes.title,
-                    }}
-                    actionIcon={<EditUpcomingModal />}
-                    eventId={event.id}
-                  />
-                </GridListTile>
-              ))}
-            </GridList>
-          </div>
-        </Container>
-        <Grid container className={classes.heading}>
-          <h1>
-            <font color="#EA7A57">Event Wishlist</font>
-          </h1>
-        </Grid>
-        <Container maxWidth="lg" style={{ width: "95%" }}>
-          <div className={classes.root}>
-            <GridList
-              className={classes.gridList}
-              spacing={5}
-              cellHeight={400}
-              cols={2.5}
-            >
-              {wishlistEvents.map((event) => (
-                <GridListTile key={event.img} eventId={event.id} fontSize={50}>
-                  <img src={event.img} alt={event.title} />
-                  <GridListTileBar
-                    cellHeight={150}
-                    title={event.title}
-                    classes={{
-                      root: classes.titleBar,
-                      title: classes.title,
-                    }}
-                    actionIcon={<EditWishlistModal />}
-                    eventId={event.id}
-                  />
-                </GridListTile>
-              ))}
-            </GridList>
-          </div>
-        </Container>
-        <Grid container className={classes.heading}>
-          <h1>
-            <font color="#EA7A57">Event Ideas</font>
-          </h1>
-        </Grid>
-        <Container maxWidth="lg" style={{ width: "95%" }}>
-          <div className={classes.root}>
-            <GridList
-              className={classes.gridList}
-              spacing={5}
-              cellHeight={400}
-              cols={2.5}
-            >
-              {eventIdeas.map((event) => (
-                <GridListTile key={event.img} eventId={event.id} fontSize={50}>
-                  <img src={event.img} alt={event.title} />
-                  <GridListTileBar
-                    cellHeight={150}
-                    title={event.title}
-                    classes={{
-                      root: classes.titleBar,
-                      title: classes.title,
-                    }}
-                    actionIcon={
-                      <IconButton aria-label={event.title} name="eventIdea" value={event.title} onClick={changeStatus}>
-                        <FavoriteIcon className={classes.icon} />
-                      </IconButton>
-                    }
-                    eventId={event.id}
-                  />
-                </GridListTile>
-              ))}
-            </GridList>
-          </div>
-        </Container>
+        <Box>
+          <Grid container className={classes.heading} justify="flex-start 1">
+            <h1>
+              {" "}
+              <font color="#EA7A57">Upcoming Events</font>
+            </h1>
+          </Grid>
+          <Container maxWidth="lg" style={{ width: "95%" }}>
+            <div className={classes.root}>
+              <GridList
+                className={classes.gridList}
+                spacing={5}
+                cellHeight={400}
+                cols={2.5}
+              >
+                {upcomingEvents.map((event) => (
+                  <GridListTile key={event.img} eventId={event.id} fontSize={50}>
+                    <img src={event.img} alt={event.title} />
+                    <GridListTileBar
+                      cellHeight={150}
+                      title={event.title}
+                      classes={{
+                        root: classes.titleBar,
+                        title: classes.title,
+                      }}
+                      actionIcon={<EditUpcomingModal />}
+                      eventId={event.id}
+                    />
+                  </GridListTile>
+                ))}
+              </GridList>
+            </div>
+          </Container>
+          <Grid container className={classes.heading}>
+            <h1>
+              <font color="#EA7A57">Event Wishlist</font>
+            </h1>
+          </Grid>
+          <Container maxWidth="lg" style={{ width: "95%" }}>
+            <div className={classes.root}>
+              <GridList
+                className={classes.gridList}
+                spacing={5}
+                cellHeight={400}
+                cols={2.5}
+              >
+                {wishlistEvents.map((event) => (
+                  <GridListTile key={event.img} eventId={event.id} fontSize={50}>
+                    <img src={event.img} alt={event.title} />
+                    <GridListTileBar
+                      cellHeight={150}
+                      title={event.title}
+                      classes={{
+                        root: classes.titleBar,
+                        title: classes.title,
+                      }}
+                      actionIcon={<EditWishlistModal />}
+                      eventId={event.id}
+                    />
+                  </GridListTile>
+                ))}
+              </GridList>
+            </div>
+          </Container>
+          <Grid container className={classes.heading}>
+            <h1>
+              <font color="#EA7A57">Event Ideas</font>
+            </h1>
+          </Grid>
+          <Container maxWidth="lg" style={{ width: "95%" }}>
+            <div className={classes.root}>
+              <GridList
+                className={classes.gridList}
+                spacing={5}
+                cellHeight={400}
+                cols={2.5}
+              >
+                {eventIdeas.map((event) => (
+                  <GridListTile key={event.img} eventId={event.id} fontSize={50}>
+                    <img src={event.img} alt={event.title} />
+                    <GridListTileBar
+                      cellHeight={150}
+                      title={event.title}
+                      classes={{
+                        root: classes.titleBar,
+                        title: classes.title,
+                      }}
+                      actionIcon={
+                        <IconButton aria-label={event.title} name="eventIdea" value={event.title} onClick={changeStatus}>
+                          <FavoriteIcon className={classes.icon} />
+                        </IconButton>
+                      }
+                      eventId={event.id}
+                    />
+                  </GridListTile>
+                ))}
+              </GridList>
+            </div>
+          </Container>
+        </Box>
       </Grid>
     </div >
   );
