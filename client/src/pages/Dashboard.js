@@ -1,3 +1,33 @@
+<<<<<<< HEAD
+import React, { useEffect, useState } from 'react';
+import Header from '../components/Header';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Navbar from '../components/Navbar';
+import { useUserContext } from '../services/userContext';
+import AddEvent from '../components/AddEvent';
+import API from '../utils/API';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+import IconButton from '@material-ui/core/IconButton';
+import Image1 from '../images/baby.jpg';
+import Image2 from '../images/baking.jpg';
+import Image3 from '../images/baseball.jpg';
+import Image4 from '../images/birthday.jpg';
+import Image5 from '../images/cute child.jpg';
+import Image6 from '../images/dinner.jpg';
+import Image7 from '../images/dog.jpg';
+import Image8 from '../images/fall walk.jpg';
+import Image9 from '../images/happy.jpg';
+import Image10 from '../images/hiking.jpg';
+import Image11 from '../images/holiday.jpg';
+
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+import Container from '@material-ui/core/Container';
+import EditUpcomingModal from '../components/EditUpcomingModal';
+import EditWishlistModal from '../components/EditWishlistModal';
+=======
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { makeStyles } from "@material-ui/core/styles";
@@ -25,6 +55,7 @@ import StarBorderIcon from "@material-ui/icons/StarBorder";
 import Container from "@material-ui/core/Container";
 import EditUpcomingModal from "../components/EditUpcomingModal";
 import EditWishlistModal from "../components/EditWishlistModal";
+>>>>>>> development
 
 const images = [
   Image1,
