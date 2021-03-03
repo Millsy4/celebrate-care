@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { useUserContext } from '../services/userContext';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
-import Input from '@material-ui/core/Input';
-import { FormControl, InputLabel } from '@material-ui/core';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import DateFnsUtils from '@date-io/date-fns';
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { useUserContext } from "../services/userContext";
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
+import Button from "@material-ui/core/Button";
+import Icon from "@material-ui/core/Icon";
+import Input from "@material-ui/core/Input";
+import { FormControl, InputLabel } from "@material-ui/core";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
-} from '@material-ui/pickers';
-import API from '../utils/API';
+} from "@material-ui/pickers";
+import API from "../utils/API";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     zIndex: 100,
   },
   paper: {
@@ -30,16 +30,16 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     marginRight: theme.spacing(1),
-    justify: 'center',
-    alignItems: 'center',
-    background: '#3D6D6F',
-    color: 'white',
+    justify: "center",
+    alignItems: "center",
+    background: "#3D6D6F",
+    color: "white",
   },
   closebutton: {
-    position: 'relative',
+    position: "relative",
     right: -170,
-    background: '#9e9e9e',
-    color: 'white',
+    background: "#9e9e9e",
+    color: "white",
   },
 }));
 
@@ -52,15 +52,15 @@ export default function EditUpcomingModal(props) {
     eventId: 0,
   });
   const [selectedStartDate, setSelectedStartDate] = React.useState(
-    new Date('2021-03-01')
+    new Date("2021-03-01")
   );
   const [selectedEndDate, setSelectedEndDate] = React.useState(
-    new Date('2021-03-05')
+    new Date("2021-03-05")
   );
 
   const handleOpen = (event) => {
     let target = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute(
-      'eventid'
+      "eventid"
     );
     console.log(target);
     setFormObject({ ...formObject, eventId: target });
@@ -73,7 +73,7 @@ export default function EditUpcomingModal(props) {
 
   const handleSubmit = () => {
     console.log(formObject);
-    let eventStatus = 'upcoming';
+    let eventStatus = "upcoming";
     let familycodeId = user.familycodeId[0];
     formObject.startDate = selectedStartDate;
     formObject.endDate = selectedEndDate;
@@ -82,7 +82,7 @@ export default function EditUpcomingModal(props) {
         console.log(formObject);
       }
     );
-  }
+  };
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -96,14 +96,6 @@ export default function EditUpcomingModal(props) {
   const handleEndDateChange = (date) => {
     setSelectedEndDate(date);
   };
-
-  // function handleClick(event) {
-  //   let target =
-  //     event.target.parentElement.parentElement.parentElement.parentElement
-  //       .parentElement.getAttribute('eventid');
-  //   console.log(target);
-  //   setFormObject({...formObject, eventId: target})
-  // }
 
   return (
     <div>
@@ -125,20 +117,6 @@ export default function EditUpcomingModal(props) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            {/* <h2 id="transition-modal-title">Edit an Upcoming Event</h2>
-            <BasicTextFields
-              label="Event Name"
-              id="Name"
-              name="eventIdea"
-              onChange={handleInputChange}
-            ></BasicTextFields>
-            <p></p>
-            <MultilineTextFields
-              label="Enter event details here"
-              id="Details"
-              name="eventDetails"
-              onChange={handleInputChange}
-            ></MultilineTextFields> */}
             <Button
               className={classes.closebutton}
               size="small"
@@ -182,7 +160,7 @@ export default function EditUpcomingModal(props) {
                 value={selectedStartDate}
                 onChange={handleStartDateChange}
                 KeyboardButtonProps={{
-                  'aria-label': 'change date',
+                  "aria-label": "change date",
                 }}
               />
               <p></p>
@@ -196,7 +174,7 @@ export default function EditUpcomingModal(props) {
                 value={selectedEndDate}
                 onChange={handleEndDateChange}
                 KeyboardButtonProps={{
-                  'aria-label': 'change date',
+                  "aria-label": "change date",
                 }}
               />
             </MuiPickersUtilsProvider>

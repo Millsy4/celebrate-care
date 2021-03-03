@@ -1,62 +1,60 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Stepper from '@material-ui/core/Stepper';
-import Grid from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import BasicTextFields from './BasicTextFields';
-import CodeModal from './CodeModal';
-import Container from '@material-ui/core/Container';
-import Form from '@material-ui/core/TextField';
-import API from '../utils/API';
-// import InputMask from 'react-input-mask';
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Stepper from "@material-ui/core/Stepper";
+import Grid from "@material-ui/core/Stepper";
+import Step from "@material-ui/core/Step";
+import StepLabel from "@material-ui/core/StepLabel";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import CodeModal from "./CodeModal";
+import Container from "@material-ui/core/Container";
+import Form from "@material-ui/core/TextField";
+import API from "../utils/API";
 
-import Box from '@material-ui/core/Box';
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
+    width: "100%",
   },
   signUp: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'stretch',
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "stretch",
   },
   stepper: {
-    background: '',
+    background: "",
   },
   button: {
     marginRight: theme.spacing(1),
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'stretch',
-    background: '#3D6D6F',
-    color: 'white',
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "stretch",
+    background: "#3D6D6F",
+    color: "white",
   },
   backbutton: {
     marginRight: theme.spacing(1),
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'stretch',
-    background: '#e0e0e0',
-    color: 'black',
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "stretch",
+    background: "#e0e0e0",
+    color: "black",
   },
   instructions: {
-    textAlign: 'center',
+    textAlign: "center",
   },
 }));
 
 function getSteps() {
   return [
-    'Sign Up',
-    'What is a family code?',
-    'Create a new family code',
-    'Enter a family code',
+    "Sign Up",
+    "What is a family code?",
+    "Create a new family code",
+    "Enter a family code",
   ];
 }
 
@@ -68,7 +66,7 @@ function SignUpModal() {
   };
 
   const handleClose = () => {
-    var copyText = document.getElementById('')
+    var copyText = document.getElementById("");
     setOpen(false);
   };
 
@@ -99,7 +97,9 @@ function SignUpModal() {
           <div className={classes.paper}>
             <h2 id="transition-modal-title">Family Code</h2>
 
-            <p id="transition-modal-description">Copy this code and share it with your family members</p>
+            <p id="transition-modal-description">
+              Copy this code and share it with your family members
+            </p>
             <h2>Family Code here</h2>
             <Button
               size="small"
@@ -123,13 +123,13 @@ export default function SignUpStepper() {
   const [skipped, setSkipped] = React.useState(new Set());
   const steps = getSteps();
   const [signUpData, setSignUpData] = useState({
-    firstname: '',
-    lastname: '',
-    email: '',
-    password: '',
-    familycode: '',
-    grandfirstname: '',
-    grandlastname: '',
+    firstname: "",
+    lastname: "",
+    email: "",
+    password: "",
+    familycode: "",
+    grandfirstname: "",
+    grandlastname: "",
     havecode: false,
   });
   async function signUpUser() {
@@ -142,17 +142,18 @@ export default function SignUpStepper() {
       HaveCode: signUpData.havecode,
       GrandFirstName: signUpData.grandfirstname,
       GrandLastName: signUpData.grandlastname,
-    }).then((res) => (res)).then(() => {
-      window.location.replace('/')
     })
       .then((res) => res)
       .then(() => {
-        window.location.replace('/');
+        window.location.replace("/");
+      })
+      .then((res) => res)
+      .then(() => {
+        window.location.replace("/");
       })
       .catch((err) => {
         console.log(err);
       });
-    //redirect here to sign in page
   }
   function getStepContent(step) {
     const classes = useStyles();
@@ -160,7 +161,7 @@ export default function SignUpStepper() {
     switch (step) {
       case 0:
         return (
-          <Container maxWidth="lg" style={{ width: '100%' }}>
+          <Container maxWidth="lg" style={{ width: "100%" }}>
             <Grid>
               <Box className={classes.signUp}>
                 <h2>Sign Up Form</h2>
@@ -206,7 +207,7 @@ export default function SignUpStepper() {
 
       case 1:
         return (
-          <Container maxWidth="lg" style={{ width: '70%' }}>
+          <Container maxWidth="lg" style={{ width: "70%" }}>
             <Grid
               container
               direction="column"
@@ -228,7 +229,7 @@ export default function SignUpStepper() {
         );
       case 2:
         return (
-          <Container maxWidth="lg" style={{ width: '70%' }}>
+          <Container maxWidth="lg" style={{ width: "70%" }}>
             <Grid
               container
               direction="column"
@@ -248,7 +249,7 @@ export default function SignUpStepper() {
         );
       case 3:
         return (
-          <Container maxWidth="lg" style={{ width: '30%' }}>
+          <Container maxWidth="lg" style={{ width: "30%" }}>
             <Grid
               container
               direction="column"
@@ -265,17 +266,35 @@ export default function SignUpStepper() {
                   onChange={(e) =>
                     setSignUpData({ ...signUpData, familycode: e.target.value })
                   }
-                >
-                  {/* <BasicTextFields label="Family Code" id="familycode" value={signUpData.familycode} onChange={(e) => setSignUpData({ ...signUpData, familycode: e.target.value })} /> */}
-                </Form>
-                <Form label="Grandparent First name" id="grandFirstName" value={signUpData.grandfirstname} onChange={(e) => setSignUpData({ ...signUpData, grandfirstname: e.target.value })} />
-                <Form label="Grandparent Last name" id="grandLastName" value={signUpData.grandlastname} onChange={(e) => setSignUpData({ ...signUpData, grandlastname: e.target.value })} />
+                />
+                <Form
+                  label="Grandparent First name"
+                  id="grandFirstName"
+                  value={signUpData.grandfirstname}
+                  onChange={(e) =>
+                    setSignUpData({
+                      ...signUpData,
+                      grandfirstname: e.target.value,
+                    })
+                  }
+                />
+                <Form
+                  label="Grandparent Last name"
+                  id="grandLastName"
+                  value={signUpData.grandlastname}
+                  onChange={(e) =>
+                    setSignUpData({
+                      ...signUpData,
+                      grandlastname: e.target.value,
+                    })
+                  }
+                />
               </Box>
             </Grid>
           </Container>
         );
       default:
-        return 'Unknown step';
+        return "Unknown step";
     }
   }
   const isStepOptional = (step) => {
@@ -347,23 +366,14 @@ export default function SignUpStepper() {
         </Stepper>
         <div>
           {activeStep === steps.length ? (
-            <div>
-              {/* <Container maxWidth="lg" style={{ width: '40.5%' }}>
-                <Typography className={classes.instructions}>
-                  All steps completed - you're finished
-                </Typography>
-                <Button variant="contained" href="/" onClick={signUpUser} className={classes.button}>
-                  Go to Login Page
-                </Button>
-              </Container> */}
-            </div>
+            <div></div>
           ) : (
             <div>
               <Typography className={classes.instructions}>
                 {getStepContent(activeStep)}
               </Typography>
               <div>
-                <Container maxWidth="lg" style={{ width: '100%' }}>
+                <Container maxWidth="lg" style={{ width: "100%" }}>
                   <Button
                     disabled={activeStep === 0}
                     onClick={handleBack}
@@ -389,8 +399,8 @@ export default function SignUpStepper() {
                     className={classes.button}
                   >
                     {activeStep === steps.length - 1
-                      ? 'Go to Login Page'
-                      : 'Next'}
+                      ? "Go to Login Page"
+                      : "Next"}
                   </Button>
                 </Container>
               </div>

@@ -7,24 +7,30 @@ import Button from "@material-ui/core/Button";
 import API from "../utils/API";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
-import DateFnsUtils from '@date-io/date-fns';
-import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
-
+import DateFnsUtils from "@date-io/date-fns";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from "@material-ui/pickers";
 
 export default function Event() {
   const [events, setEvents] = useState([]);
-  const [selectedStartDate, setSelectedStartDate] = React.useState(new Date('2021-02-20'))
-  const [selectedEndDate, setSelectedEndDate] = React.useState(new Date('2021-02-20'));
+  const [selectedStartDate, setSelectedStartDate] = React.useState(
+    new Date("2021-02-20")
+  );
+  const [selectedEndDate, setSelectedEndDate] = React.useState(
+    new Date("2021-02-20")
+  );
   const handleStartDateChange = (date) => {
     setSelectedStartDate(date);
   };
   const handleEndDateChange = (date) => {
     setSelectedEndDate(date);
-  }
+  };
   const [formObject, setFormObject] = useState({
     familyCode: 101392,
     eventStatus: "",
-    startDate: ""
+    startDate: "",
   });
 
   function loadEvents() {
@@ -35,8 +41,6 @@ export default function Event() {
     const { name, value } = event.target;
     setFormObject({ ...formObject, [name]: value });
   }
-
-
 
   function handleFormSubmit(event) {
     formObject.startDate = selectedStartDate;
