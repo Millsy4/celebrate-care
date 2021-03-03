@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Swipedrawer from './SwipeDrawer';
-import UpcomingModal from "../components/UpcomingModal";
+import UpcomingModal from '../components/UpcomingModal';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,9 +17,8 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
-
     flexGrow: 1,
-    color: "white",
+    color: 'white',
   },
 }));
 
@@ -34,7 +33,7 @@ export default function ButtonAppBar() {
           <Swipedrawer />
           <Typography variant="h5" className={classes.title}>
             Care Worth Celebrating
-            </Typography>
+          </Typography>
           <IconButton>
             <AccountCircle fontSize="large" />
           </IconButton>
