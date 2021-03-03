@@ -30,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
     background: '#3D6D6F',
     color: 'white',
   },
+  icon: {
+    color: '#BF4031',
+  }
 }));
 
 export default function WishlistEventModal() {
@@ -77,7 +80,7 @@ export default function WishlistEventModal() {
   return (
     <div>
       <Button size="small" color="primary" onClick={handleOpen}>
-        <Icon>add_circle</Icon>
+        <Icon className={classes.icon}>add_circle</Icon>
       </Button>
 
       <Modal

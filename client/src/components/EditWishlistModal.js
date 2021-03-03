@@ -41,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
     background: '#9e9e9e',
     color: 'white',
   },
+  icon: {
+    color: '#BF4031'
+  }
 }));
 
 export default function EditWishlistModal(props) {
@@ -93,8 +96,8 @@ export default function EditWishlistModal(props) {
 
   return (
     <div>
-      <Button size="small" color="primary" onClick={handleOpen}>
-        <Icon>add_circle</Icon>
+      <Button size="small" onClick={handleOpen}>
+        <Icon className={classes.icon}>add_circle</Icon>
       </Button>
 
       <Modal

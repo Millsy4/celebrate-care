@@ -1,4 +1,4 @@
-INSERT INTO Eventtable (ID, Name, Details, Image)
+INSERT INTO Eventtable (ID, EventId, Details, Image)
 VALUES
 ('1', 'Go to the Park', 'Pick a local park to take a small walk, watch grandchildren play, etc.', ""),
 ('2', 'Play a Boardgame', 'Play chess, checkers, dominoes, or try a new game', ''),
@@ -15,6 +15,6 @@ VALUES
 ('13', 'Make Jewelry', 'Pick up some supplies from a local craft store to make friendship bracelets, matching necklaces, or some fancy rings', ''),
 ('14', 'Play Video Games', 'People of all ages love video games', ''),
 ('15', 'Complete a Crossword or Sudoku Puzzle', 'Use your combined knowledge to complete your favorite puzzle', ''),
-('16', 'Play Card Games', '', ''),
+('16', 'Play Card Games', 'GoFish, poker, UNO, anything is game!', ''),
 ('17', 'Visit a Mueseum', "It could be local art mueseum, children's mueseum", ''),
 ('18', 'Visit a Brewery', 'Does your family like beer? Checkout some local brews together', '')

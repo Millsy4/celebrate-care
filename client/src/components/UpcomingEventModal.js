@@ -36,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
     background: '#3D6D6F',
     color: 'white',
   },
+  icon: {
+    color: '#BF4031',
+  }
 }));
 
 export default function UpcomingEventModal() {
@@ -106,8 +109,8 @@ export default function UpcomingEventModal() {
 
   return (
     <div>
-      <Button size="small" color="primary" onClick={handleOpen}>
-        <Icon>add_circle</Icon>
+      <Button size="small" onClick={handleOpen}>
+        <Icon className={classes.icon}>add_circle</Icon>
       </Button>
 
       <Modal

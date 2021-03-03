@@ -31,6 +31,9 @@ export default {
     saveWishEvent: function (familycodeId, formObject) {
         return axios.post("/api/eventtables/" + familycodeId, formObject)
     },
+    addFav: function (familyCode, eventStatus, eventIdeas) {
+        return axios.put("/api/eventtables/" + familyCode, + "/" + eventStatus, eventIdeas)
+    },
 }
 
 //step 4
