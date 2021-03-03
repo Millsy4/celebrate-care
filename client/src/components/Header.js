@@ -50,6 +50,3 @@ export default function Header() {
     </Box>
   );
 }
-// {props => <img className={classes.image}
-
-// src={Image1} {...props} />}

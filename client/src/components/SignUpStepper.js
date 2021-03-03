@@ -6,12 +6,10 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import BasicTextFields from './BasicTextFields';
 import CodeModal from './CodeModal';
 import Container from '@material-ui/core/Container';
 import Form from '@material-ui/core/TextField';
 import API from '../utils/API';
-// import InputMask from 'react-input-mask';
 
 import Box from '@material-ui/core/Box';
 
@@ -157,10 +155,13 @@ export default function SignUpStepper() {
       .then(() => {
         window.location.replace('/');
       })
+      .then((res) => res)
+      .then(() => {
+        window.location.replace('/');
+      })
       .catch((err) => {
         console.log(err);
       });
-    //redirect here to sign in page
   }
   function getStepContent(step) {
     const classes = useStyles();
@@ -273,9 +274,7 @@ export default function SignUpStepper() {
                   onChange={(e) =>
                     setSignUpData({ ...signUpData, familycode: e.target.value })
                   }
-                >
-                  {/* <BasicTextFields label="Family Code" id="familycode" value={signUpData.familycode} onChange={(e) => setSignUpData({ ...signUpData, familycode: e.target.value })} /> */}
-                </Form>
+                />
                 <Form
                   label="Grandparent First name"
                   id="grandFirstName"
@@ -375,16 +374,7 @@ export default function SignUpStepper() {
         </Stepper>
         <div>
           {activeStep === steps.length ? (
-            <div>
-              {/* <Container maxWidth="lg" style={{ width: '40.5%' }}>
-                <Typography className={classes.instructions}>
-                  All steps completed - you're finished
-                </Typography>
-                <Button variant="contained" href="/" onClick={signUpUser} className={classes.button}>
-                  Go to Login Page
-                </Button>
-              </Container> */}
-            </div>
+            <div></div>
           ) : (
             <div>
               <Typography className={classes.instructions}>

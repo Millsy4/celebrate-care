@@ -16,7 +16,6 @@
     "start:dev": "concurrently \"nodemon ./server/server.js\" \"cd client && npm start\"",
     "install": "concurrently \"cd client && npm install\" \"cd server && npm install\"",
     "build": "cd client && npm run build",
-    "install": "concurrently \"cd client && npm install\" \"cd server && npm install\"",
     "heroku-postbuild": "npm run build"
   },
   "nodemonConfig": {
@@ -35,6 +34,7 @@
     "@date-io/moment": "^1.3.13",
     "@material-ui/pickers": "^3.2.10",
     "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
     "fetch": "^1.1.0",
     "if-env": "^1.0.4",
     "moment": "^2.29.1",
