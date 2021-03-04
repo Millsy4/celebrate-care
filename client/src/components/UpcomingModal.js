@@ -36,18 +36,12 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'stretch',
-<<<<<<< HEAD
-    width: 150,
-    borderColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[3],
-=======
     width: 100,
     borderColor: 'black',
     boxShadow: '#74A3AC',
   },
   icon: {
     color: '#BF4031',
->>>>>>> development
   },
   h2: {
     font: '#3D6D6F'
@@ -86,13 +80,8 @@ export default function SimpleModal() {
 
   return (
     <div>
-<<<<<<< HEAD
-      <div type="button" onClick={handleOpen}>
-        <AddEventIcon />
-=======
       <div className={classes.button} type="button" onClick={handleOpen}>
         <AddEventIcon className={classes.icon} />
->>>>>>> development
       </div>
       <Modal
         open={open}
