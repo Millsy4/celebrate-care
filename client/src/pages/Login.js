@@ -1,4 +1,4 @@
-import React, { useState, Redirect } from "react";
+import React, { useState, Redirect, useEffect } from "react";
 import { useUserContext } from "../services/userContext";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
@@ -26,26 +26,42 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
   },
 }));
+
+const useStateWithLocalStorage = userInfoId => {
+  const [value, setValue] = React.useState(
+    localStorage.getItem(userInfoId) || ''
+  );
+  useEffect(() => {
+    localStorage.setItem(userInfoId, JSON.stringify(value));
+  }, [value]);
+
+  return [value, setValue];
+}
+
 export default function LoginInPage() {
   const { user, setUser } = useUserContext();
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const $ = window.$;
   const classes = useStyles();
+  const [value, setValue] = useStateWithLocalStorage('userId');
   //Create a session storage to keep them logged in
   //Check for session storage as useEffect and put on every page
+
 
   const history = useHistory();
 
   async function loginUser() {
     API.logIn(loginData).then(({ data }) => {
+      
       console.log(data);
       const familycodes = data.Familyties.map(
-        (relationship) => relationship.id
+        (relationship) => relationship.FamilycodeId
       );
       setUser({
         userId: data.id,
         familycodeId: familycodes,
       });
+      setValue(JSON.parse(data.id));
       history.push("/dashboard", user);
     });
   }

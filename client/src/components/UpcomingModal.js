@@ -25,21 +25,33 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     width: 300,
     backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
+    boxShadow: '#74A3AC',
     padding: theme.spacing(2, 4, 3),
     textAlign: 'center',
   },
   button: {
     marginRight: theme.spacing(0),
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: 'white',
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'stretch',
+<<<<<<< HEAD
     width: 150,
     borderColor: theme.palette.background.paper,
     boxShadow: theme.shadows[3],
+=======
+    width: 100,
+    borderColor: 'black',
+    boxShadow: '#74A3AC',
   },
+  icon: {
+    color: '#BF4031',
+>>>>>>> development
+  },
+  h2: {
+    font: '#3D6D6F'
+  }
 }));
 
 export default function SimpleModal() {
@@ -58,11 +70,11 @@ export default function SimpleModal() {
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <h2 id="simple-modal-title">Create an Event</h2>
-      <p id="simple-modal-description">Select event you wish to create</p>
+      <h2 className={classes.h2} id="simple-modal-title">Create an Event</h2>
+      <h4 id="simple-modal-description">What kind of event do you want to make?</h4>
       <button className={classes.button}>
         <UpcomingEventModal />
-        <p>Upcoming Event</p>
+        <p fontColor="#3D6D6F">Upcoming Event</p>
       </button>
       <p></p>
       <button className={classes.button}>
@@ -74,8 +86,13 @@ export default function SimpleModal() {
 
   return (
     <div>
+<<<<<<< HEAD
       <div type="button" onClick={handleOpen}>
         <AddEventIcon />
+=======
+      <div className={classes.button} type="button" onClick={handleOpen}>
+        <AddEventIcon className={classes.icon} />
+>>>>>>> development
       </div>
       <Modal
         open={open}

@@ -10,10 +10,24 @@ const localizer = momentLocalizer(moment);
 export default function EventCalendar() {
   const { user, setUser } = useUserContext();
   const [upcomingEvents, setUpcomingEvents] = useState([]);
+  
 
   useEffect(() => {
+    const userId = JSON.parse(localStorage.getItem("userId"));
+    if (user.userId === "" && userId) {
+      API.getUserInfo(userId).then(({ data }) => {
+        console.log(data);
+        const familycodes = data.Familyties.map(
+          (relationship) => relationship.FamilycodeId
+        );
+        setUser({
+          userId: data.id,
+          familycodeId: familycodes,
+        });
+      });
+    }
     loadUpcomingEvents();
-  }, []);
+  }, [user]);
 
   function loadUpcomingEvents() {
     console.group(user);

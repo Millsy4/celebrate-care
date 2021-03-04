@@ -8,6 +8,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
       margin: theme.spacing(1),
+      backgroundColor: '#BF4031',
+      color: 'white'
+
     },
   },
   extendedIcon: {
@@ -20,8 +23,8 @@ export default function FloatingActionButtons() {
 
   return (
     <div className={classes.root} id="add-icon">
-      <Fab color="primary" aria-label="add">
-        <AddIcon />
+      <Fab color="#BF4031" aria-label="add">
+        <AddIcon className={classes.root} />
       </Fab>
     </div>
   );
