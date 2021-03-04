@@ -52,7 +52,9 @@ const images = [
   Image13,
   Image14,
   Image15,
-  Image16
+  Image16,
+  Image17,
+  Image18,
 ];
 
 const useStyles = makeStyles((theme) => ({
