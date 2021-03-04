@@ -27,6 +27,11 @@ import Image8 from "../images/fall walk.jpg";
 import Image9 from "../images/happy.jpg";
 import Image10 from "../images/hiking.jpg";
 import Image11 from "../images/holiday.jpg";
+import Image12 from "../images/guitar.jpg";
+import Image13 from "../images/presents.jpg";
+import Image14 from "../images/smiling.jpg";
+import Image15 from "../images/soccer.jpg";
+import Image16 from "../images/walking.jpg";
 import Box from "@material-ui/core/Box";
 
 const images = [
@@ -41,6 +46,11 @@ const images = [
   Image9,
   Image10,
   Image11,
+  Image12,
+  Image13,
+  Image14,
+  Image15,
+  Image16
 ];
 
 const useStyles = makeStyles((theme) => ({
