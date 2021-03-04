@@ -32,6 +32,8 @@ import Image13 from "../images/presents.jpg";
 import Image14 from "../images/smiling.jpg";
 import Image15 from "../images/soccer.jpg";
 import Image16 from "../images/walking.jpg";
+import Image17 from "../images/reading.jpg";
+import Image18 from "../images/grandpa.jpg";
 import Box from "@material-ui/core/Box";
 
 const images = [
