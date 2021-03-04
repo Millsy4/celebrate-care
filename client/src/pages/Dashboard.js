@@ -299,7 +299,7 @@ export default function Dashboard() {
                       title: classes.title,
                     }}
                     actionIcon={
-                      <IconButton aria-label={`star ${event.title}`}>
+                      <IconButton aria-label={event.title} name="eventIdea" onClick={changeStatus}>
                         <FavoriteIcon className={classes.title} />
                       </IconButton>
                     }
