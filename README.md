@@ -1,4 +1,4 @@
-![Logo](./client/src/images/CC_v2_white.svg)
+![Logo](./client/src/images/CC_v2_indv-03.svg)
 
 # Project 3: Celebrate Care
 
