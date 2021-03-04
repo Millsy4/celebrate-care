@@ -1,11 +1,9 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Navbar from '../components/Navbar';
 import { useUserContext } from '../services/userContext';
-import AddEvent from '../components/AddEvent';
 import API from '../utils/API';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -27,35 +25,6 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import Container from '@material-ui/core/Container';
 import EditUpcomingModal from '../components/EditUpcomingModal';
 import EditWishlistModal from '../components/EditWishlistModal';
-=======
-import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Navbar from "../components/Navbar";
-import { useUserContext } from "../services/userContext";
-import API from "../utils/API";
-import GridList from "@material-ui/core/GridList";
-import GridListTile from "@material-ui/core/GridListTile";
-import GridListTileBar from "@material-ui/core/GridListTileBar";
-import IconButton from "@material-ui/core/IconButton";
-import Image1 from "../images/baby.jpg";
-import Image2 from "../images/baking.jpg";
-import Image3 from "../images/baseball.jpg";
-import Image4 from "../images/birthday.jpg";
-import Image5 from "../images/cute child.jpg";
-import Image6 from "../images/dinner.jpg";
-import Image7 from "../images/dog.jpg";
-import Image8 from "../images/fall walk.jpg";
-import Image9 from "../images/happy.jpg";
-import Image10 from "../images/hiking.jpg";
-import Image11 from "../images/holiday.jpg";
-
-import StarBorderIcon from "@material-ui/icons/StarBorder";
-import Container from "@material-ui/core/Container";
-import EditUpcomingModal from "../components/EditUpcomingModal";
-import EditWishlistModal from "../components/EditWishlistModal";
->>>>>>> development
 
 const images = [
   Image1,
@@ -74,17 +43,17 @@ const images = [
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-around",
-    overflow: "hidden",
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
   },
   gridList: {
-    flexWrap: "nowrap",
+    flexWrap: 'nowrap',
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-    transform: "translateZ(0)",
-    height: "400",
+    transform: 'translateZ(0)',
+    height: '400',
   },
   paper: {
     height: 140,
@@ -97,13 +66,13 @@ const useStyles = makeStyles((theme) => ({
     flexStart: 2,
   },
   title: {
-    color: "black",
-    fontWeight: "800",
+    color: 'black',
+    fontWeight: '800',
   },
   titleBar: {
-    height: "200",
+    height: '200',
     background:
-      "linear-gradient(to top, rgba(61,109,111,1) 0%, rgba(61,109,111,0.6) 70%, rgba(61,109,111,0) 100%)",
+      'linear-gradient(to top, rgba(61,109,111,1) 0%, rgba(61,109,111,0.6) 70%, rgba(61,109,111,0) 100%)',
   },
 }));
 export default function Dashboard() {
@@ -120,7 +89,7 @@ export default function Dashboard() {
 
   function loadUpcomingEvents() {
     console.group(user);
-    let eventStatus = "upcoming";
+    let eventStatus = 'upcoming';
     let familycodeId = user.familycodeId[0];
     API.getFamilyUpcomingEvents(familycodeId, eventStatus)
       .then((res) => {
@@ -142,7 +111,7 @@ export default function Dashboard() {
   }
   function loadWishlistEvents() {
     console.group(user);
-    let eventStatus = "wishlist";
+    let eventStatus = 'wishlist';
     let familycodeId = user.familycodeId[0];
     API.getFamilyUpcomingEvents(familycodeId, eventStatus)
       .then((res) => {
@@ -165,7 +134,7 @@ export default function Dashboard() {
 
   function loadEventIdeas() {
     console.group(user);
-    let eventStatus = "idea";
+    let eventStatus = 'idea';
     API.getEventIdeas(eventStatus)
       .then((res) => {
         console.log(res.data);
@@ -174,7 +143,7 @@ export default function Dashboard() {
         unvalidatedEvents.forEach((event) => {
           const validEvent = {
             title: event.eventIdea,
-            author: "celebrate_care",
+            author: 'celebrate_care',
             img: images[Math.floor(Math.random() * images.length)],
             id: event.id,
           };
@@ -193,11 +162,11 @@ export default function Dashboard() {
         <Navbar />
         <Grid container className={classes.heading} justify="flex-start 1">
           <h1>
-            {" "}
+            {' '}
             <font color="#EA7A57">Upcoming Events</font>
           </h1>
         </Grid>
-        <Container maxWidth="lg" style={{ width: "95%" }}>
+        <Container maxWidth="lg" style={{ width: '95%' }}>
           <div className={classes.root}>
             <GridList
               className={classes.gridList}
@@ -228,7 +197,7 @@ export default function Dashboard() {
             <font color="#EA7A57">Event Wishlist</font>
           </h1>
         </Grid>
-        <Container maxWidth="lg" style={{ width: "95%" }}>
+        <Container maxWidth="lg" style={{ width: '95%' }}>
           <div className={classes.root}>
             <GridList
               className={classes.gridList}
@@ -259,7 +228,7 @@ export default function Dashboard() {
             <font color="#EA7A57">Event Ideas</font>
           </h1>
         </Grid>
-        <Container maxWidth="lg" style={{ width: "95%" }}>
+        <Container maxWidth="lg" style={{ width: '95%' }}>
           <div className={classes.root}>
             <GridList
               className={classes.gridList}
