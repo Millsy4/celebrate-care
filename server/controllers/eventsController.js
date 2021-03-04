@@ -97,4 +97,21 @@ module.exports = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
+  addFav: function (req, res) {
+    console.log(req.body);
+    db.Eventtable.update(
+      {
+        eventStatus: req.params.eventStatus,
+        FamilycodeId: req.params.id
+
+      },
+      {
+        where: {
+          eventIdea: req.body.eventIdea,
+        },
+      }
+    )
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
 };

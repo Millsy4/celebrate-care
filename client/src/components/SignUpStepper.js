@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'stretch',
   },
   stepper: {
-    background: '',
+    color: '#EA7A57',
   },
   button: {
     marginRight: theme.spacing(1),
@@ -97,9 +97,7 @@ function SignUpModal() {
           <div className={classes.paper}>
             <h2 id="transition-modal-title">Family Code</h2>
 
-            <p id="transition-modal-description">
-              Copy this code and share it with your family members
-            </p>
+            <p id="transition-modal-description">Copy this code and share it with your family members</p>
             <h2>Family Code here</h2>
             <Button
               size="small"
@@ -113,7 +111,7 @@ function SignUpModal() {
           </div>
         </Fade>
       </Modal>
-    </div>
+    </div >
   );
 }
 
@@ -142,23 +140,9 @@ export default function SignUpStepper() {
       HaveCode: signUpData.havecode,
       GrandFirstName: signUpData.grandfirstname,
       GrandLastName: signUpData.grandlastname,
+    }).then((res) => (res)).then(() => {
+      window.location.replace('/')
     })
-      .then((res) => res)
-      .then(() => {
-        window.location.replace('/');
-      })
-      .then((res) => res)
-      .then(() => {
-        window.location.replace('/');
-      })
-      .then((res) => res)
-      .then(() => {
-        window.location.replace('/');
-      })
-      .then((res) => res)
-      .then(() => {
-        window.location.replace('/');
-      })
       .catch((err) => {
         console.log(err);
       });
@@ -230,7 +214,7 @@ export default function SignUpStepper() {
                   account will create a code and share it with the entire
                   family.
                 </p>
-                <h3>Click next to either create a family code!</h3>
+                <h3>Click next to either create a family code or enter one you already have.</h3>
               </Box>
             </Grid>
           </Container>
@@ -351,20 +335,20 @@ export default function SignUpStepper() {
   return (
     <Container>
       <div className={classes.root}>
-        <Stepper activeStep={activeStep}>
+        <Stepper className={classes.stepper} activeStep={activeStep}>
           {steps.map((label, index) => {
             const stepProps = {};
             const labelProps = {};
             if (isStepOptional(index)) {
               labelProps.optional = (
-                <Typography variant="caption">Optional</Typography>
+                <Typography className={classes.stepper} variant="caption">Optional</Typography>
               );
             }
             if (isStepSkipped(index)) {
               stepProps.completed = false;
             }
             return (
-              <Step key={label} {...stepProps}>
+              <Step className={classes.stepper} key={label} {...stepProps}>
                 <StepLabel className={classes.stepper} {...labelProps}>
                   {label}
                 </StepLabel>
@@ -376,44 +360,45 @@ export default function SignUpStepper() {
           {activeStep === steps.length ? (
             <div></div>
           ) : (
-            <div>
-              <Typography className={classes.instructions}>
-                {getStepContent(activeStep)}
-              </Typography>
               <div>
-                <Container maxWidth="lg" style={{ width: '100%' }}>
-                  <Button
-                    disabled={activeStep === 0}
-                    onClick={handleBack}
-                    className={classes.backbutton}
-                  >
-                    Back
+                <Typography className={classes.instructions}>
+                  {getStepContent(activeStep)}
+                </Typography>
+                <div>
+                  <Container maxWidth="sm" style={{ width: '40%', justify: 'center', alignItems: 'center', padding: '20' }}>
+
+                    <Button
+                      disabled={activeStep === 0}
+                      onClick={handleBack}
+                      className={classes.backbutton}
+                    >
+                      Back
                   </Button>
-                  {isStepOptional(activeStep) && (
+                    {isStepOptional(activeStep) && (
+                      <Button
+                        variant="contained"
+                        onClick={handleSkip}
+                        className={classes.button}
+                      >
+                        I already have a family code
+                      </Button>
+                    )}
+
                     <Button
                       variant="contained"
-                      onClick={handleSkip}
+                      onClick={
+                        activeStep === steps.length - 1 ? signUpUser : handleNext
+                      }
                       className={classes.button}
                     >
-                      I already have a family code
+                      {activeStep === steps.length - 1
+                        ? 'Go to Login Page'
+                        : 'Next'}
                     </Button>
-                  )}
-
-                  <Button
-                    variant="contained"
-                    onClick={
-                      activeStep === steps.length - 1 ? signUpUser : handleNext
-                    }
-                    className={classes.button}
-                  >
-                    {activeStep === steps.length - 1
-                      ? 'Go to Login Page'
-                      : 'Next'}
-                  </Button>
-                </Container>
+                  </Container>
+                </div>
               </div>
-            </div>
-          )}
+            )}
         </div>
       </div>
     </Container>
