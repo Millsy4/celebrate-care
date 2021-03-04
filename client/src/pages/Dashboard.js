@@ -207,7 +207,7 @@ export default function Dashboard() {
   const classes = useStyles();
   return (
     <div>
-      <Box pt={10} pb={5}>
+      <Box pb={5}>
         <Grid container className={classes.root} xs={12}>
           <Header />
           <Navbar />

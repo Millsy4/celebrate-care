@@ -55,7 +55,7 @@ export default function EditUpcomingModal(props) {
     eventId: 0,
   });
   const [selectedStartDate, setSelectedStartDate] = React.useState(
-    new Date("2021-03-01")
+    new Date("2021-03-04")
   );
   const [selectedEndDate, setSelectedEndDate] = React.useState(
     new Date("2021-03-05")

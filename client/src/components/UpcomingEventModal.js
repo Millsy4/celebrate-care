@@ -56,10 +56,10 @@ export default function UpcomingEventModal() {
   const { user, setUser } = useUserContext();
   const [events, setEvents] = useState([]);
   const [selectedStartDate, setSelectedStartDate] = React.useState(
-    new Date("2021-02-20")
+    new Date("2021-03-04")
   );
   const [selectedEndDate, setSelectedEndDate] = React.useState(
-    new Date("2021-02-20")
+    new Date("2021-03-05")
   );
   const handleStartDateChange = (date) => {
     setSelectedStartDate(date);
