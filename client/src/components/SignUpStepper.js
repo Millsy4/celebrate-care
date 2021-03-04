@@ -365,7 +365,7 @@ export default function SignUpStepper() {
                   {getStepContent(activeStep)}
                 </Typography>
                 <div>
-                  <Container maxWidth="lg" style={{ width: '100%' }}>
+                  <Container maxWidth="sm" style={{ width: '50%', justify: 'center', alignItems: 'center', padding: '20' }}>
 
                     <Button
                       disabled={activeStep === 0}
