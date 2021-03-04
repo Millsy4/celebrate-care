@@ -13,8 +13,7 @@ router
   .post(eventsController.addFav);
 
 router.route("/:id").put(eventsController.editWishlistEvents)
-  .post(eventsController.saveEvent)
-  .post(eventsController.saveWishEvent);
+  .post(eventsController.saveEvent);
 
 
 

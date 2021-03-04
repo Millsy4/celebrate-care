@@ -7,6 +7,9 @@ export default {
     getFamilyUpcomingEvents: function (familyCode, eventStatus) {
         return axios.get("/api/eventtables/" + familyCode + "/" + eventStatus)
     },
+    getUserInfo: function (userId) {
+        return axios.get("/api/usertables/" + userId)
+    },
     getEventIdeas: function (eventStatus) {
         return axios.get("/api/eventtables/" + eventStatus)
     },
@@ -28,12 +31,10 @@ export default {
     getFamilyCodes: function () {
         return axios.get("/api/familycodes");
     },
-    saveWishEvent: function (familycodeId, formObject) {
-        return axios.post("/api/eventtables/" + familycodeId, formObject)
-    },
     addFav: function (familyCode, eventStatus, eventIdeas) {
         return axios.put("/api/eventtables/" + familyCode, + "/" + eventStatus, eventIdeas)
     },
 }
 
 //step 4
+
