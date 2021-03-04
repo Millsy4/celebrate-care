@@ -1,10 +1,8 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
 import Image1 from '../images/CC_v2_indv-03.svg';
-import HeaderImg from '../images/header.png';
+import HeaderImg from '../images/header_sm.png';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   root: {
