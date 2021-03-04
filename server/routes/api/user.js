@@ -7,7 +7,6 @@ router
 
   .post(userController.create);
 
-
-
+router.route("/:id").get(userController.findOne);
 
 module.exports = router;

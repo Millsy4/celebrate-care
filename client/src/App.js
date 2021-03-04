@@ -6,10 +6,7 @@ import Login from "./pages/Login";
 import Event from "./pages/Event";
 import Dashboard from "./pages/Dashboard";
 import Calendar from './pages/Calendar';
-import Footer from "./components/Footer";
 import { UserProvider } from './services/userContext';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import MomentUtils from '@date-io/moment';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 
@@ -27,7 +24,6 @@ export default function App() {
           <Route exact path="/" component={Login} />
           <Route exact path="/event" component={Event} />
           <Route exact path="/calendar" component={Calendar} />
-          <Footer />
         </Switch>
       </UserProvider>
     </Router>

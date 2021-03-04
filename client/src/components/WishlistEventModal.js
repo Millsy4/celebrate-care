@@ -1,22 +1,19 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
-import BasicTextFields from './BasicTextFields';
-import MultilineTextFields from './MultilineTextFields';
-import DatePickers from './DatePickers';
-import Form from '@material-ui/core/TextField';
-import { useUserContext } from '../services/userContext';
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
+import Button from "@material-ui/core/Button";
+import Icon from "@material-ui/core/Icon";
+import Form from "@material-ui/core/TextField";
+import { useUserContext } from "../services/userContext";
 import API from "../utils/API";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
@@ -25,10 +22,10 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     marginRight: theme.spacing(1),
-    justify: 'center',
-    alignItems: 'center',
-    background: '#3D6D6F',
-    color: 'white',
+    justify: "center",
+    alignItems: "center",
+    background: "#3D6D6F",
+    color: "white",
   },
 }));
 
@@ -47,10 +44,9 @@ export default function WishlistEventModal() {
   const [events, setEvents] = useState([]);
 
   const [formObject, setFormObject] = useState({
-    details: '',
-    eventStatus: 'wishlist',
-    eventIdea: '',
-
+    details: "",
+    eventStatus: "wishlist",
+    eventIdea: "",
   });
 
   function click(event) {
@@ -60,20 +56,14 @@ export default function WishlistEventModal() {
 
   function handleFormSubmit(event) {
     let familycodeId = user.familycodeId[0];
-    console.log(familycodeId)
+    console.log(familycodeId);
     event.preventDefault();
     console.log(formObject);
 
-    if (
-      formObject.eventIdea &&
-      formObject.details &&
-      formObject.eventStatus
-    ) {
-      API.saveWishEvent(familycodeId, formObject)
-        .catch((err) => console.log(err))
-
+    if (formObject.eventIdea && formObject.details && formObject.eventStatus) {
+      API.saveEvent(familycodeId, formObject).catch((err) => console.log(err));
     }
-  };
+  }
   return (
     <div>
       <Button size="small" color="primary" onClick={handleOpen}>
@@ -95,19 +85,25 @@ export default function WishlistEventModal() {
         <Fade in={open}>
           <div className={classes.paper}>
             <h2 id="transition-modal-title">Create a Wishlist Event</h2>
-            <Form label="Event Name" id="Name" name="eventIdea"
+            <Form
+              label="Event Name"
+              id="Name"
+              name="eventIdea"
               value={formObject.eventIdea}
-              onChange={(e) => setFormObject({ ...formObject, eventIdea: e.target.value })}>
-
-            </Form>
+              onChange={(e) =>
+                setFormObject({ ...formObject, eventIdea: e.target.value })
+              }
+            />
             <p></p>
-            <Form label="Enter event details here"
+            <Form
+              label="Enter event details here"
               id="Details"
               name="details"
               value={formObject.details}
-              onChange={(e) => setFormObject({ ...formObject, details: e.target.value })}>
-
-            </Form>
+              onChange={(e) =>
+                setFormObject({ ...formObject, details: e.target.value })
+              }
+            />
             <p></p>
             <Button
               className={classes.button}

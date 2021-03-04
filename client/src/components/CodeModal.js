@@ -41,11 +41,10 @@ export default function CodeModal() {
     setOpen(false);
   };
 
-
   function getCode() {
     var randomcode = Math.floor(100000 + Math.random() * 900000);
     // console.log(randomcode);
-    setCode(randomcode)
+    setCode(randomcode);
     API.getFamilyCodes().then((res) => {
       const codes = res.data;
       console.log(codes);
@@ -98,7 +97,9 @@ export default function CodeModal() {
               size="small"
               variant="contained"
               type="button"
-              onClick={() => { navigator.clipboard.writeText(code) }}
+              onClick={() => {
+                navigator.clipboard.writeText(code);
+              }}
             >
               Copy your code
             </Button>
