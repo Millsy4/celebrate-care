@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Container from "@material-ui/core/Container";
 import Navbar from "../components/Navbar";
 import { useUserContext } from "../services/userContext";
+import Box from '@material-ui/core/Box';
 
 export default function Calendar() {
   const { user, setUser } = useUserContext();
@@ -11,9 +12,11 @@ export default function Calendar() {
     <div>
       <Header />
       <Navbar />
-      <Container maxWidth="md">
-        <EventCalendar />
-      </Container>
+      <Box pt={3}>
+        <Container maxWidth="md">
+          <EventCalendar />
+        </Container>
+      </Box>
     </div>
   );
 }

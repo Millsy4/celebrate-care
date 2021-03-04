@@ -31,4 +31,10 @@ export default {
     getFamilyCodes: function () {
         return axios.get("/api/familycodes");
     },
+    addFav: function (familyCode, eventStatus, eventIdeas) {
+        return axios.put("/api/eventtables/" + familyCode, + "/" + eventStatus, eventIdeas)
+    },
 }
+
+//step 4
+

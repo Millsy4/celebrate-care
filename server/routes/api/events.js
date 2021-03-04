@@ -10,9 +10,12 @@ router
   .route("/:id/:eventStatus")
   .get(eventsController.findAllEventsByStatus)
   .put(eventsController.editUpcomingEvents)
+  .post(eventsController.addFav);
 
 router.route("/:id").put(eventsController.editWishlistEvents)
   .post(eventsController.saveEvent);
+
+
 
 router.route("/:eventStatus").get(eventsController.findAllEventIdeas);
 
